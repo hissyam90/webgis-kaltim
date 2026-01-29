@@ -4,7 +4,7 @@ import axios from 'axios'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-// Fix Icon Default Leaflet
+// Fix Icon Leaflet
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 let DefaultIcon = L.icon({
@@ -20,7 +20,7 @@ function FlyToLocation({ target }) {
   const map = useMap()
   useEffect(() => {
     if (target) {
-      map.flyTo([target.latitude, target.longitude], 14, { duration: 2 })
+      map.flyTo([target.latitude, target.longitude], 14, { duration: 1.5 })
     }
   }, [target, map])
   return null
@@ -30,16 +30,16 @@ function App() {
   const [pembangkit, setPembangkit] = useState([])
   const [loading, setLoading] = useState(true)
   
-  // State UI
+  // State Utama
   const [selectedKategori, setSelectedKategori] = useState("Semua")
   const [searchText, setSearchText] = useState("")
   const [focusLocation, setFocusLocation] = useState(null)
-  
-  // State Baru: Basemap & GPS
-  const [basemap, setBasemap] = useState("dark") // default: dark, osm, satellite
+  const [basemap, setBasemap] = useState("dark")
   const [userLocation, setUserLocation] = useState(null)
 
-  // Ambil data backend
+  // --- STATE BARU UNTUK MODAL DETAIL ---
+  const [selectedDetail, setSelectedDetail] = useState(null) 
+
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/pembangkit')
       .then(res => {
@@ -52,7 +52,6 @@ function App() {
       })
   }, [])
 
-  // Logika Filter
   const filteredData = useMemo(() => {
     return pembangkit.filter(item => {
       const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori
@@ -70,54 +69,42 @@ function App() {
     const j = jenis.toLowerCase()
     if (j.includes("plts")) return "#facc15" 
     if (j.includes("pltd")) return "#ef4444" 
-    if (j.includes("pltu")) return "#9ca3af" // Abu terang biar keliatan di map gelap
+    if (j.includes("pltu")) return "#9ca3af" 
     if (j.includes("pltmh") || j.includes("pltair")) return "#3b82f6" 
     if (j.includes("pltb")) return "#10b981" 
     return "#d946ef" 
   }
 
-  // --- FITUR BARU: Handle GPS ---
   const handleLocateMe = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords
         const myLoc = { latitude, longitude }
         setUserLocation(myLoc)
-        setFocusLocation(myLoc) // Terbang ke lokasi user
-      }, (error) => {
-        alert("Gagal mendeteksi lokasi: " + error.message)
-      })
+        setFocusLocation(myLoc)
+      }, (error) => alert("Gagal mendeteksi lokasi: " + error.message))
     } else {
       alert("Browser tidak support GPS")
     }
   }
 
-  // --- PILIHAN BASEMAP ---
   const getTileLayer = () => {
     switch(basemap) {
-      case "satellite":
-        return {
-          url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-          attr: "Tiles &copy; Esri"
-        }
-      case "osm":
-        return {
-          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          attr: "&copy; OpenStreetMap"
-        }
-      case "dark":
-      default:
-        return {
-          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-          attr: "&copy; CartoDB Dark Matter"
-        }
+      case "satellite": return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", attr: "Tiles &copy; Esri" }
+      case "osm": return { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", attr: "&copy; OpenStreetMap" }
+      case "dark": default: return { url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", attr: "&copy; CartoDB Dark Matter" }
     }
+  }
+
+  // --- FUNGSI BUKA GOOGLE MAPS ---
+  const openGoogleMaps = (lat, lon) => {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`, '_blank');
   }
 
   if (loading) return <div className="bg-gray-900 h-screen flex items-center justify-center text-white">Loading...</div>
 
   return (
-    <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden">
+    <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden relative">
       
       {/* SIDEBAR */}
       <div className="w-1/3 md:w-1/4 h-full bg-slate-900 text-white flex flex-col shadow-2xl z-[1000] border-r border-slate-700">
@@ -127,24 +114,18 @@ function App() {
           
           <div className="space-y-4">
             <input 
-              type="text"
-              placeholder="Cari lokasi..."
-              value={searchText}
+              type="text" placeholder="Cari lokasi..." value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
               className="w-full bg-slate-800 border border-slate-600 text-white text-sm rounded p-2 focus:border-emerald-500"
             />
             <select 
-              value={selectedKategori}
-              onChange={(e) => setSelectedKategori(e.target.value)}
+              value={selectedKategori} onChange={(e) => setSelectedKategori(e.target.value)}
               className="w-full bg-slate-800 border border-slate-600 text-white text-sm rounded p-2"
             >
               {listKategori.map((kat, idx) => <option key={idx} value={kat}>{kat}</option>)}
             </select>
           </div>
-          
-          <div className="mt-4 text-xs text-slate-400">
-            Total Data: <span className="text-emerald-400 font-bold">{filteredData.length}</span>
-          </div>
+          <div className="mt-4 text-xs text-slate-400">Total: <span className="text-emerald-400 font-bold">{filteredData.length}</span></div>
         </div>
 
         <div className="flex-1 overflow-y-auto p-3 space-y-2 scrollbar-thin scrollbar-thumb-slate-700">
@@ -163,21 +144,10 @@ function App() {
 
       {/* PETA */}
       <div className="flex-1 h-full relative z-0">
-        <MapContainer 
-            center={[0.5386586, 116.419389]} zoom={6} 
-            className="h-full w-full bg-slate-800" zoomControl={false}
-        >
-            {/* Dynamic Tile Layer */}
+        <MapContainer center={[0.5386586, 116.419389]} zoom={6} className="h-full w-full bg-slate-800" zoomControl={false}>
             <TileLayer attribution={getTileLayer().attr} url={getTileLayer().url} />
-            
             <FlyToLocation target={focusLocation} />
-
-            {/* Marker Lokasi User (Jika ada) */}
-            {userLocation && (
-              <Marker position={[userLocation.latitude, userLocation.longitude]}>
-                 <Popup>Lokasi Saya</Popup>
-              </Marker>
-            )}
+            {userLocation && <Marker position={[userLocation.latitude, userLocation.longitude]}><Popup>Lokasi Saya</Popup></Marker>}
 
             {filteredData.map((item, idx) => (
                 <CircleMarker 
@@ -186,38 +156,29 @@ function App() {
                 >
                     <Popup>
                         <div className="min-w-[150px] font-sans text-slate-800">
-                            <h3 className="font-bold text-sm border-b pb-1">{item.nama}</h3>
-                            <p className="text-xs mt-2">Jenis: {item.jenis}</p>
-                            <p className="text-xs">Region: {item.region}</p>
+                            <h3 className="font-bold text-sm border-b pb-1 mb-2">{item.nama}</h3>
+                            <p className="text-xs mb-1">Jenis: <b>{item.jenis}</b></p>
+                            <p className="text-xs mb-3">Region: {item.region}</p>
+                            <button 
+                                onClick={() => setSelectedDetail(item)}
+                                className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
+                            >
+                                Lihat Detail Lengkap
+                            </button>
                         </div>
                     </Popup>
                 </CircleMarker>
             ))}
         </MapContainer>
         
-        {/* --- KONTROL PETA (FLOATING UI) --- */}
+        {/* Kontrol Kanan Atas */}
         <div className="absolute top-5 right-5 z-[1000] flex flex-col gap-2">
-          {/* Tombol Basemap */}
           <div className="bg-white rounded shadow-lg p-1 flex flex-col gap-1">
-             <button onClick={() => setBasemap('dark')} title="Mode Gelap"
-                className={`p-2 rounded hover:bg-gray-100 ${basemap==='dark' ? 'bg-slate-200':''}`}>
-                🌑
-             </button>
-             <button onClick={() => setBasemap('osm')} title="Mode Terang"
-                className={`p-2 rounded hover:bg-gray-100 ${basemap==='osm' ? 'bg-slate-200':''}`}>
-                🗺️
-             </button>
-             <button onClick={() => setBasemap('satellite')} title="Mode Satelit"
-                className={`p-2 rounded hover:bg-gray-100 ${basemap==='satellite' ? 'bg-slate-200':''}`}>
-                🛰️
-             </button>
+             <button onClick={() => setBasemap('dark')} className={`p-2 rounded hover:bg-gray-100 ${basemap==='dark' ? 'bg-slate-200':''}`} title="Dark">🌑</button>
+             <button onClick={() => setBasemap('osm')} className={`p-2 rounded hover:bg-gray-100 ${basemap==='osm' ? 'bg-slate-200':''}`} title="Light">🗺️</button>
+             <button onClick={() => setBasemap('satellite')} className={`p-2 rounded hover:bg-gray-100 ${basemap==='satellite' ? 'bg-slate-200':''}`} title="Satellite">🛰️</button>
           </div>
-
-          {/* Tombol GPS */}
-          <button onClick={handleLocateMe} title="Lokasi Saya"
-             className="bg-white p-3 rounded shadow-lg hover:bg-emerald-50 text-emerald-600 font-bold">
-             📍
-          </button>
+          <button onClick={handleLocateMe} className="bg-white p-3 rounded shadow-lg hover:bg-emerald-50 text-emerald-600 font-bold" title="Lokasi Saya">📍</button>
         </div>
 
         {/* Legenda */}
@@ -230,8 +191,61 @@ function App() {
             <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-blue-500 mr-2"></span> PLT Air</div>
           </div>
         </div>
-
       </div>
+
+      {/* --- MODAL DETAIL POPUP (YANG BARU) --- */}
+      {selectedDetail && (
+        <div className="absolute inset-0 z-[2000] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-fade-in-up">
+                
+                {/* Header Modal */}
+                <div className="bg-emerald-600 p-4 flex justify-between items-center">
+                    <h2 className="text-white font-bold text-lg truncate pr-4">{selectedDetail.nama}</h2>
+                    <button onClick={() => setSelectedDetail(null)} className="text-white hover:text-emerald-200 text-xl font-bold">&times;</button>
+                </div>
+
+                {/* Isi Modal */}
+                <div className="p-6">
+                    <div className="flex items-center mb-6">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-xl font-bold mr-4 shadow-lg" 
+                             style={{backgroundColor: getColor(selectedDetail.jenis)}}>
+                            ⚡
+                        </div>
+                        <div>
+                            <p className="text-sm text-gray-500">Jenis Pembangkit</p>
+                            <p className="font-bold text-gray-800 text-lg">{selectedDetail.jenis}</p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="bg-gray-50 p-3 rounded border border-gray-100">
+                            <p className="text-xs text-gray-500 uppercase">Tahun Operasi</p>
+                            <p className="font-semibold text-gray-800">{selectedDetail.tahun_operasi || "-"}</p>
+                        </div>
+                        <div className="bg-gray-50 p-3 rounded border border-gray-100">
+                            <p className="text-xs text-gray-500 uppercase">Wilayah</p>
+                            <p className="font-semibold text-gray-800">{selectedDetail.region}</p>
+                        </div>
+                         <div className="bg-gray-50 p-3 rounded border border-gray-100 col-span-2">
+                            <p className="text-xs text-gray-500 uppercase">Koordinat</p>
+                            <p className="font-mono text-xs text-gray-600 mt-1">
+                                {selectedDetail.latitude}, {selectedDetail.longitude}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Tombol Aksi */}
+                    <button 
+                        onClick={() => openGoogleMaps(selectedDetail.latitude, selectedDetail.longitude)}
+                        className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    >
+                        🗺️ Rute via Google Maps
+                    </button>
+                </div>
+            </div>
+        </div>
+      )}
+
     </div>
   )
 }

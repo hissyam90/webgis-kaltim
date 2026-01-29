@@ -4,6 +4,13 @@ import axios from 'axios'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
+// --- LIBRARY CHART (BARU) ---
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+
+// Registrasi komponen Chart
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 // Fix Icon Leaflet
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -30,15 +37,16 @@ function App() {
   const [pembangkit, setPembangkit] = useState([])
   const [loading, setLoading] = useState(true)
   
-  // State Utama
+  // State UI
   const [selectedKategori, setSelectedKategori] = useState("Semua")
   const [searchText, setSearchText] = useState("")
   const [focusLocation, setFocusLocation] = useState(null)
   const [basemap, setBasemap] = useState("dark")
   const [userLocation, setUserLocation] = useState(null)
-
-  // --- STATE BARU UNTUK MODAL DETAIL ---
   const [selectedDetail, setSelectedDetail] = useState(null) 
+  
+  // State Modal Statistik (BARU)
+  const [showStats, setShowStats] = useState(false)
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/pembangkit')
@@ -75,6 +83,26 @@ function App() {
     return "#d946ef" 
   }
 
+  // --- LOGIKA DATA STATISTIK (BARU) ---
+  const chartData = useMemo(() => {
+    const stats = {}
+    // Hitung jumlah per jenis
+    pembangkit.forEach(item => {
+        stats[item.jenis] = (stats[item.jenis] || 0) + 1
+    })
+    
+    return {
+        labels: Object.keys(stats),
+        datasets: [{
+            label: 'Jumlah Unit',
+            data: Object.values(stats),
+            backgroundColor: Object.keys(stats).map(k => getColor(k)),
+            borderColor: '#1e293b',
+            borderWidth: 2,
+        }]
+    }
+  }, [pembangkit])
+
   const handleLocateMe = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -90,13 +118,12 @@ function App() {
 
   const getTileLayer = () => {
     switch(basemap) {
-      case "satellite": return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", attr: "Tiles &copy; Esri" }
-      case "osm": return { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", attr: "&copy; OpenStreetMap" }
-      case "dark": default: return { url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", attr: "&copy; CartoDB Dark Matter" }
+      case "satellite": return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", attr: "Tiles © Esri" }
+      case "osm": return { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", attr: "© OpenStreetMap" }
+      case "dark": default: return { url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", attr: "© CartoDB Dark Matter" }
     }
   }
 
-  // --- FUNGSI BUKA GOOGLE MAPS ---
   const openGoogleMaps = (lat, lon) => {
     window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`, '_blank');
   }
@@ -124,8 +151,17 @@ function App() {
             >
               {listKategori.map((kat, idx) => <option key={idx} value={kat}>{kat}</option>)}
             </select>
+            
+            {/* TOMBOL STATISTIK (BARU) */}
+            <button 
+                onClick={() => setShowStats(true)}
+                className="w-full bg-slate-700 hover:bg-slate-600 text-emerald-400 text-xs font-bold py-2 rounded border border-slate-600 flex items-center justify-center gap-2 transition"
+            >
+                📊 Lihat Grafik Analisa
+            </button>
           </div>
-          <div className="mt-4 text-xs text-slate-400">Total: <span className="text-emerald-400 font-bold">{filteredData.length}</span></div>
+          
+          <div className="mt-4 text-xs text-slate-400">Total Data: <span className="text-emerald-400 font-bold">{filteredData.length}</span></div>
         </div>
 
         <div className="flex-1 overflow-y-auto p-3 space-y-2 scrollbar-thin scrollbar-thumb-slate-700">
@@ -163,7 +199,7 @@ function App() {
                                 onClick={() => setSelectedDetail(item)}
                                 className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
                             >
-                                Lihat Detail Lengkap
+                                Lihat Detail
                             </button>
                         </div>
                     </Popup>
@@ -171,7 +207,6 @@ function App() {
             ))}
         </MapContainer>
         
-        {/* Kontrol Kanan Atas */}
         <div className="absolute top-5 right-5 z-[1000] flex flex-col gap-2">
           <div className="bg-white rounded shadow-lg p-1 flex flex-col gap-1">
              <button onClick={() => setBasemap('dark')} className={`p-2 rounded hover:bg-gray-100 ${basemap==='dark' ? 'bg-slate-200':''}`} title="Dark">🌑</button>
@@ -181,7 +216,6 @@ function App() {
           <button onClick={handleLocateMe} className="bg-white p-3 rounded shadow-lg hover:bg-emerald-50 text-emerald-600 font-bold" title="Lokasi Saya">📍</button>
         </div>
 
-        {/* Legenda */}
         <div className="absolute bottom-6 right-6 bg-slate-900/90 backdrop-blur p-4 rounded-lg shadow-xl z-[1000] text-xs border border-slate-700 text-slate-300">
           <h4 className="font-bold mb-3 text-white uppercase">Legenda</h4>
           <div className="space-y-2">
@@ -193,30 +227,23 @@ function App() {
         </div>
       </div>
 
-      {/* --- MODAL DETAIL POPUP (YANG BARU) --- */}
+      {/* --- MODAL DETAIL --- */}
       {selectedDetail && (
         <div className="absolute inset-0 z-[2000] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
             <div className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-fade-in-up">
-                
-                {/* Header Modal */}
                 <div className="bg-emerald-600 p-4 flex justify-between items-center">
                     <h2 className="text-white font-bold text-lg truncate pr-4">{selectedDetail.nama}</h2>
-                    <button onClick={() => setSelectedDetail(null)} className="text-white hover:text-emerald-200 text-xl font-bold">&times;</button>
+                    <button onClick={() => setSelectedDetail(null)} className="text-white hover:text-emerald-200 text-xl font-bold">×</button>
                 </div>
-
-                {/* Isi Modal */}
                 <div className="p-6">
                     <div className="flex items-center mb-6">
                         <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-xl font-bold mr-4 shadow-lg" 
-                             style={{backgroundColor: getColor(selectedDetail.jenis)}}>
-                            ⚡
-                        </div>
+                             style={{backgroundColor: getColor(selectedDetail.jenis)}}>⚡</div>
                         <div>
                             <p className="text-sm text-gray-500">Jenis Pembangkit</p>
                             <p className="font-bold text-gray-800 text-lg">{selectedDetail.jenis}</p>
                         </div>
                     </div>
-
                     <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="bg-gray-50 p-3 rounded border border-gray-100">
                             <p className="text-xs text-gray-500 uppercase">Tahun Operasi</p>
@@ -226,21 +253,41 @@ function App() {
                             <p className="text-xs text-gray-500 uppercase">Wilayah</p>
                             <p className="font-semibold text-gray-800">{selectedDetail.region}</p>
                         </div>
-                         <div className="bg-gray-50 p-3 rounded border border-gray-100 col-span-2">
-                            <p className="text-xs text-gray-500 uppercase">Koordinat</p>
-                            <p className="font-mono text-xs text-gray-600 mt-1">
-                                {selectedDetail.latitude}, {selectedDetail.longitude}
-                            </p>
-                        </div>
                     </div>
-
-                    {/* Tombol Aksi */}
                     <button 
                         onClick={() => openGoogleMaps(selectedDetail.latitude, selectedDetail.longitude)}
                         className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
                         🗺️ Rute via Google Maps
                     </button>
+                </div>
+            </div>
+        </div>
+      )}
+
+      {/* --- MODAL STATISTIK (BARU) --- */}
+      {showStats && (
+        <div className="absolute inset-0 z-[2000] bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="bg-slate-900 rounded-xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-700">
+                <div className="p-4 border-b border-slate-700 flex justify-between items-center">
+                    <h2 className="text-emerald-400 font-bold text-lg">📊 Statistik Energi Kaltim</h2>
+                    <button onClick={() => setShowStats(false)} className="text-slate-400 hover:text-white text-2xl font-bold">×</button>
+                </div>
+                <div className="p-6 flex flex-col items-center">
+                    <div className="w-64 h-64">
+                        <Pie data={chartData} />
+                    </div>
+                    <div className="mt-6 w-full">
+                        <h4 className="text-slate-300 text-sm font-bold mb-2 uppercase border-b border-slate-700 pb-2">Ringkasan Data</h4>
+                        <div className="grid grid-cols-2 gap-2 text-xs">
+                             {chartData.labels.map((label, idx) => (
+                                 <div key={idx} className="flex justify-between p-2 bg-slate-800 rounded">
+                                     <span className="text-slate-400">{label}</span>
+                                     <span className="text-white font-bold">{chartData.datasets[0].data[idx]} Unit</span>
+                                 </div>
+                             ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

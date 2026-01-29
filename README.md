@@ -77,6 +77,60 @@ Aplikasi ini menggunakan tabel utama `pembangkit` dengan skema sebagai berikut:
 Ikuti langkah-langkah ini untuk menjalankan proyek di komputer lokal.
 
 ### 1. Clone Repository
-```bash
-git clone [https://github.com/hissyam90/webgis-kaltim.git](https://github.com/hissyam90/webgis-kaltim.git)
-cd webgis-kaltim
+
+    git clone https://github.com/hissyam90/webgis-kaltim.git
+    cd webgis-kaltim
+
+### 2. Setup Backend (Python & Database)
+Masuk ke folder backend dan install dependencies:
+
+    cd backend
+    pip install fastapi uvicorn pandas psycopg2-binary
+
+*(Opsional)* Jika menggunakan PostgreSQL:
+1. Buat database baru bernama `webgis_db`.
+2. Import file SQL dump atau jalankan script migrasi.
+3. Sesuaikan file `.env` dengan kredensial database Anda.
+
+Jalankan Server:
+
+    python -m uvicorn main:app --reload
+
+> Server berjalan di: `http://127.0.0.1:8000`
+
+### 3. Setup Frontend (React)
+Buka terminal baru, masuk ke folder frontend:
+
+    cd frontend
+    npm install
+
+Jalankan Aplikasi:
+
+    npm run dev
+
+> Aplikasi berjalan di: `http://localhost:5173`
+
+---
+
+## 📂 Struktur Folder Proyek
+
+    webgis-kaltim/
+    ├── backend/                # API Server (FastAPI)
+    │   ├── main.py             # Entry point aplikasi
+    │   ├── database.py         # Koneksi PostgreSQL
+    │   └── models.py           # Schema Database
+    │
+    ├── frontend/               # User Interface (React)
+    │   ├── src/
+    │   │   ├── components/     # Komponen Reusable (Map, Modal, Chart)
+    │   │   └── App.jsx         # Logika Utama
+    │   └── package.json
+    │
+    └── README.md               # Dokumentasi Proyek
+
+---
+
+## 👨‍💻 Author
+
+Dikembangkan oleh **Kelompok Green Hosa**
+Study Club Pub & AI Informatika - Universitas Mulawarman

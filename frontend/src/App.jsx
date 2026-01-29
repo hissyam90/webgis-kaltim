@@ -35,18 +35,23 @@ function App() {
   const [pembangkit, setPembangkit] = useState([])
   const [loading, setLoading] = useState(true)
   
-  // State UI & Fitur
+  // State UI
   const [selectedKategori, setSelectedKategori] = useState("Semua")
   const [searchText, setSearchText] = useState("")
   const [focusLocation, setFocusLocation] = useState(null)
   const [basemap, setBasemap] = useState("dark")
   const [userLocation, setUserLocation] = useState(null)
+  
+  // State Modal & Data
   const [selectedDetail, setSelectedDetail] = useState(null) 
   const [showStats, setShowStats] = useState(false)
-  
-  // STATE BARU: Sidebar Toggle
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
+  // STATE CUACA
+  const [weatherData, setWeatherData] = useState(null)
+  const [loadingWeather, setLoadingWeather] = useState(false)
+
+  // Ambil data backend
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/pembangkit')
       .then(res => {
@@ -58,6 +63,41 @@ function App() {
         setLoading(false)
       })
   }, [])
+
+  // --- SOLUSI ERROR DISINI: Pindahkan State ke Event Handler ---
+  const handleOpenDetail = (item) => {
+    setLoadingWeather(true) // 1. Set loading DULUAN
+    setWeatherData(null)    // 2. Bersihkan data lama
+    setSelectedDetail(item) // 3. Baru buka modal
+  }
+
+  // --- LOGIKA FETCH CUACA (SUDAH DIPERBAIKI) ---
+  // Sekarang isinya cuma fetch data, tidak ada set state sync lagi.
+  useEffect(() => {
+    if (selectedDetail) {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${selectedDetail.latitude}&longitude=${selectedDetail.longitude}&current_weather=true&timezone=auto`
+        
+        axios.get(url)
+            .then(res => {
+                setWeatherData(res.data.current_weather)
+                setLoadingWeather(false)
+            })
+            .catch(err => {
+                console.error("Gagal ambil cuaca:", err)
+                setLoadingWeather(false)
+            })
+    }
+  }, [selectedDetail])
+
+  // Helper Cuaca
+  const getWeatherInfo = (code) => {
+    if (code === 0) return { label: "Cerah / Langit Bersih", icon: "☀️" }
+    if (code >= 1 && code <= 3) return { label: "Berawan / Mendung", icon: "☁️" }
+    if (code >= 45 && code <= 48) return { label: "Kabut", icon: "🌫️" }
+    if (code >= 51 && code <= 67) return { label: "Gerimis / Hujan Ringan", icon: "🌦️" }
+    if (code >= 80 && code <= 99) return { label: "Hujan Lebat / Badai", icon: "⛈️" }
+    return { label: "Tidak Diketahui", icon: "❓" }
+  }
 
   const filteredData = useMemo(() => {
     return pembangkit.filter(item => {
@@ -96,20 +136,12 @@ function App() {
     }
   }, [pembangkit])
 
-  // --- FITUR BARU: DOWNLOAD CSV ---
   const handleDownloadCSV = () => {
-    // 1. Buat Header CSV
     const headers = ["Nama Pembangkit,Jenis,Region,Tahun Operasi,Latitude,Longitude"];
-    
-    // 2. Map data yang sedang difilter menjadi baris CSV
     const rows = filteredData.map(item => 
         `"${item.nama}","${item.jenis}","${item.region}","${item.tahun_operasi}","${item.latitude}","${item.longitude}"`
     );
-
-    // 3. Gabungkan Header dan Baris
     const csvContent = [headers, ...rows].join("\n");
-
-    // 4. Buat file Blob dan trigger download
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -150,10 +182,8 @@ function App() {
   return (
     <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden relative">
       
-      {/* SIDEBAR (Responsive Width) */}
+      {/* SIDEBAR */}
       <div className={`${isSidebarOpen ? 'w-1/3 md:w-1/4' : 'w-0'} h-full bg-slate-900 text-white flex flex-col shadow-2xl z-[1000] border-r border-slate-700 transition-all duration-300 ease-in-out relative`}>
-        
-        {/* Konten Sidebar (Hanya tampil jika Open) */}
         <div className={`flex flex-col h-full ${!isSidebarOpen && 'hidden'}`}>
             <div className="p-5 border-b border-slate-800 bg-slate-900">
             <h1 className="text-2xl font-bold text-emerald-400">WebGIS Kaltim</h1>
@@ -171,26 +201,11 @@ function App() {
                 >
                 {listKategori.map((kat, idx) => <option key={idx} value={kat}>{kat}</option>)}
                 </select>
-                
-                {/* GRID TOMBOL AKSI */}
                 <div className="grid grid-cols-2 gap-2">
-                    <button 
-                        onClick={() => setShowStats(true)}
-                        className="bg-slate-700 hover:bg-slate-600 text-emerald-400 text-[10px] font-bold py-2 rounded border border-slate-600 flex items-center justify-center gap-1 transition"
-                    >
-                        📊 Grafik
-                    </button>
-                    {/* TOMBOL DOWNLOAD CSV (BARU) */}
-                    <button 
-                        onClick={handleDownloadCSV}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold py-2 rounded border border-emerald-500 flex items-center justify-center gap-1 transition"
-                        title="Download data hasil filter ini ke Excel/CSV"
-                    >
-                        ⬇️ Export Data
-                    </button>
+                    <button onClick={() => setShowStats(true)} className="bg-slate-700 hover:bg-slate-600 text-emerald-400 text-[10px] font-bold py-2 rounded border border-slate-600 flex items-center justify-center gap-1 transition">📊 Grafik</button>
+                    <button onClick={handleDownloadCSV} className="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold py-2 rounded border border-emerald-500 flex items-center justify-center gap-1 transition" title="Download CSV">⬇️ Export</button>
                 </div>
             </div>
-            
             <div className="mt-4 text-xs text-slate-400">Total Data: <span className="text-emerald-400 font-bold">{filteredData.length}</span></div>
             </div>
 
@@ -207,16 +222,9 @@ function App() {
                 ))}
             </div>
         </div>
-
-        {/* TOMBOL TOGGLE SIDEBAR (Di luar div konten biar tetap muncul) */}
-        <button 
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-slate-800 text-emerald-400 w-6 h-12 rounded-r-lg flex items-center justify-center border-y border-r border-slate-600 shadow-xl cursor-pointer hover:bg-slate-700 z-[1500]"
-            title={isSidebarOpen ? "Tutup Sidebar" : "Buka Sidebar"}
-        >
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-slate-800 text-emerald-400 w-6 h-12 rounded-r-lg flex items-center justify-center border-y border-r border-slate-600 shadow-xl cursor-pointer hover:bg-slate-700 z-[1500]" title={isSidebarOpen ? "Tutup Sidebar" : "Buka Sidebar"}>
             {isSidebarOpen ? '◀' : '▶'}
         </button>
-
       </div>
 
       {/* PETA */}
@@ -236,8 +244,9 @@ function App() {
                             <h3 className="font-bold text-sm border-b pb-1 mb-2">{item.nama}</h3>
                             <p className="text-xs mb-1">Jenis: <b>{item.jenis}</b></p>
                             <p className="text-xs mb-3">Region: {item.region}</p>
+                            {/* UPDATE: Gunakan handleOpenDetail disini */}
                             <button 
-                                onClick={() => setSelectedDetail(item)}
+                                onClick={() => handleOpenDetail(item)} 
                                 className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
                             >
                                 Lihat Detail
@@ -258,7 +267,6 @@ function App() {
           <button onClick={handleLocateMe} className="bg-white p-3 rounded shadow-lg hover:bg-emerald-50 text-emerald-600 font-bold" title="Lokasi Saya">📍</button>
         </div>
 
-        {/* Legenda (Hanya tampil jika sidebar tutup atau layar lebar, opsional) */}
         <div className="absolute bottom-6 right-6 bg-slate-900/90 backdrop-blur p-4 rounded-lg shadow-xl z-[1000] text-xs border border-slate-700 text-slate-300 hidden md:block">
           <h4 className="font-bold mb-3 text-white uppercase">Legenda</h4>
           <div className="space-y-2">
@@ -287,9 +295,10 @@ function App() {
                             <p className="font-bold text-gray-800 text-lg">{selectedDetail.jenis}</p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 mb-6">
+
+                    <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="bg-gray-50 p-3 rounded border border-gray-100">
-                            <p className="text-xs text-gray-500 uppercase">Tahun Operasi</p>
+                            <p className="text-xs text-gray-500 uppercase">Tahun Ops</p>
                             <p className="font-semibold text-gray-800">{selectedDetail.tahun_operasi || "-"}</p>
                         </div>
                         <div className="bg-gray-50 p-3 rounded border border-gray-100">
@@ -297,11 +306,36 @@ function App() {
                             <p className="font-semibold text-gray-800">{selectedDetail.region}</p>
                         </div>
                     </div>
+
+                    {/* WIDGET CUACA */}
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-400 p-4 rounded-lg text-white mb-6 shadow-md relative overflow-hidden">
+                        <p className="text-[10px] font-bold uppercase tracking-wider opacity-80 mb-1">Kondisi Cuaca Saat Ini (Live)</p>
+                        {loadingWeather ? (
+                             <div className="flex items-center gap-2 text-sm"><span className="animate-spin">⏳</span> Mengambil data cuaca...</div>
+                        ) : weatherData ? (
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <div className="text-3xl font-bold">{weatherData.temperature}°C</div>
+                                    <div className="text-sm font-medium flex items-center gap-1">
+                                        {getWeatherInfo(weatherData.weathercode).icon} {getWeatherInfo(weatherData.weathercode).label}
+                                    </div>
+                                </div>
+                                <div className="text-right text-xs opacity-90">
+                                    <p>💨 Angin: {weatherData.windspeed} km/h</p>
+                                    <p>📍 Lokasi Site</p>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="text-sm">Gagal memuat cuaca.</div>
+                        )}
+                        <div className="absolute -right-4 -bottom-4 text-8xl opacity-20">🌤️</div>
+                    </div>
+
                     <button 
                         onClick={() => openGoogleMaps(selectedDetail.latitude, selectedDetail.longitude)}
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="w-full bg-slate-800 text-white py-3 rounded-lg font-bold hover:bg-slate-900 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
-                        🗺️ Rute via Google Maps
+                        🗺️ Navigasi Google Maps
                     </button>
                 </div>
             </div>

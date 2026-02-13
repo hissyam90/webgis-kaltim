@@ -1,0 +1,784 @@
+objectid,remark,kode2,id,nama_danau,lokasi,provinsi,luas_ha_,klasifikas,tipe,pot_mw
+1,Danau/Situ,34A,ID-AC.2,Danau Aneuk Laot,"Kec. Sukakarya, Kab. Sabang",Aceh,45.44,Kecil,Vulkanik,2.27200007
+2,Danau/Situ,35A,ID-AC.12,Waduk Keuliling,"Kec. Kotacoglie, Kab. Aceh Besar",Aceh,258.55,Kecil,Buatan,12.92749977
+3,Danau/Situ,36A,ID-AC.9,Danau Geuanggeudang,"Kec. Kaway Enambelas, Kab. Aceh Barat",Aceh,33.05,Kecil,Paparan banjir,1.65250003
+4,Danau/Situ,38A,ID-AC.18,Danau Laut Penang Suasa,Kab. Aceh Jaya,Aceh,46.11,Kecil,-,2.30550003
+5,Danau/Situ,54A,ID-AC.13,Waduk Krueng Nalan,"Kec. Jeunieb dan Peulimbang, Kab. Bireun",Aceh,20.69,Kecil,Buatan,1.0345
+6,Danau/Situ,60A,ID-AC.27,Danau Paya Laot,"Kec. Bireun, Kab. Aceh Jaya",Aceh,73.96,Kecil,-,3.69799995
+7,Danau/Situ,62A,ID-AC.40,Noname,"Kec. Beutong, Kab. Nagan Raya",Aceh,24.61,Kecil,-,1.23049998
+8,Danau/Situ,82A,ID-AC.19,Danau Laut Tawar,Kab. Aceh Tengah,Aceh,5909.76,Sedang,Tekto-Vulkanik,295.48800659
+9,Danau/Situ,84A,ID-AC.6,Waduk Dam V,"Kec. Cotgirek, Kab. Aceh Utara",Aceh,47.01,Kecil,Buatan,2.35050011
+10,Danau/Situ,122A,ID-AC.20,Danau Lautbangko,"Kec. Bakongan, Kab. Aceh Selatan",Aceh,127.12,Kecil,-,6.35599995
+11,Danau/Situ,133A,ID-AC.31,Danau Sungara,"Kec. Kota Baharu, Kab. Aceh Singkil",Aceh,77.83,Kecil,-,3.8915
+12,Danau/Situ,134A,ID-AC.1,Danau Anaklaut Indah,"Kec. Singkil dan Singkil Utara, Kab. Aceh Singkil",Aceh,909.9,Kecil,Laguna,45.49499893
+13,Danau/Situ,135A,ID-AC.3,Danau Bungara,"Kec. Kota Baharu, Kab. Aceh Singkil",Aceh,24.03,Kecil,-,1.20150006
+14,Danau/Situ,165A,ID-LA.7,Danau Jepara,"Kec. Way Jepara, Kab. Lampung Timur",Lampung,206.24,Kecil,-,10.31200027
+15,Danau/Situ,167A,ID-LA.13,Tasik Batutegi,"Kec. Aimaningan dan Ulubelu, Kab. Tanggamus",Lampung,1335.26,Sedang,Buatan,66.76300049
+16,Danau/Situ,182A,ID-LA.1,Danau Asam,"Kec. Suoh dan Bandar Negeri Suoh, Kab. Lampung Barat",Lampung,120.73,Kecil,-,6.03649998
+17,Danau/Situ,200A,ID-LA.4,Danau Beringin Indah,"Kec. Sukadana, Kab. Lampung Timur",Lampung,36.39,Kecil,-,1.81949997
+18,Danau/Situ,233A,ID-LA.26,Bendungan Damtirtasinta,"Kec. Kotabumi Utara, Kab. Lampung Utara",Lampung,87.86,Kecil,-,4.39300013
+19,Danau/Situ,234A,ID.LA.28,Waduk Wayrarem,"Kec. Abung Tengah, Kab.Lampung Utara",Lampung,928.92,Kecil,-,46.44599915
+20,Danau/Situ,236A,ID.LA.27,Bendungan Waytulungmas,"Kec. Sangkaijaya, Kab. Lampung Utara",Lampung,37.92,Kecil,-,1.89600003
+21,Danau/Situ,244A,ID-SB.15,Noname,"Kec. Pagai Selatan, Kab. Kepulauan Mentawai",Sumatera Barat,29.7,Kecil,-,1.48500001
+22,Danau/Situ,281A,ID-AC.7,Danau Elauloh,"Kec. Simuelue, Kab. Simeulue",Aceh,160.71,Kecil,-,8.03549957
+23,Danau/Situ,292A,ID-BE.5,Danau Lebar,"Kec. Teras Terunjam, Kab. Muko-Muko",Bengkulu,43.5,Kecil,-,2.17499995
+24,Danau/Situ,326A,ID-SB.3,Danau Dibawah,"Kec. Danau Kembar, Kab. Solok",Sumatera Barat,1140.16,Sedang,Tektonik,57.00799942
+25,Danau/Situ,422A,ID-SB.10,Danau Singkarak,"Kec. Batipuh Selatan, Rambatan, Junjung Sirih, dan Sepuluh Koto Singkarak, Kab. Tanah Datar dan Solok",Sumatera Barat,10919.08,Besar,Tektonik,545.95397949
+26,Danau/Situ,450A,ID-SB.8,Danau Maninjau,"Kec. Tanjung Raya, Kab. Agam",Sumatera Barat,9874.56,Sedang,Vulkanik,493.72799683
+27,Danau/Situ,457A,ID-SB.12,Danau Talang,"Kec. Danau Kembar, Kab. Solok",Sumatera Barat,102.15,Kecil,Vulkanik,5.10750008
+28,Danau/Situ,570A,ID-LA.9,Danau Lebar,"Kec. Suoh, Kab. Lampung Barat",Lampung,68.05,Kecil,-,3.40249991
+29,Danau/Situ,584A,ID-BE.7,Danau Nibung,"Kec. Kota Muko-Muko, Kab. Muko-Muko",Bengkulu,35.05,Kecil,-,1.75250006
+30,Danau/Situ,669A,ID-BE.3,Danau Dendam Tak Sudah,"Kec. Singaranpati, Kab. Bengkulu",Bengkulu,49.8,Kecil,-,2.49000001
+31,Danau/Situ,728A,ID-SU.31,Danau Tinggal,"Kec. Muara Batang Gadis, Kab. Mandailing Natal",Sumatera Utara,121.79,Kecil,-,6.08949995
+32,Danau/Situ,759A,ID-SU.10,Danau Pandan,"Kec. Pinangsori, Kab. Tapanuli Tengah",Sumatera Utara,105.89,Kecil,-,5.29449987
+33,Danau/Situ,760A,ID-SU.19,Danau Siais,"Kec. Angkoasangkunur, Kab. Tapanuli Selatan",Sumatera Utara,951.66,Kecil,-,47.58300018
+34,Danau/Situ,1008A,ID-SB.6,Danau Laut Tinggal,"Kec. Lembahmelintang, Kab. Pasaman Barat",Sumatera Barat,124.03,Kecil,-,6.20149994
+35,Danau/Situ,1286A,ID-SU.5,Danau Laukawar,"Kec. Namanteran, Kab. Karo",Sumatera Utara,112.63,Kecil,Vulkanik,5.63149977
+36,Danau/Situ,1287A,ID-SU.22,Danau Siombak,"Kec. Medan Marelan, Kab. Medan",Sumatera Utara,26.5,Kecil,-,1.32500005
+37,Danau/Situ,1339A,ID-SU.2,Danau Aek Natonang,"Kec. Simanido, Kab. Samosir",Sumatera Utara,26.51,Kecil,-,1.32550001
+38,Danau/Situ,1342A,ID-AC.23,Danau Paris,"Kec. Danauparis, Kab. Aceh Singkil",Aceh,57.26,Kecil,-,2.86299992
+39,Danau/Situ,1344A,ID-SU.32,Danau Toba,"Kab. Karo, Simalungun, Toba Samosir, Tapanuli Utara, Humbang Hasundutan, Samosir, dan Dairi",Sumatera Utara,114109.44,Sangat besar,Tekto-Vulkanik,5705.47021484
+40,Danau/Situ,1626A,ID-SB.2,Danau Diatas,"Kec. Lembah Gumanti dan Danau Kembar, Kab. Solok",Sumatera Barat,1216.57,Sedang,Tektonik,60.82849884
+41,Danau/Situ,1627A,ID-BE.6,Danau Mas,"Kec. Singdang Kelilingi, Kab. Rejang Lebong",Bengkulu,33.51,Kecil,-,1.67550004
+42,Danau/Situ,1655A,ID-SS.4,Danau Cinta,"Kec. Lawang Kidul, Kab. Muara Enim",Sumatera Selatan,43.13,Kecil,-,2.1565001
+43,Danau/Situ,1660A,ID-JA.7,Danau Gunungtujuh,"Kec. Gunungtujuh, Kab. Kerinci",Jambi,984.15,Kecil,Vulkanik,49.20750046
+44,Danau/Situ,1706A,ID-JA.3,Danau Dipatiampat,"Kec. Jangkat, Kab. Merangin",Jambi,272.45,Kecil,-,13.62250042
+45,Danau/Situ,1708A,ID-JA.19,Danau Pauh,"Kec. Jangkat, Kab. Merangin",Jambi,50.05,Kecil,-,2.50250006
+46,Danau/Situ,1711A,ID-JA.17,Danau Lebakdatuk,"Kec. Lembah Masurai, Kab. Merangin",Jambi,21.17,Kecil,-,1.05850005
+47,Danau/Situ,1887A,ID-SS.12,Danau Rakihan,"Kec. Sindang Danau, Kab. Ogan Komering Ulu Selatan",Sumatera Selatan,26.98,Kecil,-,1.34899998
+48,Danau/Situ,1888A,ID-SS.16,Danau Raya,"Kec. Rupit, Kab. Musi Rawas Utara",Sumatera Selatan,32.67,Kecil,-,1.63349998
+49,Danau/Situ,2279A,ID-SS.9,Danau Lebakdatuk,"Kec. Sinar Peninjauan dan Madang Suku Satu, Kab. Ogan Komering Ulu",Sumatera Selatan,446.63,Kecil,-,22.3314991
+50,Danau/Situ,2825A,ID-KT.7,Danau Besar,"Kec. 	Teweh Selatan	, 	Kab. 	Barito Utara",Kalimantan Tengah,34.42,Kecil,-,1.72099996
+51,Danau/Situ,2954A,ID-JA.22,Danau Sipin,"Kec. Telanaipura, Kota Jambi",Jambi,117.47,Kecil,Oxbow,5.87349987
+52,Danau/Situ,2955A,ID-JA.24,Danau Teluk,"Kec. Danau Teluk, Kota Jambi",Jambi,73.06,Kecil,-,3.65300012
+53,Danau/Situ,2964A,ID-RI.5,Danau Barumudik,"Kec. Kampar Kiri Tengah, Kab. Kampar",Riau,25.41,Kecil,Oxbow,1.27049994
+54,Danau/Situ,2965A,ID-RI.8,Danau Belanti,"Kec. Kampar Kiri Hilir, Kab. Kampar",Riau,21.34,Kecil,Oxbow,1.06700003
+55,Danau/Situ,2970A,ID-RI.31,Danau Lubuksiam,"Kec. Perhentian Raja, Kab. Kampar",Riau,24.28,Kecil,Oxbow,1.21399999
+56,Danau/Situ,2984A,ID-SB.7,Danau Mahat,"Kec. Pangkalan Koto Baru, Kab. Lima Puluh Kota",Sumatera Barat,167.91,Kecil,Paparan banjir,8.39550018
+57,Danau/Situ,2992A,ID-RI.25,Danau Kotopanjang,"Kec. Tigabelas Koto Kampar, Kab. Kampar",Riau,9135.02,Sedang,Buatan,456.75100708
+58,Danau/Situ,3044A,ID-RI.29,Danau Limbungan,"Kec. Rumbai Pesisir, Kab. Pekanbaru",Riau,116.38,Kecil,-,5.81899977
+59,Danau/Situ,3200A,ID-RI.15,Danau Girisako,"Kec. Logas Tanah Darat, Kab. Kuantan Sengingi",Riau,47.89,Kecil,-,2.39450002
+60,Danau/Situ,3216A,ID-RI.93,Danau Telukkejuit,"Kec. Bandar Seikijang, Kab. Pelalawan",Riau,28.08,Kecil,Oxbow,1.40400004
+61,Danau/Situ,3317A,ID-RI.7,Danau Bawah,"Kec. Dayun, Kab. Siak",Riau,379.42,Kecil,-,18.97100067
+62,Danau/Situ,3318A,ID-RI.78,Tasik Burung,"Kec. Sungai Apit, Kab. Siak",Riau,21.78,Kecil,-,1.08899999
+63,Danau/Situ,3319A,ID-RI.81,Tasik Kutub,"Kec. Teluk Meranti, Kab. Pelalawan",Riau,24.88,Kecil,-,1.24399996
+64,Danau/Situ,3320A,ID-RI.83,Tasik Metus,"Kec. Dayun, Kab. Siak",Riau,215.66,Kecil,-,10.78299999
+65,Danau/Situ,3321A,ID-RI.46,Danau Pulau Besar,"Kec. Dayun, Kab. Siak",Riau,2011.66,Sedang,-,100.58300018
+66,Danau/Situ,3322A,ID-RI.75,Tasik Belat,"Kec. Sungai Apit, Kab. Siak",Riau,178.87,Kecil,-,8.94349957
+67,Danau/Situ,3323A,ID-RI.76,Tasik Besarserkap,"Kec. Teluk Meranti, Kab. Pelalawan",Riau,511.62,Kecil,-,25.58099937
+68,Danau/Situ,3324A,ID-RI.82,Tasik Lakar,"Kec. Teluk Meranti, Kab. Pelalawan",Riau,24.9,Kecil,-,1.245
+69,Danau/Situ,3326A,ID-RI.85,Tasik Sangar,"Kec. Teluk Meranti, Kab. Pelalawan",Riau,76.44,Kecil,-,3.82200003
+70,Danau/Situ,3403A,ID-RI.105,Noname,"Kec. Teluk Meranti, Kab. Pelalawan",Riau,55.76,Kecil,-,2.78800011
+71,Danau/Situ,3406A,ID-RI.102,Noname,"Kec. Sungai Apit, Kab. Siak",Riau,86.8,Kecil,-,4.34000015
+72,Danau/Situ,3414A,ID-RI.11,Danau Bunga Tujuh,"Kec. Dumai Timur, Kab. Dumai",Riau,118.97,Kecil,-,5.94850016
+73,Danau/Situ,3417A,ID-RI.45,Danau Pulai,"Kec. Tanah Putih, Kab. Rokan Hilir",Riau,70.41,Kecil,Oxbow,3.52049994
+74,Danau/Situ,3418A,ID-RI.53,Danau Raya,"Kec. Tanah Putih, Kab. Rokan Hilir",Riau,42.24,Kecil,Oxbow,2.11199999
+75,Danau/Situ,3420A,ID-RI.56,Danau Sarkardua,"Kec. Tanah Putih, Kab. Rokan Hilir",Riau,40.65,Kecil,Oxbow,2.03250003
+76,Danau/Situ,3421A,ID-RI.61,Danau Simoring,"Kec. Tanah Putih, Kab. Rokan Hilir",Riau,35.69,Kecil,Oxbow,1.7845
+77,Danau/Situ,3500A,ID-RI.99,Waduk PT.ADEI,"Kec. Pinggir, Kab. Bengkalis",Riau,40.45,Kecil,Buatan,2.02250004
+78,Danau/Situ,3553A,ID-RI.64,Danau Sundang,"Kec. Tanah Putih, Kab. Rokan Hilir",Riau,27.36,Kecil,Oxbow,1.36800003
+79,Danau/Situ,3572A,ID-RI.72,Tasik Baganbelado Besar,"Kec. Pinggir, Kab. Bengkalis",Riau,713.06,Kecil,-,35.65299988
+80,Danau/Situ,3573A,ID-RI.73,Tasik Baganbelado Kecil,"Kec. Pinggir, Kab. Bengkalis",Riau,27.93,Kecil,-,1.39649999
+81,Danau/Situ,3578A,ID-RI.74,Tasik Baru,"Kec. Pinggir, Kab. Bengkalis",Riau,555.32,Kecil,-,27.76600075
+82,Danau/Situ,3585A,ID-RI.77,Tasik Betung,"Kec. Sungai Mandau, Kab. Siak",Riau,274.26,Kecil,-,13.7130003
+83,Danau/Situ,3587A,ID-RI.80,Tasik Katialau,"Kec. Pinggir, Kab. Bengkalis",Riau,868.33,Kecil,-,43.41650009
+84,Danau/Situ,3605A,ID-RI.88,Tasik Tangkalansiam,"Kec. Pinggir, Kab. Bengkalis",Riau,525.06,Kecil,-,26.25300026
+85,Danau/Situ,3610A,ID-RI.84,Tasik Samak Baru,"Kec. Pinggir, Kab. Bengkalis",Riau,110.45,Kecil,-,5.52250004
+86,Danau/Situ,3614A,ID-RI.86,Tasik Serai,"Kec. Pinggir, Kab. Bengkalis",Riau,1540.61,Sedang,-,77.03050232
+87,Danau/Situ,3615A,ID-RI.87,Tasik Sigalanggang,"Kec. Pinggir, Kab. Bengkalis",Riau,118.63,Kecil,-,5.93149996
+88,Danau/Situ,3621A,ID-RI.90,Tasik Tombatusonsang,"Kec. Pinggir, Kab. Bengkalis",Riau,327.54,Kecil,-,16.37700081
+89,Danau/Situ,3631A,ID-RI.89,Tasik Tanjung Padang,"Kec. Tasik Putri Puyu, Kab. Kepulauan Meranti",Riau,207.38,Kecil,-,10.36900043
+90,Danau/Situ,3821A,ID-JA.11,Danau Kerinci,"Kec. Keliling Danau dan Danau Kerinci, Kab. Kerinci",Jambi,4516.83,Sedang,Tekto-Vulkanik,225.84199524
+91,Danau/Situ,3822A,ID-SS.13,Danau Ranau,"Kec. Banding Agung, Buay Pematang Ribuan Tengah, Warkuk Ranau Selatan, dan Lumbok Seminung, Kab. Ogan Komering Ulu dan Lampung Barat",Sumatera Selatan,12630.66,Besar,Tekto-vulkanik,631.53302002
+92,Danau/Situ,3887A,ID-KR.9,Waduk Sei Ladi,"Kec. Lubuk Raja, Kota Batam",Kepulauan Riau,108.82,Kecil,-,5.44099998
+93,Danau/Situ,3952A,ID-KR.8,Waduk Sei Harapan,"Kec. Sekupang, Kota Batam",Kepulauan Riau,81.78,Kecil,-,4.08900023
+94,Danau/Situ,4254A,ID-KR.6,Danau Pulai,"Kec. Tanjung Pinang Timur, Kota Tanjung Pinang",Kepulauan Riau,52.01,Kecil,-,2.60050011
+95,Danau/Situ,4423A,ID-KR.1,Waduk Duriangkang,"Kec. Sei Beduk, Kota Batam",Kepulauan Riau,2155.46,Sedang,Buatan,107.77300262
+96,Danau/Situ,4631A,ID-KR.26,Noname,"Kec. Tebing, Kab. Karimun",Kepulauan Riau,50.7,Kecil,-,2.53500009
+97,Danau/Situ,4860A,ID-KR.25,Noname 2,"Kec. Meral, Kab. Karimun",Kepulauan Riau,23.76,Kecil,-,1.18799996
+98,Danau/Situ,5300A,ID-KR.25,Noname 1,"Kec. Karimun, Kab. Karimun",Kepulauan Riau,25.11,Kecil,-,1.25549996
+99,Danau/Situ,5361A,ID-ST.7,Danau Tiu,"Kec. Petasia Barat, Kab. Morowali Utara",Sulawesi Tengah,155.02,Kecil,Tektonik,7.75099993
+100,Danau/Situ,5365A,ID-ST.8,Danau Tiu,"Kec. Petasia Barat, Kab. Morowali Utara",Sulawesi Tengah,39.81,Kecil,Tektonik,1.99049997
+101,Danau/Situ,5370A,ID-ST.10,Rano Kodi,"Kec. Bungku Utara, Kab. Morowali Utara",Sulawesi Tengah,247.89,Kecil,-,12.39449978
+102,Danau/Situ,5371A,ID-ST.9,Rano Bae,"Kec. Bungku Utara, Kab. Morowali Utara",Sulawesi Tengah,496.11,Kecil,-,24.80550003
+103,Danau/Situ,5452A,ID-SA.4,Danau Tondano,"Kec. Eris, Kab. Minahasa",Sulawesi Utara,4662.44,Sedang,Vulkanik,233.12199402
+104,Danau/Situ,5476A,ID-SA.1,Danau Linow,"Kec. Tomohon Selatan, Kab. Kota Tomohon",Sulawesi Utara,44.63,Kecil,-,2.23149991
+105,Danau/Situ,5480A,ID-SA.25,Luah Bulilin,"Kec. Tombatu, Kab. Minahasa Tenggara",Sulawesi Utara,22.96,Kecil,-,1.148
+106,Danau/Situ,5493A,ID-SA.12,Tabang Babakan,"Kec. Kotabunan, Kab. Bolaang Mongondow Timur",Sulawesi Utara,41.8,Kecil,-,2.08999991
+107,Danau/Situ,5506A,ID-SA.9,Danau Bunong,"Kec. Tutuyan, Kab. Bolaang Mongondow Timur",Sulawesi Utara,187.18,Kecil,-,9.35900021
+108,Danau/Situ,5507A,ID-SA.7,Danau Moat,"Kec. Modayag, Kab. Bolaang Mongondow Timur",Sulawesi Utara,657.99,Kecil,-,32.8995018
+109,Danau/Situ,5509A,ID-SA.11,Danau Iloloi,"Kec. Maesaan, Kab. Minahasa Selatan",Sulawesi Utara,33.14,Kecil,-,1.65699995
+110,Danau/Situ,5512A,ID-SA.10,Danow Pononotokan,"Kec. Nuangan, Kab. Bolaang Mongondow Timur",Sulawesi Utara,38.07,Kecil,-,1.90349996
+111,Danau/Situ,5622A,ID-SN.20,Bendungan Bili-Bili,"Kec. Parangloe, Kab. Gowa",Sulawesi Selatan,885.09,Kecil,-,44.25450134
+112,Danau/Situ,5626A,ID-SN.13,Danau Mawang,"Kec. Somba, Kab. Gowa",Sulawesi Selatan,55.31,Kecil,-,2.76550007
+113,Danau/Situ,5638A,ID-SN.37,Waduk Borong,"Kec. Manggala, Kab. Kota Makassar",Sulawesi Selatan,35.35,Kecil,-,1.76750004
+114,Danau/Situ,5672A,ID-SN.21,Bendungan Salomekko,"Kec. Salomekko, Kab. Bone",Sulawesi Selatan,61.98,Kecil,-,3.09899998
+115,Danau/Situ,5728A,ID-SN.10,Taparang Lampuleng,"Kec. Tempe, Kab. Wajo",Sulawesi Selatan,272.33,Kecil,-,13.6164999
+116,Danau/Situ,5732A,ID-SN.7,Taparang Lasepang,"Kec. Majauleng, Kab. Wajo",Sulawesi Selatan,120.32,Kecil,-,6.01599979
+117,Danau/Situ,5735A,ID-SN.15,Danau Tempe,"Kec. Tana, Kab. Wajo",Sulawesi Selatan,9246.43,Sedang,Paparan Banjir,462.32199097
+118,Danau/Situ,5740A,ID-SN.16,Danau Lapompakka,"Kec. Anabanua, Kab. Wajo",Sulawesi Selatan,271.43,Kecil,-,13.57149982
+119,Danau/Situ,5743A,ID-SN.17,Danau Sidenreng,"Kec. Mojong, Kab. Sidenreng Rappang",Sulawesi Selatan,3391.58,Sedang,Paparan Banjir,169.57899475
+120,Danau/Situ,5767A,ID-SN.23,Waduk Kalola,"Kec. Maniangpajo, Kab. Wajo",Sulawesi Selatan,654.66,Kecil,-,32.73300171
+121,Danau/Situ,5832A,ID-ST.5,Danau Poso,"Kec. Pamona Barat, Pamona Selatan, Pamona Tenggara dan Pamona timur, Kab. Poso",Sulawesi Tengah,36745.31,Besar,Tektonik,1837.27001953
+122,Danau/Situ,5836A,ID-ST.4,Danau Lindu,"Kec. Lindu, Kab. Sigi",Sulawesi Tengah,3521.24,Sedang,Tektonik,176.06199646
+123,Danau/Situ,5837A,ID-ST.22,Rano Wanga,"Kec. Lore Utara, Kab. Poso",Sulawesi Tengah,22.09,Kecil,-,1.10450006
+124,Danau/Situ,5871A,ID-ST.12,Rano Patawu,"Kec. Poso Pesisir Utara, Kab. Poso",Sulawesi Tengah,68.33,Kecil,-,3.41650009
+125,Danau/Situ,6032A,ID-SN.6,Danau Tapara Masapi,"Kec. Wasuponda, Kab. Luwu Timur",Sulawesi Selatan,245.23,Kecil,-,12.26150036
+126,Danau/Situ,6043A,ID-SN.9,Danau Lontoa,"Kec. Towuti, Kab. Luwu Timur",Sulawesi Selatan,238.65,Kecil,Tektonik,11.93249989
+127,Danau/Situ,6051A,ID-SN.2,Danau Lawuloi,"Kec. Nuha, Kab. Luwu Timur",Sulawesi Selatan,228.82,Kecil,-,11.44099998
+128,Danau/Situ,6053A,ID-SN.1,Danau Mahalona,"Kec. Towuti, Kab. Luwu Timur",Sulawesi Selatan,2312.27,Sedang,Tektonik,115.61399841
+129,Danau/Situ,6058A,ID-SN.3,Danau Matano,"Kec. Nuha, Kab. Luwu Timur",Sulawesi Selatan,16356.01,Besar,Tektonik,817.79998779
+130,Danau/Situ,6099A,ID-SN.8,Danau Towuti,"Kec. Timampu, Kab. Luwu Timur",Sulawesi Selatan,58480.62,Besar,Tektonik,2924.0300293
+131,Danau/Situ,6164A,ID-GO.5,Danau Limboto,"Kec. Limboto, Kab. Kota Gorontalo",Gorontalo,2204.21,Sedang,Paparan Banjir,110.21099854
+132,Danau/Situ,6174A,ID-GO.2,Bulalo Teratai,"Kec. Mananggu, Kab. Boalemo",Gorontalo,27.56,Kecil,-,1.37800002
+133,Danau/Situ,6178A,ID-GO.1,Bulalo Bayalo,"Kec. Mananggu, Kab. Boalemo",Gorontalo,72.51,Kecil,-,3.62549996
+134,Danau/Situ,6180A,ID-ST.1,Bolano Toga,"Kec. Dondo, Kab. Toli-toli",Sulawesi Tengah,28.0,Kecil,-,1.39999998
+135,Danau/Situ,6190A,ID-ST.17,Dano Bolannosau,"Kec. Bolano, Kab. Parigi Moutong",Sulawesi Tengah,82.65,Kecil,-,4.13250017
+136,Danau/Situ,6193A,ID-ST.11,Danau Lino,"Kec. Banawa Selatan, Kab. Donggala",Sulawesi Tengah,133.33,Kecil,-,6.66650009
+137,Danau/Situ,6194A,ID-ST.3,Danau Rano,"Kec. Balaesang Tanjung, Kab. Donggala",Sulawesi Tengah,283.88,Kecil,-,14.19400024
+138,Danau/Situ,6195A,ID-ST.2,Danau Dampelas,"Kec. Damplelas, Kab. Donggala",Sulawesi Tengah,583.13,Kecil,-,29.15649986
+139,Danau/Situ,6244A,ID-SG.2,Danau Airasin," Kec. Mawasangka Timur, Kab. Buton Tengah",Sulawesi Tenggara,51.21,Kecil,-,2.56049991
+140,Danau/Situ,6295A,ID-PA.52,Danau Dasandoi,"Kec.Andey, Kab.Biak Numfor",Papua,136.32,Kecil,-,6.81599998
+141,Danau/Situ,6300A,ID-PA.94,Danau Tikimado,"Kec.Mimika Barat, Kab.Mimika",Papua,26.25,Kecil,-,1.3125
+142,Danau/Situ,6323A,ID-PA.57,Danau Tigi,"Kec.Tigi, Kab.Deiyai",Papua,3021.02,Sedang,Tektonik,151.05099487
+143,Danau/Situ,6324A,ID-PA.14,Telaga Airmenado,"Kec.Napan, Kab.Nabire",Papua,37.81,Kecil,-,1.89049995
+144,Danau/Situ,6325A,ID-PA.8,Telaga Makra,"Kec.Wapoga, Kab.Waropen",Papua,269.13,Kecil,-,13.45650005
+145,Danau/Situ,6326A,ID-PA.5,Telaga Pegi,"Kec.Wapoga, Kab.Nabire",Papua,20.37,Kecil,-,1.01849997
+146,Danau/Situ,6327A,ID-PA.100,Telaga Tohekewa,"Kec.Wapoga, Kab.Nabire",Papua,20.66,Kecil,-,1.03299999
+147,Danau/Situ,6328A,ID-PA.4,Telaga Totoberi,"Kec.Wapoga, Kab.Nabire",Papua,34.2,Kecil,-,1.71000004
+148,Danau/Situ,6329A,ID-PA.28,Telaga Waisaro,"Kec.Wapoga, Kab.Nabire",Papua,370.04,Kecil,-,18.50200081
+149,Danau/Situ,6330A,ID-PA.15,Telaga Yaruwi,"Kec.Wapoga, Kab.Nabire",Papua,208.95,Kecil,-,10.44750023
+150,Danau/Situ,6331A,ID-PA.68,Telaga Yaruwi Kecil,"Kec.Wapoga, Kab.Nabire",Papua,34.32,Kecil,-,1.71599996
+151,Danau/Situ,6345A,ID-PA.156,Noname 39,"Kec. Mamberamo ilir, Kab. Mamberamo Raya",Papua,31.51,Kecil,-,1.57550001
+152,Danau/Situ,6346A,ID-PA.140,Noname 23,"Kec. Mamberamo ilir, Kab. Mamberamo Raya",Papua,139.19,Kecil,-,6.95949984
+153,Danau/Situ,6352A,ID-PA.158,Noname 41,"Kec. Mamberamo ilir, Kab. Mamberamo Raya",Papua,23.58,Kecil,-,1.17900002
+154,Danau/Situ,6364A,ID-PA.188,Noname 71,"Kec. Sawai, Kab. Mamberamo Raya",Papua,438.84,Kecil,-,21.94199944
+155,Danau/Situ,6405A,ID-PA.134,Noname 17,"Kec. Sawai, Kab. Mamberamo Raya",Papua,21.26,Kecil,-,1.06299996
+156,Danau/Situ,6418A,ID-PA.136,Noname 19,"Kec. Sawai, Kab. Mamberamo Raya",Papua,296.81,Kecil,-,14.84049988
+157,Danau/Situ,6422A,ID-PA.135,Noname 18,"Kec. Sawai, Kab. Mamberamo Raya",Papua,111.94,Kecil,-,5.59700012
+158,Danau/Situ,6424A,ID-PA.192,Noname 75,"Kec. Sawai, Kab. Mamberamo Raya",Papua,26.92,Kecil,-,1.34599996
+159,Danau/Situ,6435A,ID-PA.137,Noname 20,"Kec. Sawai, Kab. Mamberamo Raya",Papua,25.36,Kecil,-,1.26800001
+160,Danau/Situ,6436A,ID-PA.138,Noname 21,"Kec. Sawai, Kab. Mamberamo Raya",Papua,60.52,Kecil,-,3.02600002
+161,Danau/Situ,6438A,ID-PA.194,Noname 77,"Kec. Sawai, Kab. Mamberamo Raya",Papua,75.47,Kecil,-,3.77349997
+162,Danau/Situ,6444A,ID-PA.193,Noname 76,"Kec. Sawai, Kab. Mamberamo Raya",Papua,131.59,Kecil,-,6.5795002
+163,Danau/Situ,6445A,ID-PA.132,Noname 15,"Kec. Mamberamo ilir, Kab. Mamberamo Raya",Papua,23.23,Kecil,-,1.16149998
+164,Danau/Situ,6454A,ID-PA.65,Danau Aterorani,"Kec.Kosiwo, Kab.Kepulauan Yapen",Papua,47.52,Kecil,-,2.37599993
+165,Danau/Situ,6455A,ID-PA.80,Danau Bira,"Kec.Mamberamo Tengah, Kab.Mamberamo Raya",Papua,549.67,Kecil,-,27.48349953
+166,Danau/Situ,6456A,ID-PA.49,Danau Rombebai,"Kec.Mamberamo Hilir, Kab.Mamberamo Raya",Papua,14228.35,Besar,Tektonik,711.41699219
+167,Danau/Situ,6458A,ID-PA.29,Telaga Ebambon,"Kec.Windesi, Kab.Kepulauan Yapen",Papua,27.55,Kecil,-,1.37750006
+168,Danau/Situ,6461A,ID-PA.36,Danau Aruwe,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,141.6,Kecil,-,7.07999992
+169,Danau/Situ,6462A,ID-PA.86,Danau Bare,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,158.62,Kecil,-,7.93100023
+170,Danau/Situ,6463A,ID-PA.35,Danau Barikua,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,57.01,Kecil,-,2.85050011
+171,Danau/Situ,6464A,ID-PA.104,Danau Berdekam,"Kec.Megambilis, Kab.Mamberamo Tengah",Papua,38.8,Kecil,-,1.94000006
+172,Danau/Situ,6465A,ID-PA.87,Danau Boire,"Kec.Pantai Timur, Kab.Sarmi",Papua,299.85,Kecil,-,14.99250031
+173,Danau/Situ,6466A,ID-PA.46,Danau Cipto,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,97.05,Kecil,-,4.85249996
+174,Danau/Situ,6468A,ID-PA.85,Danau Kunte,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,318.09,Kecil,-,15.90450001
+175,Danau/Situ,6469A,ID-PA.38,Danau Piamfrom,"Kec.Bonggo, Kab.Sarmi",Papua,216.14,Kecil,-,10.80700016
+176,Danau/Situ,6470A,ID-PA.45,Danau Sejarah,"Kec.Megambilis, Kab.Mamberamo Tengah",Papua,93.35,Kecil,-,4.66750002
+177,Danau/Situ,6472A,ID-PA.44,Danau Uya,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,133.08,Kecil,-,6.65399981
+178,Danau/Situ,6473A,ID-PA.27,Danau Wae,"Kec.Pantai Timur, Kab.Sarmi",Papua,52.32,Kecil,-,2.61599994
+179,Danau/Situ,6474A,ID-PA.56,Danau Waku,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,26.95,Kecil,-,1.34749997
+180,Danau/Situ,6475A,ID-PA.48,Telaga Arika,"Kec.Rofaer, Kab.Mamberamo Raya",Papua,101.34,Kecil,-,5.06699991
+181,Danau/Situ,6476A,ID-PA.92,Telaga Fakuja,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,175.94,Kecil,-,8.79699993
+182,Danau/Situ,6477A,ID-PA.42,Telaga Sikouw,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,43.16,Kecil,-,2.15799999
+183,Danau/Situ,6489A,ID-PA.299,Noname 182,"Kec. Pantai Tim., Kab. Sarmi",Papua,36.37,Kecil,-,1.81850004
+184,Danau/Situ,6502A,ID-PA.269,Noname 152,"Kec. Pantai Timur, Kab. Sarmi",Papua,23.22,Kecil,-,1.16100001
+185,Danau/Situ,6604A,ID-PA.122,Noname 5,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,62.93,Kecil,-,3.14650011
+186,Danau/Situ,6768A,ID-PA.142,Noname 25,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,42.71,Kecil,-,2.13549995
+187,Danau/Situ,6809A,ID-PA.118,Noname 1,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,104.33,Kecil,-,5.21649981
+188,Danau/Situ,6836A,ID-PA.163,Noname 46,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,175.87,Kecil,-,8.79349995
+189,Danau/Situ,6891A,ID-PA.153,Noname 36,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,32.59,Kecil,-,1.62950003
+190,Danau/Situ,6914A,ID-PA.144,Noname 27,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,65.45,Kecil,Oxbow,3.27250004
+191,Danau/Situ,6932A,ID-PA.127,Noname 10,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,111.91,Kecil,-,5.59549999
+192,Danau/Situ,6936A,ID-PA.154,Noname 37,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,116.31,Kecil,Oxbow,5.81549978
+193,Danau/Situ,6952A,ID-PA.79,Telaga Korwat,"Kec.Mamberamo ulu, Kab.Mamberamo Raya",Papua,186.15,Kecil,-,9.30749989
+194,Danau/Situ,6968A,ID-PA.77,Telaga Sabaki,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,137.27,Kecil,-,6.86350012
+195,Danau/Situ,6972A,ID-PA.155,Noname 38,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,177.48,Kecil,-,8.8739996
+196,Danau/Situ,6976A,ID-PA.103,Telaga Babre,"Kec.Rofaer, Kab.Mamberamo Raya",Papua,38.09,Kecil,-,1.90450001
+197,Danau/Situ,6977A,ID-PA.78,Telaga Swagi,"Kec.Rofaer, Kab.Mamberamo Raya",Papua,326.36,Kecil,-,16.31800079
+198,Danau/Situ,7014A,ID-PA.90,Danau Otirib,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,56.01,Kecil,-,2.80049992
+199,Danau/Situ,7015A,ID-PA.37,Danau Otirib,"Kec.Mamberamo Ulu, Kab.Mamberamo Raya",Papua,40.89,Kecil,-,2.04450011
+200,Danau/Situ,7022A,ID-PA.1,Danau Tage,"Kec.Yatamo, Kab.Paniai",Papua,1659.13,Sedang,Tektonik,82.95649719
+201,Danau/Situ,7035A,ID-PA.9,Aya Peku,"Kec.Paniai Timur, Kab.Paniai",Papua,72.13,Kecil,-,3.60649991
+202,Danau/Situ,7057A,ID-PA.64,Tu Peku / Kedimo Peku,"Kec.Paniai Timur, Kab.Paniai",Papua,32.27,Kecil,-,1.6135
+203,Danau/Situ,7060A,ID-PA.59,Gee Peku,"Kec.Paniai Timur, Kab.Paniai",Papua,39.22,Kecil,-,1.96099997
+204,Danau/Situ,7068A,ID-PA.3,Danau Pukai,"Kec.Doufo, Kab.Puncak",Papua,178.73,Kecil,-,8.9364996
+205,Danau/Situ,7070A,ID-PA.102,Danau Turuawa,"Kec.Doufo, Kab.Puncak",Papua,62.08,Kecil,-,3.10400009
+206,Danau/Situ,7079A,ID-PA.139,Noname 22,"Kec. Sawai, Kab. Mamberamo Raya",Papua,98.43,Kecil,-,4.92150021
+207,Danau/Situ,7080A,ID-PA.2,Danau Bake,"Kec.Sawai , Kab.Mamberamo Raya",Papua,88.42,Kecil,-,4.421
+208,Danau/Situ,7085A,ID-PA.76,Telaga Soi,"Kec.Tuwao, Kab.Mamberamo Raya",Papua,205.63,Kecil,-,10.28149986
+209,Danau/Situ,7086A,ID-PA.93,Telaga Serifisa,"Kec.Rofaer, Kab.Mamberamo Raya",Papua,70.41,Kecil,-,3.52049994
+210,Danau/Situ,7089A,ID-PA.88,Danau Masakura,"Kec.Yoke, Kab.Mamberamo Raya",Papua,2439.97,Sedang,Paparan banjir,121.9980011
+211,Danau/Situ,7090A,ID-PA.50,Danau Paniai,"Kec.Darouto, Kab.Paniai",Papua,14131.39,Besar,Tektonik,706.57000732
+212,Danau/Situ,7091A,ID-PA.71,Talaga Wanita,"Kec.Doufo, Kab.Puncak",Papua,213.51,Kecil,-,10.67549992
+213,Danau/Situ,7093A,ID-PA.216,Noname 99,"Kec. Doufo, Kab. Puncak",Papua,33.69,Kecil,-,1.68449998
+214,Danau/Situ,7094A,ID-PA.310,Noname 193,"Kec. Yamor, Kab. Kaimana",Papua,84.43,Kecil,-,4.22149992
+215,Danau/Situ,7095A,ID-PB.7,Danau Nanami,"Kec.Yamor, Kab.Kaimana",Papua Barat,751.22,Kecil,Paparan banjir,37.56100082
+216,Danau/Situ,7100A,ID-PB.6,Danau Mutapo,"Kec.Urubika, Kab.Kaimana",Papua Barat,817.47,Kecil,Paparan banjir,40.87350082
+217,Danau/Situ,7104A,ID-PB.5,Danau Yamur,"Kec.Wagioha, Kab.Kaimana",Papua Barat,3626.64,Sedang,Tektonik,181.33200073
+218,Danau/Situ,7107A,ID-PB.8,Danau Anapuyu,"Kec.Urubika, Kab.Kaimana",Papua Barat,59.07,Kecil,Paparan banjir,2.95350003
+219,Danau/Situ,7109A,ID-PA.98,Danau Nisamer / Nisa,"Kec.Waropen Atas, Kab.Mamberamo raya",Papua,286.34,Kecil,-,14.31700039
+220,Danau/Situ,7111A,ID-PB.4,Danau Kamakawalor,"Kec.Kaimana, Kab.Kaimana",Papua Barat,2479.44,Sedang,Tektonik,123.97200012
+221,Danau/Situ,7112A,ID-PB.9,Danau Aiwasu,"Kec.Yamor, Kab.Kaimana",Papua Barat,3240.38,Sedang,Tektonik,162.01899719
+222,Danau/Situ,7113A,ID-PB.12,Danau Kamkabif,"Kec.Yamor, Kab.Kaimana",Papua Barat,120.96,Kecil,-,6.04799986
+223,Danau/Situ,7120A,ID-PB.16,Danau Sewiki,"Kec.Tlk. Arguni, Kab.Kaimana",Papua Barat,635.12,Kecil,Paparan banjir,31.75600052
+224,Danau/Situ,7126A,ID-PB.17,Danau Mbuta,"Kec.Yamor, Kab.Kaimana",Papua Barat,2967.54,Sedang,-,148.3769989
+225,Danau/Situ,7226A,ID-PB.1,Danau Anggi Giji,"Kec.Pegunungan Arfak, Kab.Pegunungan Arfak",Papua Barat,2153.12,Sedang,Tektonik,107.65599823
+226,Danau/Situ,7227A,ID-PB.3,Danau Anggi Gida,"Kec.Pegunungan Arfak, Kab.Pegunungan Arfak",Papua Barat,2283.02,Sedang,Tektonik,114.15100098
+227,Danau/Situ,7230A,ID-PB.2,"Danau Framu, Ayamaru","Kec.Ayamaru, Kab.Maybrat",Papua Barat,682.33,Kecil,Karst,34.11650085
+228,Danau/Situ,7231A,ID-PB.11,Danau Makiri,"Kec.Weriagar, Kab.Teluk Bintuni",Papua Barat,722.17,Kecil,Paparan banjir,36.10850143
+229,Danau/Situ,7232A,ID-PB.10,Danau Tanemot,"Kec.Weriagar, Kab.Teluk Bintuni",Papua Barat,1948.65,Sedang,Paparan banjir,97.43250275
+230,Danau/Situ,7484A,ID-PA.17,Danau Irisai,"Kec.Kaureh, Kota Jayapura",Papua,31.32,Kecil,-,1.56599998
+231,Danau/Situ,7485A,ID-PA.105,Danau Lilin,"Kec.Kaureh, Kota Jayapura",Papua,21.48,Kecil,-,1.074
+232,Danau/Situ,7486A,ID-PA.16,Danau Powou,"Kec.Kaureh, Kota Jayapura",Papua,237.67,Kecil,-,11.8835001
+233,Danau/Situ,7497A,ID-PA.95,Danau Sentani,"Kec.Itakiwa, Kota Jayapura",Papua,9322.53,Sedang,Tektonik,466.12600708
+234,Danau/Situ,7499A,ID-PA.7,Danau Waluku,"Kec.Heram, Kota Jayapura",Papua,55.59,Kecil,-,2.77950001
+235,Danau/Situ,7507A,ID-PA.366,Noname 249,"Kec. Nimbokrang, Kab. Jayapura",Papua,28.54,Kecil,-,1.42700005
+236,Danau/Situ,7517A,ID-PA.6,Danau Teun,"Kec.Bonggo, Kab.Sarmi",Papua,468.04,Kecil,-,23.40200043
+237,Danau/Situ,7527A,ID-PA.425,Noname 308,"Kec. Wosak, Kab. Nduga",Papua,31.24,Kecil,-,1.56200004
+238,Danau/Situ,7528A,ID-PA.47,Danau Habema,"Kec.Pelebaga, Kab.Jayawijaya",Papua,230.52,Kecil,-,11.52600002
+239,Danau/Situ,7533A,ID-PA.13,Danau Larson,"Kec.Tembagapura, Kab.Mimika",Papua,25.03,Kecil,-,1.25150001
+240,Danau/Situ,7535A,ID-PA.72,Anamkabe,"Kec.Tembagapura, Kab.Mimika",Papua,32.04,Kecil,-,1.602
+241,Danau/Situ,7540A,ID-PA.33,Danau Anderson,"Kec.Dumadama, Kab.Paniai",Papua,23.89,Kecil,-,1.19449997
+242,Danau/Situ,7550A,ID-PA.12,Danau Noamkiildem,"Kec.Ilaga, Kab.Puncak",Papua,29.48,Kecil,-,1.47399998
+243,Danau/Situ,7573A,ID-PA.101,Danau Milo Gong,"Kec.Beoga, Kab.Puncak",Papua,62.46,Kecil,-,3.12299991
+244,Danau/Situ,7589A,ID-PA.215,Noname 98,"Kec. Beoga, Kab. Puncak",Papua,36.16,Kecil,-,1.80799997
+245,Danau/Situ,7632A,ID-PA.426,Noname 309,"Kec. Balingga, Kab. Lanny Jaya",Papua,29.8,Kecil,-,1.49000001
+246,Danau/Situ,7651A,ID-PA.21,Danau Kulumburu,"Kec.Agadugume, Kab.Puncak",Papua,159.28,Kecil,-,7.96400023
+247,Danau/Situ,7656A,ID-PA.20,Danau Arkhebold,"Kec.Eragayam, Kab.Mamberamo Tengah",Papua,333.14,Kecil,-,16.65699959
+248,Danau/Situ,7764A,ID-PA.455,Noname 338,"Kec. Jair, Kab. Boven Digoel",Papua,26.9,Kecil,-,1.34500003
+249,Danau/Situ,7848A,ID-PA.24,Danau Tudimai,"Kec.Kimaam, Kab.Merauke",Papua,133.75,Kecil,-,6.6875
+250,Danau/Situ,7849A,ID-PA.25,Danau Maragai,"Kec.Kimaam, Kab.Merauke",Papua,28.82,Kecil,-,1.44099998
+251,Danau/Situ,7850A,ID-PA.26,Danau Buramjiram,"Kec.Kimaam, Kab.Merauke",Papua,53.12,Kecil,-,2.6559999
+252,Danau/Situ,7852A,ID-PA.219,Noname 102,"Kec. Kimaam, Kab. Merauke",Papua,62.78,Kecil,-,3.13899994
+253,Danau/Situ,7853A,ID-PA.223,Noname 106,"Kec. Kimaam, Kab. Merauke",Papua,64.11,Kecil,-,3.20549989
+254,Danau/Situ,7857A,ID-PA.23,Danau Mbaruanjiramo,"Kec.Tabonji, Kab.Merauke",Papua,297.16,Kecil,-,14.8579998
+255,Danau/Situ,7889A,ID-PA.18,Danau Tuduh Enem,"Kec.Edora, Kab.Mappi",Papua,146.89,Kecil,-,7.34450006
+256,Danau/Situ,7890A,ID-PA.22,Danau Womex,"Kec.Nambioman Bapai, Kab.Mappi",Papua,575.47,Kecil,-,28.77350044
+257,Danau/Situ,7891A,ID-PA.261,Noname 144,"Kec. Nambioman Bapai, Kab. Mappi",Papua,76.84,Kecil,-,3.84200001
+258,Danau/Situ,7912A,ID-PB.14,Telaga Yenyar,"Kec.Kofiau, Kab.Raja Ampat",Papua Barat,33.13,Kecil,-,1.65649998
+259,Danau/Situ,7983A,ID-MA.13,Danau Rana,"Kec. Airbuaya, Kab. Buru",Maluku,1153.32,Sedang,-,57.66600037
+260,Danau/Situ,8006A,ID-MA.12,Danau Saroma,"Kec. Waepao, Kab. Buru",Maluku,25.92,Kecil,-,1.296
+261,Danau/Situ,8028A,ID-MA.9,Jikumerasa Besar,"Kec. Namlea, Kab. Buru",Maluku,60.6,Kecil,-,3.02999997
+262,Danau/Situ,8032A,ID-MA.7,Danau Namiwel,"Kec. Namlea, Kab. Buru",Maluku,42.38,Kecil,-,2.11899996
+263,Danau/Situ,8037A,ID-MU.18,Danau Karo,"Kec. Obi, Kab. Halmahera Selatan",Maluku Utara,998.33,Kecil,-,49.91650009
+264,Danau/Situ,8039A,ID-MU.20,Telaga Besar,"Kec. Obi Utara, Kab. Halmahera Selatan",Maluku Utara,44.12,Kecil,Laguna,2.20600009
+265,Danau/Situ,8049A,ID-MA.3,Telaga Tapi,"Kec. Hualmual Belakang , Kab. Seram Bagian Barat",Maluku,56.74,Kecil,-,2.83699989
+266,Danau/Situ,8059A,ID-MA.1,Danau Tiboetapala,"Kec. Taniwel, Kab. Seram Bagian Barat",Maluku,41.18,Kecil,-,2.05900002
+267,Danau/Situ,8066A,ID-MU.12,Danau Lemo-lemo,"Kec. Bacan Timur Tengah, Kab. Halmahera Selatan",Maluku Utara,25.93,Kecil,Vulkanik,1.29649997
+268,Danau/Situ,8069A,ID-MU.17,Danau Elnusa,"Kec. Bacan Timur, Kab. Halmahera Selatan",Maluku Utara,44.3,Kecil,-,2.21499991
+269,Danau/Situ,8096A,ID-MU.21,Telaga Yonelo,"Kec. Weda Utara, Kab. Halmahera Tengah",Maluku Utara,156.43,Kecil,Laguna,7.82149982
+270,Danau/Situ,8148A,ID-MU.1,Danau Tolire Besar,"Kec. Pulau Ternate, Kota Ternate",Maluku Utara,26.24,Kecil,Vulkanik,1.31200004
+271,Danau/Situ,8155A,ID-MU.9,Danau Rano,"Kec. Ibu Selatan, Kab. Halmahera Barat",Maluku Utara,113.0,Kecil,Vulkanik,5.6500001
+272,Danau/Situ,8163A,ID-MU.4,Danau Lina,"Kec. Tobelo Barat, Kab. Halmahera Barat",Maluku Utara,65.17,Kecil,-,3.2585001
+273,Danau/Situ,8165A,ID-MU.23,Danau Todoke,"Kec. Ibu Utara, Kab. Halmahera Utara",Maluku Utara,29.58,Kecil,Vulkanik,1.47899997
+274,Danau/Situ,8166A,ID-MU.24,Danau Takuoko,"Kec. Ibu Utara, Kab. Halmahera Utara",Maluku Utara,57.16,Kecil,Vulkanik,2.85800004
+275,Danau/Situ,8167A,ID-MU.5,Danau Paca,"Kec. Tobelo Selatan, Kab. Halmahera Barat",Maluku Utara,504.41,Kecil,-,25.22050095
+276,Danau/Situ,8168A,ID-MU.25,Danau Peke,"Kec. Tobelo Utara, Kab. Halmahera Utara",Maluku Utara,70.28,Kecil,-,3.51399994
+277,Danau/Situ,8170A,ID-MU.8,Danau Galela,"Kec. Galela, Kab. Halmahera Barat",Maluku Utara,409.46,Kecil,-,20.47299957
+278,Danau/Situ,8172A,ID-MU.6,Danau Mekate,"Kec. Galela Barat, Kab. Halmahera Barat",Maluku Utara,42.18,Kecil,-,2.10899997
+279,Danau/Situ,8421A,ID-MU.29,Danau Kabau,"Kec. Sulabesi Barat, Kab. Kepulauan Sula",Maluku Utara,76.1,Kecil,Laguna,3.80500007
+280,Danau/Situ,8430A,ID-MU.31,Danau Kawalo,"Kec. Pulau Taliabu, Kab. Pulau Taliabu",Maluku Utara,744.4,Kecil,Laguna,37.22000122
+281,Danau/Situ,8516A,ID-KS.590,Noname 568,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,26.1,Kecil,-,1.30499995
+282,Danau/Situ,8521A,ID-KS.562,Noname 540,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,42.92,Kecil,-,2.14599991
+283,Danau/Situ,8524A,ID-KS.729,Noname 707,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,23.78,Kecil,Bekas tambang,1.18900001
+284,Danau/Situ,8525A,ID-KS.730,Noname 708,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,48.23,Kecil,Bekas tambang,2.41149998
+285,Danau/Situ,8528A,ID-KS.731,Noname 709,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,42.11,Kecil,Bekas tambang,2.10549998
+286,Danau/Situ,8572A,ID-KS.521,Noname 499,"Kec. 	Pulausebuku	, 	Kab. 	Kotabaru",Kalimantan Selatan,33.79,Kecil,-,1.68949997
+287,Danau/Situ,8577A,ID-KS.519,Noname 497,"Kec. 	Pulausebuku	, 	Kab. 	Kotabaru",Kalimantan Selatan,22.2,Kecil,-,1.11000001
+288,Danau/Situ,8581A,ID-KS.6,Danau Caramin,"Kec. 	Landasan Ulin	, 		Kota Banjarbaru",Kalimantan Selatan,25.05,Kecil,-,1.25250006
+289,Danau/Situ,8611A,ID-KS.531,Noname 509,"Kec. 	Kusan Hulu	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,36.86,Kecil,-,1.84300005
+290,Danau/Situ,8654A,ID-KS.699,Noname 677,"Kec. 	Mantewe	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,30.55,Kecil,-,1.52750003
+291,Danau/Situ,8894A,ID-KI.60,Noname 4,"Kec. 	Kuaro	, 	Kab. 	Paser",Kalimantan Timur,20.6,Kecil,-,1.02999997
+292,Danau/Situ,8969A,ID-KI.47,Waduk Manggar,"Kec. 	Balikpapan Utara	, 		Kota Balikpapan",Kalimantan Timur,259.32,Kecil,Buatan,12.9659996
+293,Danau/Situ,9004A,ID-KI.51,Waduk Samboja,"Kec. 	Samboja	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,167.18,Kecil,Buatan,8.35900021
+294,Danau/Situ,9227A,ID-KI.390,Noname 334,"Kec. 	Loajanan	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,23.0,Kecil,-,1.14999998
+295,Danau/Situ,9229A,ID-KI.300,Noname 244,"Kec. 	Sanga-sanga	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,39.53,Kecil,-,1.97650003
+296,Danau/Situ,9258A,ID-KI.403,Noname 347,"Kec. 	Sanga-sanga	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,39.36,Kecil,-,1.96800005
+297,Danau/Situ,9732A,ID-KI.460,Noname 404,"Kec. 	Sungaikunjang	, 		Kota Samarinda",Kalimantan Timur,49.89,Kecil,-,2.49449992
+298,Danau/Situ,9738A,ID-KI.513,Noname 457,"Kec. 	Tenggarong	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,49.24,Kecil,-,2.46199989
+299,Danau/Situ,9740A,ID-KI.517,Noname 461,"Kec. 	Loakulu	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,97.1,Kecil,-,4.85500002
+300,Danau/Situ,9781A,ID-KI.181,Noname 125,"Kec. 	Tenggarong	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,26.75,Kecil,-,1.33749998
+301,Danau/Situ,9850A,ID-KI.41,Danau Perian,"Kec. 	Muara Muntai	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,790.4,Kecil,-,39.52000046
+302,Danau/Situ,9994A,ID-KI.40,Danau Batubumbun,"Kec. 	Muara Muntai	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,58.41,Kecil,-,2.92050004
+303,Danau/Situ,10011A,ID-KI.160,Noname 104,"Kec. 	Tenggarong Seberang	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,33.41,Kecil,-,1.67050004
+304,Danau/Situ,10020A,ID-KI.48,Danau Jempang,"Kec. 	Jempang	, 	Kab. 	Kutai Barat",Kalimantan Timur,15959.6,Besar,Paparan Banjir,797.97998047
+305,Danau/Situ,10065A,ID-KI.45,Danau Wis,"Kec. 	Muara Wis	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,1099.64,Sedang,-,54.98199844
+306,Danau/Situ,10130A,ID-KI.433,Noname 377,"Kec. 	Tenggarong Seberang	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,59.52,Kecil,-,2.97600007
+307,Danau/Situ,10153A,ID-KI.437,Noname 381,"Kec. 	Tenggarong Seberang	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,29.33,Kecil,-,1.46650004
+308,Danau/Situ,10186A,ID-KI.5,Danau Barong,"Kec. 	Melak	, 	Kab. 	Kutai Barat",Kalimantan Timur,24.72,Kecil,-,1.23599994
+309,Danau/Situ,10202A,ID-KI.35,Danau Melintang,"Kec. 	Muara Wis	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,7407.31,Sedang,Paparan Banjir,370.36599731
+310,Danau/Situ,10209A,ID-KI.443,Noname 387,"Kec. 	Tenggarong Seberang	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,20.16,Kecil,-,1.00800002
+311,Danau/Situ,10256A,ID-KI.43,Danau Semayang,"Kec. 	Kota Bangun	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,10674.7,Besar,Paparan Banjir,533.73498535
+312,Danau/Situ,10316A,ID-KI.42,Danau Rabok,"Kec. 	Konahan	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,579.46,Kecil,-,28.97299957
+313,Danau/Situ,10339A,ID-KI.153,Noname 97,"Kec. 	Marangkayu	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,40.02,Kecil,-,2.00099993
+314,Danau/Situ,10345A,ID-KI.3,Danau Bahadaq,"Kec. 	Tering	, 	Kab. 	Kutai Barat",Kalimantan Timur,62.24,Kecil,Oxbow,3.11199999
+315,Danau/Situ,10357A,ID-KI.10,Danau Siram,"Kec. 	Muara Kaman	, 	Kab. 	Kutai Kartanegara",Kalimantan Timur,1207.4,Sedang,-,60.36999893
+316,Danau/Situ,10401A,ID-KI.11,Danau Ngayantua,"Kec. 	Muara Bengkal	, 	Kab. 	Kutai Timur",Kalimantan Timur,271.5,Kecil,-,13.57499981
+317,Danau/Situ,10405A,ID-KI.46,Danau Padamapi,"Kec. 	Muara Bengkal	, 	Kab. 	Kutai Timur",Kalimantan Timur,446.31,Kecil,-,22.31550026
+318,Danau Tapal Kuda,10482A,ID-KI.4,Danau Kelumpang,"Kec. 	Mookmanaar Bulatn	, 	Kab. 	Kutai Barat",Kalimantan Timur,94.93,Kecil,Oxbow,4.74650002
+319,Danau Tapal Kuda,10506A,ID-KI.38,Danau Kliring,"Kec. 	Muara Ancalong	, 	Kab. 	Kutai Timur",Kalimantan Timur,20.66,Kecil,Oxbow,1.03299999
+320,Danau/Situ,10509A,ID-KI.1,Danau Belibis,"Kec. Bongan, Kab. Kutai Barat",Kalimantan Timur,66.81,Kecil,-,3.34050012
+321,Danau/Situ,10648A,ID-KI.474,Noname 418,"Kec. 	Sangatta Utara	, 	Kab. 	Kutai Timur",Kalimantan Timur,26.55,Kecil,-,1.32749999
+322,Danau/Situ,10863A,ID-KB.34,Danau Bekuan,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,1320.21,Sedang,Paparan Banjir,66.01049805
+323,Danau/Situ,10875A,ID-KB.124,Danau Lidang,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,88.79,Kecil,Oxbow,4.43949986
+324,Danau/Situ,10878A,ID-KB.126,Noname 87,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,27.44,Kecil,Oxbow,1.37199998
+325,Danau/Situ,10880A,ID-KB.123,Danau Undang,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,52.08,Kecil,Oxbow,2.60400009
+326,Danau/Situ,10883A,ID-KB.105,Danau Basau Laut,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,49.64,Kecil,Oxbow,2.48200011
+327,Danau/Situ,10930A,ID-KB.103,Noname 64,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,69.56,Kecil,Oxbow,3.47799993
+328,Danau/Situ,10933A,ID-KB.30,Danau Selegan,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,176.67,Kecil,Paparan Banjir,8.83349991
+329,Danau/Situ,10937A,ID-KB.106,Danau Kandungsuli,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,90.47,Kecil,Oxbow,4.52349997
+330,Danau/Situ,10940A,ID-KB.33,Danau Belida,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,196.49,Kecil,Paparan Banjir,9.82450008
+331,Danau/Situ,10944A,ID-KB.104,Danau Lebardaun,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,21.96,Kecil,-,1.09800005
+332,Danau/Situ,10946A,ID-KB.107,Danau Aduk,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,45.38,Kecil,Oxbow,2.26900005
+333,Danau/Situ,10971A,ID-KB.125,Danau Kemayuh,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,37.61,Kecil,Oxbow,1.88049996
+334,Danau/Situ,10973A,ID-KB.102,Danau Empangau,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,107.79,Kecil,Oxbow,5.38950014
+335,Danau/Situ,10977A,ID-KB.32,Danau Sabit,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,123.03,Kecil,Paparan Banjir,6.15150023
+336,Danau/Situ,10978A,ID-KB.181,Danau Sunggung,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,113.78,Kecil,Oxbow,5.68900013
+337,Danau/Situ,11000A,ID-KB.169,Noname 130,"Kec. 	Bika	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,86.7,Kecil,Oxbow,4.33500004
+338,Danau/Situ,11004A,ID-KB.170,Noname 131,"Kec. 	Bika	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,20.81,Kecil,Oxbow,1.04050004
+339,Danau/Situ,11006A,ID-KB.163,Noname 124,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,33.41,Kecil,Oxbow,1.67050004
+340,Danau/Situ,11018A,ID-KB.172,Noname 133,"Kec. 	Putussibau Utara	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,39.5,Kecil,Oxbow,1.97500002
+341,Danau/Situ,12684A,ID-KB.12,Danau Marsedan,"Kec. 	Suhaid	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,44.37,Kecil,Paparan Banjir,2.2184999
+342,Danau/Situ,12685A,ID-KB.10,Danau Benawa,"Kec. 	Semitau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,149.17,Kecil,Paparan Banjir,7.45849991
+343,Danau/Situ,12688A,ID-KB.1,Danau Sebedang,"Kec. 	Sebawi	, 	Kab. 	Sambas",Kalimantan Barat,77.41,Kecil,-,3.87050009
+344,Danau/Situ,12709A,ID-KB.6,Danau Serantangan,"Kec. Singakawang Selatan, Kota Singkawang",Kalimantan Barat,181.8,Kecil,Paparan Banjir,9.09000015
+345,Danau/Situ,13001A,ID-KB.38,Danau Selatai,"Kec. 	Tayan Hilir	, 	Kab. 	Sanggau",Kalimantan Barat,199.59,Kecil,-,9.97949982
+346,Danau/Situ,13002A,ID-KB.18,Danau Lait Indah,"Kec. 	Tayan Hilir	, 	Kab. 	Sanggau",Kalimantan Barat,628.12,Kecil,-,31.40600014
+347,Danau/Situ,13005A,ID-KB.20,Danau Terentang,"Kec. 	Tayan Hilir	, 	Kab. 	Sanggau",Kalimantan Barat,251.99,Kecil,-,12.5994997
+348,Danau/Situ,13141A,ID-KT.163,Noname 84,"Kec. 	Kamipang	, 	Kab. 	Katingan",Kalimantan Tengah,28.56,Kecil,-,1.42799997
+349,Danau/Situ,13142A,ID-KT.162,Noname 83,"Kec. 	Kamipang	, 	Kab. 	Katingan",Kalimantan Tengah,46.19,Kecil,Oxbow,2.30949998
+350,Danau/Situ,13145A,ID-KT.252,Noname 173,"Kec. 	Jekan Raya	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,33.93,Kecil,-,1.69649994
+351,Danau/Situ,13167A,ID-KT.218,Noname 139,"Kec. 	Bukit Batu	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,27.59,Kecil,-,1.37950003
+352,Danau/Situ,13179A,ID-KT.209,Noname 130,"Kec. 	Kahayan Tengah	, 	Kab. 	Pulang Pisau",Kalimantan Tengah,24.1,Kecil,Oxbow,1.20500004
+353,Danau/Situ,13209A,ID-KT.102,Noname 23,"Kec. 	Pahandut	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,34.85,Kecil,-,1.74249995
+354,Danau/Situ,13218A,ID-KT.182,Noname 103,"Kec. 	Timpah	, 	Kab. 	Kapuas",Kalimantan Tengah,22.33,Kecil,Oxbow,1.11650002
+355,Danau/Situ,13223A,ID-KT.18,Danau Raya,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,259.31,Kecil,-,12.96549988
+356,Danau/Situ,13225A,ID-KT.64,Danau Tentikoi,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,30.86,Kecil,-,1.54299998
+357,Danau/Situ,13226A,ID-KT.19,Danau Medara,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,194.89,Kecil,-,9.74450016
+358,Danau/Situ,13227A,ID-KT.174,Noname 95,"Kec. 	Timpah	, 	Kab. 	Kapuas",Kalimantan Tengah,31.11,Kecil,Oxbow,1.55550003
+359,Danau/Situ,13235A,ID-KS.932,Noname 910,"Kec. 	Tanta	, 	Kab. 	Tabalong",Kalimantan Selatan,52.15,Kecil,-,2.60750008
+360,Danau/Situ,13293A,ID-KS.931,Noname 909,"Kec. 	Murungpundak	, 	Kab. 	Tabalong",Kalimantan Selatan,41.17,Kecil,Oxbow,2.05850005
+361,Danau/Situ,13366A,ID-KT.430,Noname 351,"Kec. 	Patangkeptutui	, 	Kab. 	Barito Timur",Kalimantan Tengah,43.27,Kecil,-,2.16350007
+362,Danau/Situ,13393A,ID-KT.21,Danau Palui,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,202.69,Kecil,Oxbow,10.13449955
+363,Danau/Situ,13394A,ID-KT.20,Danau Masura,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,102.51,Kecil,-,5.1255002
+364,Danau/Situ,13395A,ID-KT.228,Noname 149,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,188.01,Kecil,-,9.4005003
+365,Danau/Situ,13396A,ID-KT.81,Noname 2,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,32.2,Kecil,Oxbow,1.61000001
+366,Danau/Situ,13397A,ID-KT.80,Noname 1,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,111.29,Kecil,Oxbow,5.56449986
+367,Danau/Situ,13400A,ID-KT.238,Noname 159,"Kec. 	Karaukuala	, 	Kab. 	Barito Selatan",Kalimantan Tengah,74.35,Kecil,-,3.71749997
+368,Danau/Situ,13402A,ID-KT.227,Noname 148,"Kec. 	Karaukuala	, 	Kab. 	Barito Selatan",Kalimantan Tengah,86.12,Kecil,-,4.30600023
+369,Danau/Situ,13412A,ID-KT.33,Danau Gatel / Danau Gatal Kiri,"Kec. 	Lalang	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,194.28,Kecil,-,9.71399975
+370,Danau/Situ,13418A,ID-KT.58,Danau Asam,"Kec. 	Kota Waringin Lama	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,69.35,Kecil,-,3.46749997
+371,Danau/Situ,13419A,ID-KB.2,Danau Belidak,"Kec. 	Kendawangan	, 	Kab. 	Ketapang",Kalimantan Barat,238.76,Kecil,-,11.93799973
+372,Danau/Situ,13420A,ID-KB.3,Danau Gelinggang,"Kec. 	Kendawangan	, 	Kab. 	Ketapang",Kalimantan Barat,1123.12,Sedang,-,56.15599823
+373,Danau/Situ,13422A,ID-KT.32,Danau Masorean,"Kec. 	Kotawaringin Lama	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,26.3,Kecil,-,1.31500006
+374,Danau/Situ,13423A,ID-KT.35,Danau Papudak,"Kec. 	Danau Sembuluh	, 	Kab. 	Seruyan",Kalimantan Tengah,104.18,Kecil,-,5.20900011
+375,Danau/Situ,13438A,ID-KT.36,Danau Bakung,"Kec. 	Seruyan Hilir	, 	Kab. 	Seruyan",Kalimantan Tengah,21.72,Kecil,-,1.08599997
+376,Danau/Situ,13464A,ID-KT.39,Danau Sarai,"Kec. 	Baampah	, 	Kab. 	Kotawaringin Timur",Kalimantan Tengah,45.56,Kecil,-,2.27800012
+377,Danau/Situ,13468A,ID-KT.34,Danau Seluluk,"Kec. 	Danau Seluluk	, 	Kab. 	Seruyan",Kalimantan Tengah,196.31,Kecil,-,9.81550026
+378,Danau/Situ,13469A,ID-KT.78,Danau Sembuluh,"Kec. 	Seruyan	, 	Kab. 	Seruyan",Kalimantan Tengah,3571.85,Sedang,Paparan Banjir,178.59199524
+379,Danau/Situ,13572A,ID-KT.47,Danau Sungaisendok,"Kec. 	Kayu Bulan	, 	Kab. 	Kapuas",Kalimantan Tengah,26.95,Kecil,Oxbow,1.34749997
+380,Danau/Situ,13581A,ID-KT.66,Danau Lawang,"Kec. 	Kapuas Tengah	, 	Kab. 	Kapuas",Kalimantan Tengah,93.4,Kecil,-,4.67000008
+381,Danau/Situ,13582A,ID-KT.65,Danau Getas,"Kec. 	Kapuas Tengah	, 	Kab. 	Kapuas",Kalimantan Tengah,88.86,Kecil,Oxbow,4.44299984
+382,Danau/Situ,13585A,ID-KT.233,Noname 154,"Kec. 	Dusun Utara	, 	Kab. 	Barito Selatan",Kalimantan Tengah,26.26,Kecil,-,1.31299996
+383,Danau/Situ,13774A,ID-KT.10,Danau Batarik,"Kec. 	Pujon	, 	Kab. 	Kapuas",Kalimantan Tengah,47.7,Kecil,Oxbow,2.38499999
+384,Danau/Situ,13778A,ID-KT.46,Danau Kapuasman,"Kec. 	Kayu Bulan	, 	Kab. 	Kapuas",Kalimantan Tengah,89.03,Kecil,-,4.45149994
+385,Danau/Situ,13779A,ID-KT.1,Danau Lelek,"Kec. Dusun Utara, Kab. Barito Selatan",Kalimantan Tengah,103.52,Kecil,Oxbow,5.17600012
+386,Danau/Situ,13781A,ID-KT.2,Danau Mentarem,"Kec. 	Dusun Utara	, 	Kab. 	Barito Selatan",Kalimantan Tengah,21.84,Kecil,-,1.09200001
+387,Danau/Situ,13782A,ID-KT.9,Danau Muara,"Kec. 	Teweh Selatan	, 	Kab. 	Barito Utara",Kalimantan Tengah,22.75,Kecil,-,1.13750005
+388,Danau/Situ,13783A,ID-KT.11,Danau Pilau,"Kec. 	Pujon	, 	Kab. 	Kapuas",Kalimantan Tengah,23.02,Kecil,Oxbow,1.15100002
+389,Danau/Situ,13785A,ID-KT.4,Danau Telang,"Kec. 	Dusun Utara	, 	Kab. 	Barito Selatan",Kalimantan Tengah,57.91,Kecil,-,2.89549994
+390,Danau/Situ,13800A,ID-KI.49,Danau Kakaban,"Kec. 	Pulau Kakaban	, 	Kab. 	Berau",Kalimantan Timur,502.49,Kecil,Laguna,25.12450027
+391,Danau/Situ,13809A,ID-KB.24,Taman Nasional Danau Sentarum,"Kec. 	Nanga Leboyan	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,9967.2,Sedang,Paparan Banjir,498.35998535
+392,Danau/Situ,13811A,ID-KB.37,Danau Ara,"Kec. 	Batang Lupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,7618.16,Sedang,Paparan Banjir,380.9079895
+393,Danau/Situ,13818A,ID-KB.127,Noname 88,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,38.89,Kecil,Oxbow,1.94449997
+394,Danau/Situ,13821A,ID-KB.165,Noname 126,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,42.84,Kecil,Oxbow,2.14199996
+395,Danau/Situ,13824A,ID-KB.120,Noname 81,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,117.66,Kecil,Oxbow,5.8829999
+396,Danau/Situ,13830A,ID-KB.167,Noname 128,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,48.19,Kecil,Oxbow,2.40949988
+397,Danau/Situ,13833A,ID-KB.122,Noname 83,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,26.27,Kecil,Oxbow,1.31350005
+398,Danau/Situ,13835A,ID-KB.128,Noname 89,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,69.46,Kecil,Oxbow,3.47300005
+399,Danau/Situ,13848A,ID-KB.155,Noname 116,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,116.18,Kecil,Oxbow,5.80900002
+400,Danau/Situ,13851A,ID-KB.53,Noname 14,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,26.84,Kecil,Oxbow,1.34200001
+401,Danau/Situ,13868A,ID-KB.159,Noname 120,"Kec. 	Batanglupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,204.97,Kecil,-,10.24849987
+402,Danau/Situ,13871A,ID-KB.157,Noname 118,"Kec. 	Batanglupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,24.79,Kecil,-,1.23950005
+403,Danau/Situ,13880A,ID-KB.158,Noname 119,"Kec. 	Batanglupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,45.45,Kecil,Oxbow,2.27250004
+404,Danau/Situ,13883A,ID-KB.31,Danau Genali,"Kec. 	Jongkong	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,1030.57,Sedang,Paparan Banjir,51.5284996
+405,Danau/Situ,13884A,ID-KB.134,Noname 95,"Kec. 	Batanglupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,39.79,Kecil,-,1.98950005
+406,Danau/Situ,13888A,ID-KB.28,Danau Siawan,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,999.05,Kecil,Paparan Banjir,49.95249939
+407,Danau/Situ,13889A,ID-KB.116,Noname 77,"Kec. 	Bika	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,36.54,Kecil,Oxbow,1.82700002
+408,Danau/Situ,13891A,ID-KB.29,Danau Pantu,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,276.68,Kecil,Paparan Banjir,13.83399963
+409,Danau/Situ,13897A,ID-KB.13,Danau Sebadin,"Kec. 	Nanga Badau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,124.23,Kecil,Paparan Banjir,6.21150017
+410,Danau/Situ,13931A,ID-JI.80,Telaga Sarangan,"Kec. Plaosan, Kab. Magetan",Jawa Timur,26.85,Kecil,Vulkanik,1.34249997
+411,Danau/Situ,13937A,ID-JT.128,Waduk Tandon,"Kec. Selogiri, Kab. Wonogiri",Jawa Tengah,33.76,Kecil,Buatan,1.68799996
+412,Danau/Situ,14042A,ID-JT.104,Waduk Ketro,"Kec. Tanon, Kab. Sragen",Jawa Tengah,37.59,Kecil,Buatan,1.87950003
+413,Danau/Situ,14043A,ID-JT.105,Waduk Lalung,"Kec. Karanganyar, Kab. Karanganyar",Jawa Tengah,60.56,Kecil,Buatan,3.02800012
+414,Danau/Situ,14045A,ID-JT.110,Waduk Mulur,"Kec. Bendosaro, Kab. Sukoharjo",Jawa Tengah,94.24,Kecil,Buatan,4.71199989
+415,Danau/Situ,14047A,ID-JT.112,Waduk Ngancar,"Kec. Batuwarno, Kab. Wonogiri",Jawa Tengah,37.71,Kecil,Buatan,1.88549995
+416,Danau/Situ,14058A,ID-JT.130,Waduk Tirtomarto,"Kec. Karanganyar, Kab. Karanganyar",Jawa Tengah,59.7,Kecil,Buatan,2.9849999
+417,Danau/Situ,14060A,ID-JT.9,Danau Rawa Pening,"Kec. Banyubiru, Kab. Semarang",Jawa Tengah,1557.3,Sedang,Tektonik,77.86499786
+418,Danau/Situ,14521A,ID-JI.196,Waduk Laor,"Kec. Sumberpucung dan Kromengan, Kab. Malang",Jawa Timur,299.6,Kecil,Buatan,14.97999954
+419,Danau/Situ,14523A,ID-JI.187,Waduk Karangkates,"Kec. Kalipare, Pagak, dan Sumberpucung, Kab. Malang",Jawa Timur,1357.2,Sedang,Buatan,67.86000061
+420,Danau/Situ,14545A,ID-JI.49,Ranu Kumbolo,"Kec. Senduro, Kab. Lumajang",Jawa Timur,26.5,Kecil,Vulkanik,1.32500005
+421,Danau/Situ,14591A,ID-JI.52,Ranu Pakis,"Kec. Klakah, Kab. Lumajang",Jawa Timur,48.14,Kecil,Vulkanik,2.40700006
+422,Danau/Situ,14592A,ID-JI.47,Ranu Klakah,"Kec. Klakah, Kab. Lumajang",Jawa Timur,35.82,Kecil,Vulkanik,1.79100001
+423,Danau/Situ,14596A,ID-JI.56,Ranu Segaran,"Kec. Tiris , Kab. Probolinggo",Jawa Timur,25.14,Kecil,Vulkanik,1.25699997
+424,Danau/Situ,14600A,ID-JI.23,Danau Ranu Agung,"Kec. Tiris , Kab. Probolinggo",Jawa Timur,21.22,Kecil,Vulkanik,1.06099999
+425,Danau/Situ,14606A,ID-JI.48,Ranu Klindungan,"Kec. Grati, Kab. Pasuruan",Jawa Timur,192.48,Kecil,Vulkanik,9.6239996
+426,Danau/Situ,14766A,ID-JI.159,Waduk Bunder,"Kec. Kebomas, Kab. Gresik",Jawa Timur,57.65,Kecil,Buatan,2.88249993
+427,Danau/Situ,14772A,ID-JI.169,Waduk Gedangkulut,"Kec. Duduksampeyan, Kab. Gresik",Jawa Timur,64.01,Kecil,Buatan,3.20050001
+428,Danau/Situ,14815A,ID-JI.22,Danau Ngipik,"Kec. Kebomas, Kab. Gresik",Jawa Timur,21.8,Kecil,Buatan,1.09000003
+429,Danau/Situ,14833A,ID-JI.369,Noname 67,"Kec. Krembangan, Kota Surabaya",Jawa Timur,80.05,Kecil,Buatan,4.00250006
+430,Danau/Situ,14936A,ID-JI.1,Bendung Klampis,"Kec. Kedungdung, Kab. Sampang",Jawa Timur,147.29,Kecil,Buatan,7.36450005
+431,Danau/Situ,15116A,ID-JI.209,Waduk Notopuro,"Kec. Saradan, Kab. Madiun",Jawa Timur,57.61,Kecil,Buatan,2.88050008
+432,Danau/Situ,15117A,ID-JI.189,Waduk Kedungbendo,"Kec. Padas, Kab. Ngawi",Jawa Timur,53.32,Kecil,Buatan,2.66599989
+433,Danau/Situ,15120A,ID-JI.227,Waduk Saradan,"Kec. Saradan, Kab. Madiun",Jawa Timur,46.81,Kecil,Buatan,2.34050012
+434,Danau/Situ,15122A,ID-JI.164,Waduk Dawuhan,"Kec. Wonoasri, Kab. Madiun",Jawa Timur,49.35,Kecil,Buatan,2.46749997
+435,Danau/Situ,15126A,ID-JI.78,Telaga Ngebel,"Kec. Ngebel, Kab. Ponorogo",Jawa Timur,148.23,Kecil,Vulkanik,7.41149998
+436,Danau/Situ,15520A,ID-JI.355,Noname 53,"Kec. Benjeng, Kab. Gresik",Jawa Timur,25.28,Kecil,Buatan,1.26400006
+437,Danau/Situ,15712A,ID-JB.195,Situ Gede,"Kec. Mangkubumi, Kota Tasikmalaya",Jawa Barat,46.85,Kecil,Buatan,2.34249997
+438,Danau/Situ,15778A,ID-JB.241,Situ Patenggang,"Kec. Rancabali, Kab. Bandung",Jawa Barat,54.06,Kecil,Vulkanik,2.70300007
+439,Danau/Situ,15899A,ID-JB.302,Waduk Saguling,"kec…., Kab. Bandung Barat",Jawa Barat,4016.93,Sedang,Buatan,200.84599304
+440,Danau/Situ,16077A,ID-JB.158,Situ Ciburuy,"Kec. Padalarang, Kab. Bandung Barat",Jawa Barat,32.0,Kecil,-,1.60000002
+441,Danau/Situ,16126A,ID-JB.225,Situ Lembang,"Kec. Parompong, Kab. Bandung Barat",Jawa Barat,48.2,Kecil,Buatan,2.41000009
+442,Danau/Situ,16127A,ID-JB.293,Waduk Cirata,"Kec. Cikalong Kulon, Mande, Ciranjang, dan Cipendeuy , Kab. Cianjur dan Bandung Barat",Jawa Barat,5393.29,Sedang,Buatan,269.66400146
+443,Danau/Situ,16174A,ID-JB.87,Rawa Anggarahan,"Kec. Jati Tujuh , Kab. Majalengka",Jawa Barat,57.84,Kecil,-,2.89199996
+444,Danau/Situ,16220A,ID-JB.101,Rawa Cirakit,"Kec. Cikedung, Kab. Indramayu",Jawa Barat,24.72,Kecil,Paparan Banjir,1.23599994
+445,Danau/Situ,16224A,ID-JB.89,Rawa Bacin,"Kec. Bagodua, Kab. Indramayu",Jawa Barat,113.29,Kecil,Paparan Banjir,5.66450024
+446,Danau/Situ,16255A,ID-JB.103,Rawa Citempel,"Kec. Cikedung, Kab. Indramayu",Jawa Barat,31.05,Kecil,Paparan Banjir,1.55250001
+447,Danau/Situ,16260A,ID-JB.92,Rawa Bedahan,"Kec. Cikedung, Kab. Indramayu",Jawa Barat,71.41,Kecil,Paparan Banjir,3.5704999
+448,Danau/Situ,16266A,ID-JB.94,Rawa Bolang,"Kec. Cikedung, Kab. Indramayu",Jawa Barat,57.27,Kecil,-,2.86350012
+449,Danau/Situ,16316A,ID-JB.297,Waduk Jatiluhur,"Kec. Sukasari dan Tegalwaru, Kab. Purwakarta",Jawa Barat,6798.31,Sedang,Buatan,339.91500854
+450,Danau/Situ,16317A,ID-JB.292,Waduk Cibancuh,"Kec. Gantar, Kab. Indramayu",Jawa Barat,316.19,Kecil,Buatan,15.80949974
+451,Danau/Situ,16320A,ID-JB.234,Situ Nagrog,"Kec. Pagaden, Kab. Subang",Jawa Barat,33.49,Kecil,-,1.67449999
+452,Danau/Situ,16332A,ID-JB.185,Situ Citapen,"Kec. Purwodadi, Kab. Subang",Jawa Barat,21.17,Kecil,Buatan,1.05850005
+453,Danau/Situ,16439A,ID-JB.449,Noname 145,"Kec. Telukjambe Barat, Kab. Karawang",Jawa Barat,21.1,Kecil,-,1.05499995
+454,Danau/Situ,16569A,ID-JK.11,Situ Babakan,"Kec. Jagakarsa, Kota Jakarta Selatan",DKI Jakarta,22.63,Kecil,Buatan,1.13150001
+455,Danau/Situ,16651A,ID-BT.44,Situ Gintung,"Kec. Ciputat Timur, Kota Tangerang Selatan",Banten,22.85,Kecil,Buatan,1.14250004
+456,Danau/Situ,16661A,ID-JB.150,Situ Cibereum,"Kec. Tambun Selatan, Kab. Bekasi",Jawa Barat,20.71,Kecil,Buatan,1.03550005
+457,Danau/Situ,16838A,ID-BT.56,Situ Rawa Cipondoh,"Kec. Cipondoh, Kota Tangerang",Banten,90.03,Kecil,-,4.50150013
+458,Danau/Situ,16953A,ID-JK.5,Danau Sunter Utara,"Kec. Tanjung Priok, Kota Jakarta Utara",DKI Jakarta,31.04,Kecil,Buatan,1.55200005
+459,Danau/Situ,17048A,ID-BT.35,Situ Cikendal,"Kec. Cikendal, Kab. Pandeglang",Banten,21.6,Kecil,-,1.08000004
+460,Danau/Situ,17136A,ID-BT.1,Bendungan Cibaliung,"Kec. Cibaliung, Kab. Pandeglang",Banten,50.37,Kecil,Buatan,2.51850009
+461,Danau/Situ,17389A,ID-JB.54,Danau Mampir,"Kec. Cileungsi, Kab. Bogor",Jawa Barat,23.43,Kecil,-,1.17149997
+462,Danau/Situ,17410A,ID-JB.276,Situ Tunggilis,"Kec. Cileungsi, Kab. Bogor",Jawa Barat,23.65,Kecil,Buatan,1.1825
+463,Danau/Situ,17510A,ID-JB.262,Situ Sawangan,"Kec. Sawangan, Kota Depok",Jawa Barat,24.28,Kecil,Buatan,1.21399999
+464,Danau/Situ,17525A,ID-JB.63,Danau Pasir Jaya,"Kec. Serangbaru, Kab. Bekasi",Jawa Barat,42.52,Kecil,Buatan,2.12599993
+465,Danau/Situ,17844A,ID-BT.50,Situ Kelapadua,"Kec. Curug, Kab. Tangerang",Banten,20.97,Kecil,Buatan,1.04849994
+466,Danau/Situ,17908A,ID-BT.51,Situ Panebong,"Kec. Kibin, Kab. Serang",Banten,37.99,Kecil,Buatan,1.89950001
+467,Danau/Situ,17923A,ID-BT.20,Rawa Patrasana,"Kec. Kresek, Kab. Tangerang",Banten,100.54,Kecil,-,5.02699995
+468,Danau/Situ,17953A,ID-BT.89,Noname 24,"Kec. Kragilan, Kab. Serang",Banten,31.62,Kecil,-,1.58099997
+469,Danau/Situ,18136A,ID-JT.131,Waduk Wadaslintang,"Kec. Wadaslintang, Kab. Wonosobo",Jawa Tengah,1300.0,Sedang,Buatan,65.0
+470,Danau/Situ,18153A,ID-JT.35,Telaga Menjer,"Kec. Garung, Kab. Wonosobo",Jawa Tengah,65.14,Kecil,Vulkanik,3.25699997
+471,Danau/Situ,18160A,ID-JT.36,Telaga Merdada,"Kec. Batur, Kab. Banjarnegara",Jawa Tengah,20.25,Kecil,Vulkanik,1.01250005
+472,Danau/Situ,18288A,ID-JT.109,Waduk Mrica,"Kec. Bawang dan Wanadadi, Kab. Banjarnegara",Jawa Tengah,631.21,Kecil,Buatan,31.56049919
+473,Danau/Situ,18300A,ID-JT.119,Waduk Penjalin,"Kec. Paguyangan, Kab. Brebes",Jawa Tengah,116.5,Kecil,Buatan,5.82499981
+474,Danau/Situ,18318A,ID-JB.226,Situ Lengkong,"Kec. Panjalu, Kab. Ciamis",Jawa Barat,66.89,Kecil,-,3.34450006
+475,Danau/Situ,18329A,ID-JT.107,Waduk Malahayu,"Kec. Banjarharjo, Kab. Brebes",Jawa Tengah,660.24,Kecil,Buatan,33.01200104
+476,Danau/Situ,18332A,ID-JB.303,Waduk Wisata Darma,"Kec. Darma, Kab. Kuningan",Jawa Barat,405.78,Kecil,Buatan,20.28899956
+477,Danau/Situ,18335A,ID-JT.89,Waduk Cacaban,"Kec. Kedungbanteng dan Jatinegara, Kab. Tegal",Jawa Tengah,481.58,Kecil,Buatan,24.07900047
+478,Danau/Situ,18342A,ID-JB.263,Situ Sedong,"Kec. Sedong, Kab. Cirebon",Jawa Barat,58.07,Kecil,Buatan,2.90350008
+479,Danau/Situ,18368A,ID-JB.242,Situ Patok,"Kec. Mundu, Kab. Cirebon",Jawa Barat,113.75,Kecil,Vulkanik,5.6875
+480,Danau/Situ,18455A,ID-JT.123,Waduk Sempor,"Kec. Sempor, Kab. Kebumen",Jawa Tengah,193.12,Kecil,Buatan,9.65600014
+481,Danau/Situ,18456A,ID-JI.19,Danau Kastoba,"Kec. Tambak dan Sangkapura, Kab. Gresik",Jawa Timur,32.24,Kecil,Vulkanik,1.61199999
+482,Danau/Situ,18515A,ID-JI.33,Kawah Ijen,"Kec. Klabang, Kab. Bondowoso",Jawa Timur,48.16,Kecil,Vulkanik,2.40799999
+483,Danau/Situ,18516A,ID-JI.34,Kawah Tegalweru,"Kec. Klabang, Kab. Bondowoso",Jawa Timur,30.54,Kecil,Vulkanik,1.52699995
+484,Danau/Situ,18601A,ID-NB.106,Waduk Mamak,"Kec. Lapelolok, Kab. Sumbawa",Nusa Tenggara Barat,261.46,Kecil,Buatan,13.07299995
+485,Danau/Situ,18603A,ID-NB.17,Danau Taliwang,"Kec. Seteluk dan Taliwang, Kab. Sumbawa Barat",Nusa Tenggara Barat,391.98,Kecil,Paparan banjir,19.59900093
+486,Danau/Situ,18604A,ID-NB.108,Waduk Tiukulit,"Kec. Plampang, Kab. Sumbawa",Nusa Tenggara Barat,62.54,Kecil,Buatan,3.12700009
+487,Danau/Situ,18620A,ID-NB.85,Embung Roiroka,"Kec. Belo, Kab. Bima",Nusa Tenggara Barat,46.54,Kecil,Buatan,2.3269999
+488,Danau/Situ,18663A,ID-NB.11,Danau Ndano Motihalo,"Kec. Sanggar, Kab. Bima",Nusa Tenggara Barat,56.49,Kecil,-,2.82450008
+489,Danau/Situ,18665A,ID-NB.15,Danau Satonda,"Kec. Pekat, Kab. Dompu",Nusa Tenggara Barat,88.61,Kecil,Vulkanik,4.43050003
+490,Danau/Situ,18749A,ID-NT.110,Danau Waibelen,"Kec. Tanjung Bunga, Kab. Flores Timur",Nusa Tenggara Timur,45.14,Kecil,Vulkanik,2.25699997
+491,Danau/Situ,18761A,ID-NT.89,Danau Sano Nggoang,"Kec. Sano Nggoang, Kab. Manggarai Barat",Nusa Tenggara Timur,522.88,Kecil,-,26.1439991
+492,Danau/Situ,18905A,ID-NT.15,Danau Alibagis,"Kec. Pembantu Pantar, Kab. Alor",Nusa Tenggara Timur,43.49,Kecil,Bekas tambang,2.17449999
+493,Danau/Situ,18918A,ID-NT.40,Danau Kotakaya,"Kec. Adonara Timur, Kab. Flores Timur",Nusa Tenggara Timur,22.43,Kecil,-,1.12150002
+494,Danau/Situ,19083A,ID-NT.22,Danau Bisanduli,"Kec. Rote Timur, Kab. Rote Ndao",Nusa Tenggara Timur,41.86,Kecil,Laguna,2.09299994
+495,Danau/Situ,19088A,ID-NT.23,Danau Bisaolifoe,"Kec. Rote Timur, Kab. Rote Ndao",Nusa Tenggara Timur,22.02,Kecil,Laguna,1.10099995
+496,Danau/Situ,19095A,ID-NT.66,Danau Oemasapoka,"Kec. Rote Timur, Kab. Rote Ndao",Nusa Tenggara Timur,1246.25,Sedang,Laguna,62.3125
+497,Danau/Situ,19097A,ID-NT.43,Danau Ledulu,"Kec. Rote Timur, Kab. Rote Ndao",Nusa Tenggara Timur,194.24,Kecil,-,9.71199989
+498,Danau/Situ,19098A,ID-NT.67,Danau Oendui,"Kec. Rote Timur, Kab. Rote Ndao",Nusa Tenggara Timur,46.24,Kecil,-,2.31200004
+499,Danau/Situ,19140A,ID-NT.105,Danau Tua,"Kec. Rote Barat Laut dan Rote Barat Daya, Kab.Rote Ndao",Nusa Tenggara Timur,91.31,Kecil,-,4.56549978
+500,Danau/Situ,19149A,ID-NT.64,Danau Oehela,"Kec. Rote Barat Daya, Kab. Rote Ndao",Nusa Tenggara Timur,27.43,Kecil,-,1.37150002
+501,Danau/Situ,19150A,ID-NT.17,Danau Anak,"Kec. Rote Barat Laut, Kab.Rote Ndao",Nusa Tenggara Timur,68.52,Kecil,-,3.42600012
+502,Danau/Situ,19219A,ID-BA.1,Danau Batur,"Kec. Kintamani, Kab. Bangli",Bali,1649.37,Sedang,Vulkanik,82.46849823
+503,Danau/Situ,19229A,ID-NB.16,Danau Segara Anak,"Kec. Bayan, Kab. Lombok Barat",Nusa Tenggara Barat,1056.99,Sedang,Vulkanik,52.84949875
+504,Danau/Situ,19362A,ID-NB.104,Waduk Batujai,"Kec. Praya, Kab. Lombok Tengah",Nusa Tenggara Barat,750.2,Kecil,Buatan,37.50999832
+505,Danau/Situ,19491A,ID-NB.23,Embung Bedah,"Kec. Keruak, Kab. Lombok Timur",Nusa Tenggara Barat,97.04,Kecil,Buatan,4.85200024
+506,Danau/Situ,19522A,ID-NB.22,Embung Batubokah,"Kec. Praya Barat, Kab. Lombok Tengah",Nusa Tenggara Barat,21.83,Kecil,Buatan,1.09150004
+507,Danau/Situ,19527A,ID-NB.107,Waduk Pengga,"Kec. Praya Barat, Kab. Lombok Tengah",Nusa Tenggara Barat,554.55,Kecil,Buatan,27.72750092
+508,Danau/Situ,19547A,ID-BA.4,Danau Buyan,"Kec. Sukasada, Kab. Buleleng",Bali,501.34,Kecil,Vulkanik,25.06699944
+509,Danau/Situ,19548A,ID-BA.5,Danau Tamblingan,"Kec. Banjar, Kab. Buleleng",Bali,161.06,Kecil,Vulkanik,8.05300045
+510,Danau/Situ,19549A,ID-BA.3,Danau Bratan,"Kec. Baturiti, Kab. Tabanan",Bali,397.69,Kecil,Vulkanik,19.8845005
+511,Danau/Situ,19554A,ID-BA.10,Waduk Palasari,"Kec. Melaya, Kab. Jembrana",Bali,55.49,Kecil,Buatan,2.77449989
+512,Danau/Situ,19980A,ID-SS.8,Danau Lebak Nilang,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,93.82,Kecil,Oxbow,4.69099998
+513,Danau/Situ,19982A,ID-SS.22,Noname,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,55.76,Kecil,-,2.78800011
+514,Danau/Situ,19987A,ID-SS.23,Noname,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,40.44,Kecil,-,2.02200007
+515,Danau/Situ,19992A,ID-SS.24,Noname,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,20.83,Kecil,-,1.04149997
+516,Danau/Situ,20017A,ID-SS.21,Danau Wisata Teluk Gelam,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,81.61,Kecil,-,4.08050013
+517,Danau/Situ,20018A,ID-SS.28,Noname,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,460.89,Kecil,-,23.04450035
+518,Danau/Situ,20022A,ID-SS.30,Noname,"Kec. Pedamaran, Kab. Ogan Komering Ilir",Sumatera Selatan,624.37,Kecil,-,31.21850014
+519,Danau/Situ,20038A,ID-SS.27,Noname,"Kec. Pedamaran, Kab. Ogan Komering Ilir",Sumatera Selatan,107.0,Kecil,-,5.3499999
+520,Danau/Situ,20265A,ID-SS.38,Noname,"Kec. Seberanghulu Satu dan Seberanghulu Dua, Kab. Palembang",Sumatera Selatan,53.69,Kecil,-,2.68449998
+521,Waduk,2 WA,ID-JT.94,Waduk Gembong,"Kec. Gembong, Kab. Pati",Jawa Tengah,44.25,Kecil,Buatan,2.2125001
+522,Waduk,3 WA,ID-JT.97,Waduk Gunungrowo,"Kec. Gembong, Kab. Pati",Jawa Tengah,50.92,Kecil,Buatan,2.546
+523,Waduk,4 WA,ID-JT.92,Waduk Gajah Mungkur,"Kec. Wonogiri, Eromoko, Baturetno, dan Nguntoronadi, Kab. Wonogiri",Jawa Tengah,6129.3,Sedang,Buatan,306.46499634
+524,Waduk,5 WA,ID-JT.99,Waduk Jombor,"Kec. Wedi, Kab. Klaten",Jawa Tengah,170.12,Kecil,Buatan,8.50599957
+525,Waduk,16 WA,ID-JT.90,Waduk Cengklik,"Kec. Sambi, Kab. Boyolali",Jawa Tengah,302.56,Kecil,Buatan,15.12800026
+526,Waduk,17 WA,ID-JT.81,Waduk Bade,"Kec. Karang Gede, Kab. Boyolali",Jawa Tengah,34.02,Kecil,Buatan,1.70099998
+527,Waduk,18 WA,ID-JT.101,Waduk Kedungombo,"Kec. Andong, Miri, Karangrayung dan Kemusu, Kab. Boyolali dan Grobogan",Jawa Tengah,3009.29,Sedang,Buatan,150.46400452
+528,Waduk,19 WA,ID-JT.125,Waduk Sidorejo,"Kec. Kemusu dan Toroh, Kab. Grobogan",Jawa Tengah,101.14,Kecil,Buatan,5.05700016
+529,Waduk,20 WA,ID-JI.231,Waduk Sengguruh,"Kec. Pagelaran, Kab. Malang",Jawa Timur,150.39,Kecil,Buatan,7.51949978
+530,Waduk,23 WA,ID-JI.242,Waduk Sumengko,"Kec. Tikung, Kab. Lamongan",Jawa Timur,170.39,Kecil,Buatan,8.51949978
+531,Waduk,27 WA,ID-JI.240,Waduk Sumberkepuh,"Kec. Lengkong, Kab. Nganjuk",Jawa Timur,29.43,Kecil,Buatan,1.47150004
+532,Waduk,30 WA,ID-JI.256,Waduk Widas,"Kec. Saradan, Kab. Madiun",Jawa Timur,465.67,Kecil,Buatan,23.28350067
+533,Waduk,38 WA,ID-JI.211,Waduk Pacal,"Kec. Bubulan dan Temayang, Kab. Bojonegoro",Jawa Timur,298.01,Kecil,Buatan,14.9005003
+534,Waduk,39 WA,ID-JI.229,Waduk Selorejo,"Kec. Ngantang, Kab. Malang",Jawa Timur,334.44,Kecil,Buatan,16.72200012
+535,Waduk,43 WA,ID-JI.177,Waduk Jajong,"Kec. Solokuro, Kab. Lamongan",Jawa Timur,27.84,Kecil,Buatan,1.39199996
+536,Waduk,46 WA,ID-JI.251,Waduk Tuwiri,"Kec. Tikung, Kab. Lamongan",Jawa Timur,48.79,Kecil,Buatan,2.43950009
+537,Waduk,47 WA,ID-JI.161,Waduk Canggah,"Kec. Tikung, Kab. Lamongan",Jawa Timur,33.48,Kecil,Buatan,1.67400002
+538,Waduk,51 WA,ID-JI.180,Waduk Jotosanur,"Kec. Plandaan, Kab. Jombang",Jawa Timur,86.48,Kecil,Buatan,4.32399988
+539,Waduk,53 WA,ID-JI.223,Waduk Rancang,"Kec. Lamongan dan Kembangbahu, Kab. Lamongan",Jawa Timur,58.63,Kecil,Buatan,2.93149996
+540,Waduk,54 WA,ID-JI.165,Waduk Delikguno,"Kec. Tikung, Kab. Lamongan",Jawa Timur,28.57,Kecil,Buatan,1.42850006
+541,Waduk,59 WA,ID-JI.244,Waduk Takeran,"Kec. Tikung, Kab. Lamongan",Jawa Timur,36.66,Kecil,Buatan,1.83299994
+542,Waduk,69 WA,ID-JI.184,Waduk Kalen,"Kec. Kedungpring, Kab. Lamongan",Jawa Timur,32.59,Kecil,Buatan,1.62950003
+543,Waduk,70 WA,ID-JI.232,Waduk Sentir,"Kec. Kedungpring, Kab. Lamongan",Jawa Timur,36.62,Kecil,Buatan,1.83099997
+544,Waduk,71 WA,ID-JI.160,Waduk Caling,"Kec. Kedungpring, Kab. Lamongan",Jawa Timur,28.71,Kecil,Buatan,1.43550003
+545,Waduk,72 WA,ID-JI.221,Waduk Prijetan,"Kec. Kedungpring, Kab. Lamongan",Jawa Timur,185.02,Kecil,Buatan,9.2510004
+546,Waduk,73 WA,ID-JI.157,Waduk Bowo,"Kec. Modo, Kab. Lamongan",Jawa Timur,51.59,Kecil,Buatan,2.57949996
+547,Waduk,77 WA,ID-JI.170,Waduk Gempol,"Kec. Kembangbahu, Kab. Lamongan",Jawa Timur,78.48,Kecil,Buatan,3.92400002
+548,Waduk,78 WA,ID-JI.154,Waduk Balongganggang,"Kec. Sukodadi dan Sugio, Kab. Lamongan",Jawa Timur,58.94,Kecil,Buatan,2.94700003
+549,Waduk,79 WA,ID-JI.172,Waduk German,"Kec. Sugio , Kab. Lamongan",Jawa Timur,53.33,Kecil,Buatan,2.66650009
+550,Waduk,80 WA,ID-JI.174,Waduk Gondang,"Kec. Sugio , Kab. Lamongan",Jawa Timur,28.71,Kecil,Buatan,1.43550003
+551,Waduk,83 WA,ID-BT.65,Waduk Krakatau Steel/ Waduk Krenceng,"Kec. Citangkil, Kota CIlegon",Banten,108.4,Kecil,Buatan,5.42000008
+552,Waduk,84 WA,ID-BT.2,Bendungan Cikoncang,"Kec. Cikeusik, Kab. Pandeglang",Banten,90.29,Kecil,Buatan,4.51450014
+553,Waduk,7909 WA,ID-AC.34,Waduk Sianjo-anjo,"Kec. Simpang Kanan, Kab. Aceh Singkil",Aceh,41.05,Kecil,Buatan,2.05250001
+554,Waduk,7936 WA,ID-SU.33,Waduk Sigura-gura,"Kec. Pintu Pihan Meranti, Kab. Toba Samosir",Sumatera Utara,27.41,Kecil,Buatan,1.37049997
+555,Waduk,7938 WA,ID-BE.9,Danau Tes,"Kec. Lebong Selatan, Kab. Lebong",Bengkulu,174.87,Kecil,-,8.74349976
+556,Waduk,7940 WA,ID-RI.101,Bendungan/Waduk  Geringging,"Kec. Kampar Kiri, Kab. Kampar",Riau,342.8,Kecil,Buatan,17.13999939
+557,Waduk,7945 WA,ID-RI.27,Danau Laut Napangga,"Kec. Pujud, Kab. Rokan Hilir",Riau,60.69,Kecil,-,3.03449988
+558,Waduk,7961 WA,ID-KS.22,Waduk Riamkanan,"Kec. 	Aranio	, 	Kab. 	Banjar",Kalimantan Selatan,6129.32,Sedang,Buatan,306.46600342
+559,Danau,20269A,ID-PB.13,Danau Erega 2,"Kec.Yamor, Kab.Kaimana",Papua Barat,372.77,Kecil,-,18.63850021
+560,Waduk,8205 WA,ID-JI.257,Waduk Wonorejo,"Kec. Pagerwojo, Kab. Tulung Agung",Jawa Timur,357.68,Kecil,Buatan,17.88400078
+561,Waduk,8206 WA,ID-SN.24,Bendungan Ponre-Ponre,"Kec. Libureng, Kab. Bone",Sulawesi Selatan,295.12,Kecil,-,14.75599957
+562,Danau,20270A,ID-PA.295,Noname 178,"Kec. Pantai Timur, Kab. Sarmi",Papua,289.4,Kecil,-,14.47000027
+563,Danau,20271A,ID-PA.438,Noname 321,"Kec. Megambilis, Kab. Mamberamo Tengah",Papua,181.68,Kecil,-,9.08399963
+564,Danau,20272A,ID-PA.439,Noname 322,"Kec. Megambilis, Kab. Mamberamo Tengah",Papua,50.02,Kecil,-,2.50099993
+565,Danau,20276A,ID-SS.25,Danau Pampangan,"Kec. Pampangan, Kab. Ogan Komering Ilir",Sumatera Selatan,260.95,Kecil,-,13.04749966
+566,Danau,20277A,ID-KB.36,Danau Sumbu,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,265.45,Kecil,Paparan Banjir,13.27250004
+567,Danau,20278A,ID-SS.3,Danau Calo,"Kec. Lais, Kab. Musi Banyuasin",Sumatera Selatan,233.67,Kecil,-,11.68350029
+568,Danau,20279A,ID-PA.292,Noname 175,"Kec. Pantai Timur, Kab. Sarmi",Papua,213.02,Kecil,-,10.65100002
+569,Danau,20280A,ID-PA.282,Noname 165,"Kec. Pantai Timur, Kab. Sarmi",Papua,191.43,Kecil,-,9.57149982
+570,Danau,20281A,ID-PA.148,Noname 31,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,74.63,Kecil,-,3.73149991
+571,Danau,20282A,ID-KT.22,Danau Sadar,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,107.36,Kecil,-,5.36800003
+572,Danau,20283A,ID-KS.21,Danau Bitin,"Kec. 	Danau Panggang	, 	Kab. 	Hulu Sungai Utara",Kalimantan Selatan,188.95,Kecil,-,9.44750023
+573,Danau,20284A,ID-KT.44,Danau Limut,"Kec. 	Hilir Sper	, 	Kab. 	Barito Selatan",Kalimantan Tengah,188.01,Kecil,Oxbow,9.4005003
+574,Danau,20285A,ID-SB.14,Danau Siberut Barat,"Kec. Siberut Barat, Kab. Kepulauan Mentawai",Sumatera Barat,183.5,Kecil,Laguna,9.17500019
+575,Waduk,6207 WA,ID-JI.220,Waduk Pondok,"Kec. Bringin, Kab. Ngawi",Jawa Timur,170.61,Kecil,Buatan,8.53050041
+576,Danau,20286A,ID-LA.15,Danau Tirta Gangga,"Kec. Putra Rumbia, Kab.Lampung Tengah",Lampung,169.5,Kecil,-,8.47500038
+577,Waduk,6208 WA,ID-NT.1,Bendungan Tilong,"Kec. Kupang Tengah, Kab. Kupang",Nusa Tenggara Timur,160.66,Kecil,Buatan,8.03299999
+578,Danau,20287A,ID-JB.178,Situ Cipanunjang,"Kec. Pangalengan, Kab. Bandung",Jawa Barat,160.49,Kecil,-,8.02449989
+579,Danau,20288A,ID-JB.19,Danau Cileunca,"Kec. Pangalengan, Kab. Bandung",Jawa Barat,93.65,Kecil,Buatan,4.68249989
+580,Danau,20289A,ID-SS.1,Danau Air Hitam,"Kec. Pedamaran, Kab. Ogan Komering Ilir",Sumatera Selatan,154.79,Kecil,-,7.73950005
+581,Danau,20290A,ID-SS.34,Noname,"Kec. Pedamaran, Kab. Ogan Komering Ilir",Sumatera Selatan,111.27,Kecil,-,5.56349993
+582,Danau,20291A,ID-SS.29,Noname,"Kec. Teluk Gelam, Kab. Ogan Komering Ilir",Sumatera Selatan,56.49,Kecil,-,2.82450008
+583,Waduk,6209 WA,ID-NB.2,Bendungan Pandan Duri,"Kec. Terara dan Sakra, Kab. Lombok Timur",Nusa Tenggara Barat,147.07,Kecil,Buatan,7.35349989
+584,Waduk,6210 WA,ID-JB.296,Waduk Jatigede,"Kec…, Kab. Sumedang",Jawa Barat,3588.41,Sedang,Buatan,179.42100525
+585,Rawa,20292A,ID-BT.18,Rawa Dano,"Kec. Padarincang, Kab. Serang",Banten,1668.0,Sedang,Paparan banjir,83.40000153
+586,Danau,20293A,ID-KS.20,Danau Bangkau,"Kec. 	Labuanamas Selatan	, 	Kab. 	Hulu Sungai Tengah",Kalimantan Selatan,616.02,Kecil,-,30.8010006
+587,Danau,20294A,ID-KB.35,Danau Semangit,"Kec. 	Batang Lupar	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,587.83,Kecil,Paparan Banjir,29.39150047
+588,Danau,20295A,ID-SS.19,Danau Teloko,"Kec. Kayu Agung, Kab. Ogan Komering Ilir",Sumatera Selatan,558.77,Kecil,-,27.93849945
+589,Waduk,6211 WA,ID-NB.1,Bendungan Batubulan,"Kec. Moyohulu, Kab. Sumbawa",Nusa Tenggara Barat,521.26,Kecil,Buatan,26.06299973
+590,Waduk,6212 WA,ID-YO.108,Waduk Sermo,"Kec. Kokap, Kab. Kulonprogo",DI Yogyakarta,145.84,Kecil,Buatan,7.29199982
+591,Danau,20296A,ID-KB.95,Noname 56,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,145.72,Kecil,Oxbow,7.28599977
+592,Danau,20297A,ID-KB.96,Noname 57,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,65.7,Kecil,Oxbow,3.28500009
+593,Danau,20299A,ID-KB.156,Noname 117,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,129.63,Kecil,Oxbow,6.48150015
+594,Danau,20300A,ID-KB.121,Noname 82,"Kec. 	Selimbau	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,272.33,Kecil,Oxbow,13.6164999
+595,Danau,18959A,ID-NT.107,Danau Tuamese,"Kec. Biboki Anleu, Kab. Timor Tengah Utara",Nusa Tenggara Timur,110.54,Kecil,Buatan,5.52699995
+596,Danau,20301A,ID-KT.89,Noname 10,"Kec. 	Arut Selatan	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,102.67,Kecil,-,5.1335001
+597,Waduk,6213 WA,ID-NB.113,Waduk Diwu Moro,"Kec. Sape, Kab. Bima",Nusa Tenggara Barat,102.29,Kecil,-,5.11450005
+598,Waduk,6214 WA,ID-JT.98,Waduk Jatibarang,"Kec. Gunung Pati, Kab. Kendal",Jawa Tengah,99.77,Kecil,Buatan,4.98850012
+599,Danau,20302A,ID-PA.145,Noname 28,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,99.5,Kecil,-,4.9749999
+600,Waduk,6215 WA,ID-AC.28,Waduk Paya Seunara,"Kec. Sukakarya, Kab. Sabang",Aceh,97.48,Kecil,Buatan,4.87400007
+601,Danau,20304A,ID-JB.128,Situ Bagendit,"Kec. Banyuresmi, Kab. Garut",Jawa Barat,94.24,Kecil,-,4.71199989
+602,Danau,20305A,ID-LA.10,Danau Menjukut,"Kec. Pematangsawa, Kab. Tanggamus",Lampung,93.36,Kecil,Laguna,4.66800022
+603,Waduk,6216 WA,ID-JT.106,Waduk Lodan,"Kec. Sarang, Kab. Rembang",Jawa Tengah,92.47,Kecil,Buatan,4.62349987
+604,Danau,20306A,ID-AC.15,Danau Laot Ni,"Kec. Aronganlambalek, Kab. Aceh Barat",Aceh,91.96,Kecil,Laguna,4.59800005
+605,Danau,20307A,ID-KT.45,Danau Malawe,"Kec. 	Hilir Sper	, 	Kab. 	Barito Selatan",Kalimantan Tengah,90.7,Kecil,-,4.53499985
+606,Danau,20308A,ID-KS.17,Wisata Danau Tamiyang,"Kec. 	Karang Intan	, 	Kab. 	Banjar",Kalimantan Selatan,88.83,Kecil,-,4.44150019
+607,Waduk,6217 WA,ID-NB.105,Waduk Gapit,"Kec. Empang, Kab. Sumbawa",Nusa Tenggara Barat,84.12,Kecil,Buatan,4.20599985
+608,Danau,20309A,ID-KB.93,Noname 54,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,81.99,Kecil,Oxbow,4.09950018
+609,Danau,20310A,ID-KB.16,Danau Tanjungbunut,"Kec. 	Tayan Hilir	, 	Kab. 	Sanggau",Kalimantan Barat,80.03,Kecil,-,4.00150013
+610,Waduk,6218 WA,ID-JK.46,Waduk Pluit,"Kec. Penjaringan, Kota Jakarta Utara",DKI Jakarta,79.78,Kecil,Buatan,3.98900008
+611,Bekas Tambang,20311A,ID-KS.749,Noname 727,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,78.72,Kecil,Bekas tambang,3.93600011
+612,Danau,20312A,ID-KT.160,Noname 81,"Kec. 	Tasikpayawan	, 	Kab. 	Katingan",Kalimantan Tengah,78.35,Kecil,Oxbow,3.91750002
+613,Danau,20313A,ID-KB.90,Noname 51,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,75.75,Kecil,Oxbow,3.7874999
+614,Danau,20314A,ID-KB.161,Noname 122,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,52.0,Kecil,Oxbow,2.5999999
+615,Danau,20315A,ID-MU.22,Telaga Roti,"Kec. Weda, Kab. Halmahera Tengah",Maluku Utara,74.63,Kecil,Laguna,3.73149991
+616,Danau,20316A,ID-PA.314,Noname 197,"Kec. Ekadide, Kab. Paniai",Papua,250.56,Kecil,-,12.52799988
+617,Waduk,6219 WA,ID-NB.3,Bendungan Pela Parado,"Kec. Monta, Kab. Bima",Nusa Tenggara Barat,71.95,Kecil,Buatan,3.59750009
+618,Danau,20317A,ID-KT.294,Noname 215,"Kec. 	Paku	, 	Kab. 	Barito Timur",Kalimantan Tengah,70.25,Kecil,-,3.51250005
+619,Danau,20318A,ID-PA.147,Noname 30,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,68.96,Kecil,-,3.44799995
+620,Danau,20319A,ID-KT.69,Danau Tundai,"Kec. 	Sabangau	, 		Kota Palangkaraya",Kalimantan Tengah,67.6,Kecil,Oxbow,3.38000011
+621,Waduk,6220 WA,ID-JI.5,Bendungan Wlingi Raya,"Kec. Tayun dan Sutojayan, Kab. Blitar",Jawa Timur,65.15,Kecil,Buatan,3.25749993
+622,Waduk,6221 WA,ID-KB.39,Bendungan Merowi,"Kec. 	Menyuke	, 	Kab. 	Sanggau",Kalimantan Barat,65.13,Kecil,Buatan,3.25650001
+623,Danau,20320A,ID-JB.22,Danau Cipule,"Kec. Telukjambe Barat, Kab. Karawang",Jawa Barat,64.89,Kecil,Buatan,3.24449992
+624,Danau,20321A,ID-KB.92,Noname 53,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,64.62,Kecil,Oxbow,3.23099995
+625,Danau,20323A,ID-PA.263,Noname 146,"Kec. Pantai Timur, Kab. Sarmi",Papua,63.48,Kecil,-,3.17400002
+626,Danau,20324A,ID-PA.262,Noname 145,"Kec. Pantai Timur, Kab. Sarmi",Papua,27.21,Kecil,-,1.36049998
+627,Danau,20325A,ID-PA.221,Noname 104,"Kec. Kimaam, Kab. Merauke",Papua,75.18,Kecil,-,3.75900006
+628,Danau,20326A,ID-PA.222,Noname 105,"Kec. Kimaam, Kab. Merauke",Papua,53.14,Kecil,-,2.65700006
+629,Danau,20327A,ID-PA.220,Noname 103,"Kec. Kimaam, Kab. Merauke",Papua,21.21,Kecil,-,1.06050003
+630,Danau,20328A,ID-KT.229,Noname 150,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,62.49,Kecil,-,3.12450004
+631,Danau,20329A,ID-KB.26,Danau Kemateyan,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,62.47,Kecil,Paparan Banjir,3.12350011
+632,Danau,20330A,ID-KB.27,Danau Tunggal,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,42.65,Kecil,Paparan Banjir,2.13249993
+633,Danau,20331A,ID-RI.22,Danau Klanghat,"Kec. Kuala Cenaku, Kab. Indragiri Hulu",Riau,61.9,Kecil,Paparan banjir,3.09500003
+634,Danau,20332A,ID-PA.454,Noname 337,"Kec. Jair, Kab. Boven Digoel",Papua,60.87,Kecil,Oxbow,3.04349995
+635,Danau,20333A,ID-JI.304,Noname 2,"Kec. Bringin, Kab. Ngawi",Jawa Timur,59.93,Kecil,Buatan,2.99650002
+636,Danau,20334A,ID-KT.157,Noname 78,"Kec. 	Katingan Hilir	, 	Kab. 	Katingan",Kalimantan Tengah,58.85,Kecil,Oxbow,2.94250011
+637,Danau,20335A,ID-KS.47,Noname 25,"Kec. 	Jorong	, 	Kab. 	Tanahlaut",Kalimantan Selatan,58.68,Kecil,-,2.93400002
+638,Danau,20336A,ID-KT.232,Noname 153,"Kec. 	Dusun Utara	, 	Kab. 	Barito Selatan",Kalimantan Tengah,58.54,Kecil,Oxbow,2.92700005
+639,Danau,20337A,ID-JI.46,Ranu Kembar,"Kec. Tiris , Kab. Probolinggo",Jawa Timur,57.95,Kecil,Vulkanik,2.89750004
+640,Danau,20338A,ID-JI.59,Ranu Semokah,"Kec. Tiris , Kab. Probolinggo",Jawa Timur,25.79,Kecil,Vulkanik,1.2895
+641,Danau,20339A,ID-KB.11,Danau Pangkalnyelipan,"Kec. 	Suhaid	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,57.5,Kecil,Paparan Banjir,2.875
+642,Danau,20340A,ID-KT.212,Noname 133,"Kec. 	Banamatingang	, 	Kab. 	Pulang Pisau",Kalimantan Tengah,56.63,Kecil,Oxbow,2.83150005
+643,Danau,20341A,ID-KB.25,Danau Asam,"Kec. 	Manis Mata	, 	Kab. 	Ketapang",Kalimantan Barat,55.92,Kecil,-,2.796
+644,Danau,20342A,ID-KT.226,Noname 147,"Kec. 	Dusun Selatan	, 	Kab. 	Barito Selatan",Kalimantan Tengah,54.22,Kecil,Oxbow,2.71099997
+645,Danau,20343A,ID-KS.430,Noname 408,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,53.42,Kecil,-,2.671
+646,Danau,20344A,ID-KS.750,Noname 728,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,37.05,Kecil,-,1.85249996
+647,Danau,20345A,ID-JI.39,Ranu Air,"Kec. Ranuyoso, Kab. Lumajang",Jawa Timur,53.28,Kecil,Vulkanik,2.66400003
+648,Danau,20346A,ID-JI.61,Ranu Wurung,"Kec. Ranuyoso, Kab. Lumajang",Jawa Timur,45.24,Kecil,Vulkanik,2.26200008
+649,Danau,20347A,ID-JI.43,Ranu Gunungparang,"Kec. Ranuyoso, Kab. Lumajang",Jawa Timur,32.36,Kecil,Vulkanik,1.61800003
+650,Danau,20348A,ID-PA.437,Noname 320,"Kec. Megambilis, Kab. Mamberamo Tengah",Papua,50.68,Kecil,-,2.53399992
+651,Danau,20349A,ID-PA.436,Noname 319,"Kec. Megambilis, Kab. Mamberamo Tengah",Papua,22.86,Kecil,-,1.14300001
+652,Danau,20350A,ID-KS.927,Noname 905,"Kec. 	Murungpundak	, 	Kab. 	Tabalong",Kalimantan Selatan,49.46,Kecil,Oxbow,2.47300005
+653,Danau,20351A,ID-KB.114,Noname 75,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,48.96,Kecil,Oxbow,2.44799995
+654,Danau,20352A,ID-KS.979,Noname 957,"Kec. 	Jorong	, 	Kab. 	Tanahlaut",Kalimantan Selatan,47.63,Kecil,Bekas tambang,2.38150001
+655,Danau,20353A,ID-KT.217,Noname 138,"Kec. 	Kahayan Tengah	, 	Kab. 	Pulang Pisau",Kalimantan Tengah,47.56,Kecil,Oxbow,2.37800002
+656,Danau,20354A,ID-KS.520,Noname 498,"Kec. 	Pulausebuku	, 	Kab. 	Kotabaru",Kalimantan Selatan,47.48,Kecil,-,2.37400007
+657,Danau,20355A,ID-PA.451,Noname 334,"Kec. Jair, Kab. Boven Digoel",Papua,47.32,Kecil,-,2.36599994
+658,Danau,20356A,ID-PA.453,Noname 336,"Kec. Mandobo, Kab. Boven Digoel",Papua,82.29,Kecil,-,4.11450005
+659,Danau,20357A,ID-PA.452,Noname 335,"Kec. Mandobo, Kab. Boven Digoel",Papua,22.01,Kecil,-,1.10049999
+660,Danau,20358A,ID-KI.101,Noname 45,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,46.93,Kecil,-,2.34649992
+661,Danau,20359A,ID-KI.319,Noname 263,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,46.05,Kecil,-,2.30250001
+662,Danau,20360A,ID-KI.258,Noname 202,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,40.9,Kecil,-,2.04500008
+663,Danau,20361A,ID-KI.487,Noname 431,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,39.05,Kecil,-,1.95249999
+664,Danau,20362A,ID-KI.486,Noname 430,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,28.81,Kecil,-,1.44050002
+665,Danau,20363A,ID-KI.331,Noname 275,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,28.04,Kecil,-,1.40199995
+666,Danau,20364A,ID-KI.329,Noname 273,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,24.28,Kecil,-,1.21399999
+667,Danau,20365A,ID-KI.111,Noname 55,"Kec. 	Muaralawa	, 	Kab. 	Kutai Barat",Kalimantan Timur,20.95,Kecil,-,1.04750001
+668,Danau,20366A,ID-PA.183,Noname 66,"Kec. Sawai, Kab. Mamberamo Raya",Papua,46.89,Kecil,-,2.34450006
+669,Danau,20367A,ID-PA.133,Noname 16,"Kec. Sawai, Kab. Mamberamo Raya",Papua,33.35,Kecil,-,1.66750002
+670,Danau,20368A,ID-PA.196,Noname 79,"Kec. Sawai, Kab. Mamberamo Raya",Papua,20.75,Kecil,-,1.03750002
+671,Danau,20369A,ID-KS.894,Noname 872,"Kec. 	Kelumpang Utara	, 	Kab. 	Kotabaru",Kalimantan Selatan,46.84,Kecil,-,2.34200001
+672,Danau,20370A,ID-SS.18,Danau Tampang,"Kec. Pedamaran, Kab. Ogan Komering Ilir",Sumatera Selatan,46.83,Kecil,-,2.34150004
+673,Danau,20371A,ID-PA.208,Noname 91,"Kec. Napan, Kab. Nabire",Papua,46.4,Kecil,-,2.31999993
+674,Danau,20372A,ID-PA.235,Noname 118,"Kec. Ulilin, Kab. Merauke",Papua,46.26,Kecil,-,2.31299996
+675,Danau,20373A,ID-PA.240,Noname 123,"Kec. Ulilin, Kab. Merauke",Papua,30.21,Kecil,-,1.51049995
+676,Danau,20374A,ID-PA.125,Noname 8,"Kec. Rofaer, Kab. Mamberamo Raya",Papua,44.66,Kecil,-,2.23300004
+677,Danau,20375A,ID-KI.22,Danau Labuan Cermin,"Kec. 	Biduk-Biduk	, 	Kab. 	Berau",Kalimantan Timur,43.94,Kecil,-,2.19700003
+678,Danau,20376A,ID-PA.234,Noname 117,"Kec. Ulilin, Kab. Merauke",Papua,105.63,Kecil,-,5.28149986
+679,Danau,20377A,ID-PA.272,Noname 155,"Kec. Pantai Timur, Kab. Sarmi",Papua,43.22,Kecil,-,2.16100001
+680,Danau,20378A,ID-KU.63,Noname 57,"Kec. 	Tulinonsoi	, 	Kab. 	Nunukan",Kalimantan Utara,43.13,Kecil,-,2.1565001
+681,Danau,20379A,ID-KT.196,Noname 117,"Kec. 	Kahayan Tengah	, 	Kab. 	Pulang Pisau",Kalimantan Tengah,43.07,Kecil,Oxbow,2.15350008
+682,Danau,20380A,ID-PA.175,Noname 58,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,146.72,Kecil,Oxbow,7.33599997
+683,Danau,20381A,ID-KS.732,Noname 710,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,26.07,Kecil,Bekas tambang,1.30350006
+684,Danau,20382A,ID-NT.157,Noname 16,"Kec. Rote Timur, Kab. Kupang",Nusa Tenggara Timur,39.79,Kecil,-,1.98950005
+685,Danau,20383A,ID-KB.55,Noname 16,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,39.46,Kecil,Oxbow,1.97300005
+686,Danau,20384A,ID-KB.56,Noname 17,"Kec. 	Bunut Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,20.06,Kecil,-,1.00300002
+687,Danau,20385A,ID-AC.41,Danau Perupuk,"Kec. Kota Baharu, Kab. Aceh Singkil",Aceh,30.94,Kecil,Oxbow,1.54700005
+688,Rawa,20386A,ID-BT.21,Rawa Waluh,"Kec. Gunungkaler, Kab. Tangerang",Banten,39.21,Kecil,-,1.9605
+689,Danau,20387A,ID-KS.811,Noname 789,"Kec. 	Sungaipinang	, 	Kab. 	Banjar",Kalimantan Selatan,38.88,Kecil,-,1.94400001
+690,Danau,20388A,ID-KT.211,Noname 132,"Kec. 	Kahayan Tengah	, 	Kab. 	Pulang Pisau",Kalimantan Tengah,38.57,Kecil,Oxbow,1.92850006
+691,Danau,20389A,ID-KT.426,Noname 347,"Kec. 	Rakumpit	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,38.55,Kecil,-,1.92750001
+692,Danau,20390A,ID-KS.919,Noname 897,"Kec. 	Kelumpang Utara	, 	Kab. 	Kotabaru",Kalimantan Selatan,37.41,Kecil,-,1.87049997
+693,Danau,20391A,ID-BT.17,Rawa Apel,"Kec. Malingping, Kab. Lebak",Banten,37.02,Kecil,-,1.85099995
+694,Waduk,1 WA,ID-JT.83,Waduk Banyukuwung,"Kec. Sulang dan Sumber, Kab. Rembang",Jawa Tengah,37.0,Kecil,Buatan,1.85000002
+695,Danau,20392A,ID-KS.525,Noname 503,"Kec. 	Kusan Hulu	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,22.54,Kecil,-,1.12699997
+696,Danau,20393A,ID-PA.459,Noname 342,"Kec. Jair, Kab. Boven Digoel",Papua,36.54,Kecil,-,1.82700002
+697,Waduk,6222 WA,ID-RI.69,Danau Tanjungkudu,"Kec. Rumai dan Minas, Kab. Pekanbaru",Riau,36.28,Kecil,-,1.81400001
+698,Danau,20394A,ID-PA.373,Noname 256,"Kec. Yokari, Kab. Jayapura",Papua,36.12,Kecil,-,1.80599999
+699,Danau,20395A,ID-KS.15,Danau Ambungan,"Kec. 	Pelaihari	, 	Kab. 	Tanah Laut",Kalimantan Selatan,36.05,Kecil,-,1.80250001
+700,Danau,20396A,ID-RI.106,Noname,"Kec. Silaen, Kab. Toba Samosir",Sumatera Utara,35.87,Kecil,-,1.79349995
+701,Danau,20397A,ID-KT.177,Noname 98,"Kec. 	Timpah	, 	Kab. 	Kapuas",Kalimantan Tengah,35.71,Kecil,Oxbow,1.78550005
+702,Waduk,6223 WA,ID-JI.152,Waduk Bajulmati,"Kec. Wongsorejo dan Banyuputih, Kab. Banyuwangi dan Situbondo",Jawa Timur,35.05,Kecil,Buatan,1.75250006
+703,Danau,20399A,ID-PA.264,Noname 147,"Kec. Pantai Timur, Kab. Sarmi",Papua,34.53,Kecil,-,1.72650003
+704,Waduk,6224 WA,ID-JT.96,Waduk Greneng,"Kec. Tunjungan, Kab. Blora",Jawa Tengah,33.82,Kecil,Buatan,1.69099998
+705,Danau,20401A,ID-BT.92,Noname 27,"Kec. Cikande, Kab. Serang",Banten,33.57,Kecil,-,1.67850006
+706,Danau,20402A,ID-KB.141,Noname 102,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,31.45,Kecil,Oxbow,1.57249999
+707,Waduk,6225 WA,ID-JK.40,Waduk Marunda,"Kec. Clincing, Kota Jakarta Utara",DKI Jakarta,33.38,Kecil,Buatan,1.66900003
+708,Danau,20403A,ID-KI.346,Noname 290,"Kec. 	Kotabangun	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,28.42,Kecil,-,1.421
+709,Danau,20404A,ID-KI.347,Noname 291,"Kec. 	Muarawis	, 	Kab. 	Kutaikartanegara",Kalimantan Timur,33.38,Kecil,-,1.66900003
+710,Waduk,6226 WA,ID-BA.9,Waduk Gerokgak,"Kec. Gerokrak, Kab. Buleleng",Bali,33.15,Kecil,Buatan,1.65750003
+711,Danau,20405A,ID-KS.780,Noname 758,"Kec. 	Mantewe	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,32.62,Kecil,-,1.63100004
+712,Danau,20406A,ID-KS.222,Noname 200,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,32.48,Kecil,-,1.62399995
+713,Danau,20407A,ID-KS.223,Noname 201,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,32.39,Kecil,-,1.61950004
+714,Danau,20408A,ID-KT.87,Noname 8,"Kec. 	Arut Selatan	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,32.24,Kecil,Oxbow,1.61199999
+715,Danau,20409A,ID-PA.280,Noname 163,"Kec. Bonggo Timur, Kab. Sarmi",Papua,32.23,Kecil,-,1.61150002
+716,Danau,20410A,ID-KT.166,Noname 87,"Kec. 	Kamipang	, 	Kab. 	Katingan",Kalimantan Tengah,32.2,Kecil,Oxbow,1.61000001
+717,Danau,20411A,ID-KT.156,Noname 77,"Kec. 	Pulau Malan	, 	Kab. 	Katingan",Kalimantan Tengah,32.07,Kecil,Oxbow,1.60350001
+718,Danau,20412A,ID-AC.29,Danau Perupuk,"Kec. Kota Baharu, Kab. Aceh Singkil",Aceh,39.25,Kecil,Paparan banjir,1.96249998
+719,Danau,20413A,ID-PA.210,Noname 93,"Kec. Napan, Kab. Nabire",Papua,30.9,Kecil,-,1.54499996
+720,Danau,20414A,ID-PA.212,Noname 95,"Kec. Makimi, Kab. Nabire",Papua,29.7,Kecil,-,1.48500001
+721,Danau,20415A,ID-KS.5,Danau Galuh Cempaka,"Kec. 	Cempaka	, 		Kota Banjarbaru",Kalimantan Selatan,29.6,Kecil,Buatan,1.48000002
+722,Danau,20416A,ID-KB.160,Noname 121,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,29.5,Kecil,Oxbow,1.47500002
+723,Danau,20417A,ID-KB.162,Noname 123,"Kec. 	Embaloh Hilir	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,29.07,Kecil,Oxbow,1.45350003
+724,Danau,20418A,ID-JI.312,Noname 10,"Kec. Ngasem, Kab. Bojonegoro",Jawa Timur,29.19,Kecil,-,1.45949996
+725,Danau,20419A,ID-KS.870,Noname 848,"Kec. 	Pamukan Selatan	, 	Kab. 	Kotabaru",Kalimantan Selatan,28.79,Kecil,-,1.43949997
+726,Danau,20420A,ID-KS.865,Noname 843,"Kec. 	Pamukan Selatan	, 	Kab. 	Kotabaru",Kalimantan Selatan,27.11,Kecil,-,1.35549998
+727,Danau,20421A,ID-KS.866,Noname 844,"Kec. 	Pamukan Selatan	, 	Kab. 	Kotabaru",Kalimantan Selatan,20.73,Kecil,-,1.03649998
+728,Danau,20422A,ID-KS.221,Noname 199,"Kec. 	Sungailoban	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,28.78,Kecil,-,1.43900001
+729,Danau,20424A,ID-KB.137,Noname 98,"Kec. 	Putussibau Utara	, 	Kab. 	Kapuas Hulu",Kalimantan Barat,28.72,Kecil,Oxbow,1.43599999
+730,Danau,20426A,ID-KT.164,Noname 85,"Kec. 	Kamipang	, 	Kab. 	Katingan",Kalimantan Tengah,26.61,Kecil,-,1.33050001
+731,Danau,20428A,ID-KT.171,Noname 92,"Kec. 	Timpah	, 	Kab. 	Kapuas",Kalimantan Tengah,28.5,Kecil,Oxbow,1.42499995
+732,Danau,20430A,ID-KS.583,Noname 561,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,28.47,Kecil,-,1.42349994
+733,Danau,20431A,ID-KS.745,Noname 723,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,28.39,Kecil,Bekas tambang,1.41949999
+734,Danau,20432A,ID-KT.266,Noname 187,"Kec. 	Teweh Timur	, 	Kab. 	Barito Utara",Kalimantan Tengah,28.35,Kecil,-,1.41750002
+735,Danau,20433A,ID-KU.34,Noname 28,"Kec. 	Sesayap Hilir	, 	Kab. 	Tanatidung",Kalimantan Utara,28.35,Kecil,-,1.41750002
+736,Danau,20434A,ID-KU.35,Noname 29,"Kec. 	Sesayap Hilir	, 	Kab. 	Tanatidung",Kalimantan Utara,22.45,Kecil,-,1.12249994
+737,Danau,20435A,ID-KU.61,Noname 55,"Kec. 	Sesayap Hilir	, 	Kab. 	Tanatidung",Kalimantan Utara,21.6,Kecil,-,1.08000004
+738,Danau,20437A,ID-KU.55,Noname 49,"Kec. 	Sembakung	, 	Kab. 	Nunukan",Kalimantan Utara,28.26,Kecil,Oxbow,1.41299999
+739,Danau,20438A,ID-KU.56,Noname 50,"Kec. 	Sembakung	, 	Kab. 	Nunukan",Kalimantan Utara,25.9,Kecil,Oxbow,1.29499996
+740,Danau,20439A,ID-KU.59,Noname 53,"Kec. 	Sembakung	, 	Kab. 	Nunukan",Kalimantan Utara,23.05,Kecil,Oxbow,1.15250003
+741,Danau,20441A,ID-KT.240,Noname 161,"Kec. 	Bukit Batu	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,301.88,Kecil,-,15.09399986
+742,Danau,20442A,ID-NT.128,Ramuk Rinu,"Kec. Lewa, Kab. Sumba Timur",Nusa Tenggara Timur,27.58,Kecil,-,1.37899995
+743,Waduk,6227 WA,ID-JI.208,Waduk Nipah,"Kec. Banyates, Kab. Sampang",Jawa Timur,27.55,Kecil,Buatan,1.37750006
+744,Danau,20443A,ID-KT.428,Noname 349,"Kec. 	Bukit Batu	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,26.63,Kecil,Oxbow,1.33150005
+745,Danau,20444A,ID-JI.13,Danau Besuki,"Kec. Jabon, Kab. Sidoarjo",Jawa Timur,26.4,Kecil,Buatan,1.32000005
+746,Danau,20445A,ID-KT.159,Noname 80,"Kec. 	Tasikpayawan	, 	Kab. 	Katingan",Kalimantan Tengah,267.5,Kecil,Oxbow,13.375
+747,Danau,20446A,ID-KT.158,Noname 79,"Kec. 	Tasikpayawan	, 	Kab. 	Katingan",Kalimantan Tengah,26.17,Kecil,Oxbow,1.30850005
+748,Danau,20447A,ID-KS.482,Noname 460,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,20.77,Kecil,-,1.03849995
+749,Danau,20448A,ID-KS.564,Noname 542,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,24.09,Kecil,-,1.20449996
+750,Danau,20449A,ID-KS.49,Noname 27,"Kec. 	Jorong	, 	Kab. 	Tanahlaut",Kalimantan Selatan,25.85,Kecil,Bekas tambang,1.29250002
+751,Danau,20450A,ID-KS.48,Noname 26,"Kec. 	Jorong	, 	Kab. 	Tanahlaut",Kalimantan Selatan,24.8,Kecil,Bekas tambang,1.24000001
+752,Danau,20451A,ID-KS.110,Noname 88,"Kec. 	Jorong	, 	Kab. 	Tanahlaut",Kalimantan Selatan,24.78,Kecil,Bekas tambang,1.23899996
+753,Danau,20452A,ID-KS.150,Noname 128,"Kec. 	Simpangempat	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,25.8,Kecil,-,1.28999996
+754,Danau,20453A,ID-BT.57,Situ Rawa Pondok,"Kec. Sindangjaya, Kab. Tangerang",Banten,25.43,Kecil,Buatan,1.27149999
+755,Danau,20454A,ID-JI.62,Ranu Yoso,"Kec. Ranu Yoso, Kab. Lumajang",Jawa Timur,25.08,Kecil,Vulkanik,1.25399995
+756,Danau,20455A,ID-KT.84,Noname 5,"Kec. 	Kotawaringin Lama	, 	Kab. 	Kotawaringin Barat",Kalimantan Tengah,24.96,Kecil,Oxbow,1.24800003
+757,Danau,20456A,ID-PA.311,Noname 194,"Kec. Dumadama, Kab. Paniai",Papua,24.87,Kecil,-,1.24349999
+758,Danau,20457A,ID-KU.72,Noname 66,"Kec. 	Sebuku	, 	Kab. 	Nunukan",Kalimantan Utara,24.73,Kecil,-,1.23650002
+759,Danau,20458A,ID-KS.923,Noname 901,"Kec. 	Kelumpang Utara	, 	Kab. 	Kotabaru",Kalimantan Selatan,24.14,Kecil,-,1.20700002
+760,Danau,20459A,ID-KI.547,Noname 491,"Kec. 	Siluqngurai	, 	Kab. 	Kutai Barat",Kalimantan Timur,23.81,Kecil,-,1.19050002
+761,Danau,20460A,ID-PA.182,Noname 65,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,22.9,Kecil,-,1.14499998
+762,Danau,20461A,ID-KT.105,Noname 26,"Kec. 	Jekan Raya	, 	Kab. 	Kota Palangkaraya",Kalimantan Tengah,22.88,Kecil,Oxbow,1.14400005
+763,Danau,20462A,ID-KS.508,Noname 486,"Kec. 	Satui	, 	Kab. 	Tanahbumbu",Kalimantan Selatan,22.8,Kecil,Bekas tambang,1.13999999
+764,Danau,20463A,ID-PA.226,Noname 109,"Kec. Sota, Kab. Merauke",Papua,22.43,Kecil,-,1.12150002
+765,Danau,20464A,ID-KT.75,Danau Salue,"Kec. 	Kurun 	, 	Kab. 	Gunungmas",Kalimantan Tengah,22.2,Kecil,-,1.11000001
+766,Danau,20465A,ID-JB.520,Noname 216,"Kec. Telukjambe Barat, Kab. Karawang",Jawa Barat,22.15,Kecil,-,1.10749996
+767,Danau,20466A,ID-PA.206,Noname 89,"Kec. Wapoga, Kab. Nabire",Papua,21.71,Kecil,-,1.0855
+768,Danau,20467A,ID-JB.145,Situ Cangkuang,"Kec. Leles, Kab. Garut",Jawa Barat,21.68,Kecil,-,1.08399999
+769,Danau,20468A,ID-PA.180,Noname 63,"Kec. Mamberamo Ulu, Kab. Mamberamo Raya",Papua,21.16,Kecil,-,1.05799997
+770,Danau,20469A,ID-KT.48,Danau Tahai,"Kec. 	Bukitbatu	, 		Kota Palangkaraya",Kalimantan Tengah,20.84,Kecil,Oxbow,1.04200006
+771,Danau,20470A,ID-KS.733,Noname 711,"Kec. 	Kintap	, 	Kab. 	Tanahlaut",Kalimantan Selatan,20.81,Kecil,Bekas tambang,1.04050004
+772,Danau,20471A,ID-KR.17,Noname,"Kec. Kota Batam, Kota Batam",Kepulauan Riau,20.53,Kecil,-,1.02649999
+773,Danau,20472A,ID-KU.68,Noname 62,"Kec. 	Sembakung	, 	Kab. 	Nunukan",Kalimantan Utara,20.52,Kecil,Oxbow,1.02600002
+774,Danau,20473A,ID-KU.74,Noname 68,"Kec. 	Sembakung Atulai	, 	Kab. 	Nunukan",Kalimantan Utara,36.8,Kecil,Oxbow,1.84000003
+775,Danau,20474A,ID-SS.37,Noname,"Kec. Gandus, Kab. Ogan Ilir",Sumatera Selatan,20.47,Kecil,-,1.02349997
+776,Danau,20475A,ID-BT.242,Noname 177,"Kec. Kemiri, Kab. Tangerang",Banten,20.41,Kecil,Buatan,1.02049994
+777,Danau,20476A,ID-PA.205,Noname 88,"Kec. Wapoga, Kab. Nabire",Papua,20.36,Kecil,-,1.01800001
+778,Danau,20477A,ID-KU.70,Noname 64,"Kec. 	Malinau Utara	, 	Kab. 	Nunukan",Kalimantan Utara,20.15,Kecil,Oxbow,1.00750005
+779,Waduk,6228 WA,ID-KI.54,Waduk Sesulu,"Kec. 	Waru	, 	Kab. 	Penajam Paser Utara",Kalimantan Timur,20.12,Kecil,Buatan,1.00600004
+780,Danau,20478A,ID-SS.26,Noname,"Kec. Pangkalanlampam, Kab. Ogan Komering Ilir",Sumatera Selatan,1273.73,Sedang,-,63.68650055
+781,Danau,20479A,ID-PA.462,Noname 345,"Kec. Jair, Kab. Boven Digoel",Papua,86.47,Kecil,-,4.32350016
+782,Danau,20480A,ID-SU.14,Danau Pea Sihotang,"Kec. Lintong Nihutan, Kab. Humbang Hasundutan",Sumatera Utara,77.07,Kecil,-,3.85349989
+783,Danau,20481A,ID-KU.71,Noname 65,"Kec. 	Tulinonsoi	, 	Kab. 	Nunukan",Kalimantan Utara,27.17,Kecil,Oxbow,1.3585

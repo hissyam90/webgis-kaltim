@@ -1,0 +1,15 @@
+# -----------------
+# Python backend
+# -----------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# virtual environments
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+
+.env

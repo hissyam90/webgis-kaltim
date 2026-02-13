@@ -4,7 +4,7 @@ export const KALIMANTAN_BBOX = {
   Kalteng: [111.0, -3.5, 115.5, 1.5],
   Kalsel: [113.0, -4.5, 116.8, -1.5],
   Kaltim: [115.0, -2.8, 119.8, 2.8],
-  Kalut: [115.5, 1.5, 118.8, 4.8],
+  Kaltara: [4.4, 114.5, 1.1, 118.0],
 };
 
 export const bboxToParams = ([minLon, minLat, maxLon, maxLat]) => ({

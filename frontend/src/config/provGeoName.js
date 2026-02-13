@@ -3,5 +3,5 @@ export const PROV_GEO_NAME = {
   Kalteng: "KALIMANTAN TENGAH",
   Kalsel: "KALIMANTAN SELATAN",
   Kaltim: "KALIMANTAN TIMUR",
-  Kalut: "KALIMANTAN UTARA",
+  Kaltara: "KALIMANTAN UTARA",
 };

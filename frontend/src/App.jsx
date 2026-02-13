@@ -1,6 +1,4 @@
 import { useMemo, useState } from "react";
-
-// Chart Library (register once here)
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -13,14 +11,10 @@ import StatsModal from "./components/modals/StatsModal";
 import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 import { point } from "@turf/helpers";
 import { useProvGeojson } from "./hooks/useProvGeojson";
-
-
 import { KALIMANTAN_BBOX, bboxToParams } from "./config/kalimantanBbox";
 import { PROV_GEO_NAME } from "./config/provGeoName";
-
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
-
 import usePembangkit from './hooks/usePembangkit';
 import { useWeather } from "./hooks/useWeather";
 
@@ -29,28 +23,27 @@ export default function App() {
 
   const [selectedProv, setSelectedProv] = useState("Semua");
   const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
-
   const [selectedKategori, setSelectedKategori] = useState("Semua");
   const [searchText, setSearchText] = useState("");
   const [focusLocation, setFocusLocation] = useState(null);
   const [basemap, setBasemap] = useState("dark");
   const [userLocation, setUserLocation] = useState(null);
-
   const [selectedDetail, setSelectedDetail] = useState(null);
   const [showStats, setShowStats] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const { pembangkit, loading } = usePembangkit(API_BASE, bbox);
-  const { weatherData, loadingWeather } = useWeather(selectedDetail);
+  const { weather: weatherData, loading: loadingWeather, error: weatherError } = useWeather(
+    selectedDetail?.latitude, 
+    selectedDetail?.longitude
+  );
 
   const { geo: provGeo } = useProvGeojson();
 
   const selectedProvFeature = useMemo(() => {
     if (!provGeo || selectedProv === "Semua") return null;
-
     const target = PROV_GEO_NAME[selectedProv];
     if (!target) return null;
-
     return provGeo.features.find(
       (f) => String(f?.properties?.Propinsi || "").toUpperCase() === target
     );
@@ -59,12 +52,10 @@ export default function App() {
  const filteredData = useMemo(() => {
   return pembangkit.filter((item) => {
     const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
-
     const query = searchText.toLowerCase();
     const matchSearch =
       (item.nama || "").toLowerCase().includes(query) ||
       (item.region || "").toLowerCase().includes(query);
-
     const matchProv =
       selectedProv === "Semua" ||
       (selectedProvFeature &&
@@ -72,11 +63,9 @@ export default function App() {
           point([Number(item.longitude), Number(item.latitude)]),
           selectedProvFeature
         ));
-
     return matchKategori && matchSearch && matchProv;
   });
 }, [pembangkit, selectedKategori, searchText, selectedProv, selectedProvFeature]);
-
 
   const listKategori = useMemo(() => {
     const setJenis = new Set(pembangkit.map((item) => item.jenis).filter(Boolean));
@@ -135,7 +124,6 @@ export default function App() {
 
   const handleLocateMe = () => {
     if (!navigator.geolocation) return alert("Browser tidak support GPS");
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
@@ -153,8 +141,9 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="bg-gray-900 h-screen flex items-center justify-center text-white">
-        Loading...
+      <div className="bg-slate-900 h-screen flex flex-col items-center justify-center text-white gap-4">
+        <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="animate-pulse text-sm font-medium">Memuat Peta Kalimantan...</p>
       </div>
     );
   }
@@ -178,7 +167,7 @@ export default function App() {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex-1 h-full relative z-0">
+      <div className="flex-1 h-full relative z-0 transition-all duration-300">
         <MapView
           tile={tile}
           filteredData={filteredData}
@@ -197,6 +186,7 @@ export default function App() {
         onClose={() => setSelectedDetail(null)}
         weatherData={weatherData}
         loadingWeather={loadingWeather}
+        weatherError={weatherError} 
       />
 
       <StatsModal showStats={showStats} onClose={() => setShowStats(false)} chartData={chartData} />

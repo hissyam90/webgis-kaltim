@@ -4,7 +4,6 @@ from sqlalchemy import create_engine, text
 import os
 from dotenv import load_dotenv
 
-# Konfigurasi Database
 load_dotenv()
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASSWORD")
@@ -18,7 +17,6 @@ engine = create_engine(DATABASE_URL)
 app = FastAPI()
 
 # NOTE:
-# Jika kamu tidak pakai cookie/session auth, set allow_credentials=False biar aman.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -64,17 +62,14 @@ def get_all_pembangkit(
         conditions = []
         params = {}
 
-        # Filter jenis
         if jenis and jenis.lower() != "semua":
             conditions.append("jnspls ILIKE :jenis")
             params["jenis"] = f"%{jenis}%"
 
-        # Filter region (pulau besar)
         if region and region.lower() != "semua":
             conditions.append("regpln ILIKE :region")
             params["region"] = f"%{region}%"
 
-        # Filter bbox (harus lengkap 4 nilai)
         bbox_values = [minLat, maxLat, minLon, maxLon]
         if any(v is not None for v in bbox_values):
             if not all(v is not None for v in bbox_values):
@@ -83,7 +78,6 @@ def get_all_pembangkit(
                     detail="bbox harus lengkap: minLat, maxLat, minLon, maxLon"
                 )
 
-            # Optional: validasi range
             if minLat > maxLat:
                 raise HTTPException(status_code=400, detail="minLat tidak boleh > maxLat")
             if minLon > maxLon:
@@ -96,7 +90,6 @@ def get_all_pembangkit(
                 "minLon": minLon, "maxLon": maxLon,
             })
 
-        # Gabung WHERE jika ada kondisi
         if conditions:
             base_sql += " WHERE " + " AND ".join(conditions)
 
@@ -114,7 +107,6 @@ def get_all_pembangkit(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# OPTIONAL: endpoint lama kamu, tetap bisa dipakai
 @app.get("/api/pembangkit/by-jenis/{jenis}")
 def get_pembangkit_by_jenis(jenis: str):
     try:

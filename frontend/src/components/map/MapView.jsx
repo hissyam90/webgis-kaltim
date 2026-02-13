@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, Marker } from "react-leaflet";
 import FlyToLocation from "./FlyToLocation";
 import { getColor } from "../../utils/getColor";
+import { GeoJSON } from "react-leaflet";
 
 export default function MapView({
   tile,
@@ -8,6 +9,7 @@ export default function MapView({
   userLocation,
   focusLocation,
   onOpenDetail,
+  selectedProvFeature,
 }) {
   return (
     <div className="flex-1 h-full relative z-0">
@@ -56,6 +58,18 @@ export default function MapView({
             </Popup>
           </CircleMarker>
         ))}
+
+
+        {selectedProvFeature && (
+        <GeoJSON
+            data={selectedProvFeature}
+            style={{
+            weight: 2,
+            fillOpacity: 0.05,
+            }}
+        />
+        )}
+
       </MapContainer>
     </div>
   );

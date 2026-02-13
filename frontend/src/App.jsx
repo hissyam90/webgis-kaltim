@@ -10,8 +10,14 @@ import MapControls from "./components/map/MapControls";
 import LegendBox from "./components/map/Legend";
 import DetailModal from "./components/modals/DetailModal";
 import StatsModal from "./components/modals/StatsModal";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
+import { point } from "@turf/helpers";
+import { useProvGeojson } from "./hooks/useProvGeojson";
 
-import { KALIMANTAN_PROV_BBOX } from "./config/kalimantanBbox";
+
+import { KALIMANTAN_BBOX, bboxToParams } from "./config/kalimantanBbox";
+import { PROV_GEO_NAME } from "./config/provGeoName";
+
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
 
@@ -22,7 +28,7 @@ export default function App() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const [selectedProv, setSelectedProv] = useState("Semua");
-  const [bbox, setBbox] = useState(KALIMANTAN_PROV_BBOX.Semua);
+  const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
 
   const [selectedKategori, setSelectedKategori] = useState("Semua");
   const [searchText, setSearchText] = useState("");
@@ -37,17 +43,40 @@ export default function App() {
   const { pembangkit, loading } = usePembangkit(API_BASE, bbox);
   const { weatherData, loadingWeather } = useWeather(selectedDetail);
 
-  const filteredData = useMemo(() => {
-    return pembangkit.filter((item) => {
-      const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
-      const query = searchText.toLowerCase();
-      const matchSearch =
-        (item.nama || "").toLowerCase().includes(query) ||
-        (item.region || "").toLowerCase().includes(query);
+  const { geo: provGeo } = useProvGeojson();
 
-      return matchKategori && matchSearch;
-    });
-  }, [selectedKategori, searchText, pembangkit]);
+  const selectedProvFeature = useMemo(() => {
+    if (!provGeo || selectedProv === "Semua") return null;
+
+    const target = PROV_GEO_NAME[selectedProv];
+    if (!target) return null;
+
+    return provGeo.features.find(
+      (f) => String(f?.properties?.Propinsi || "").toUpperCase() === target
+    );
+  }, [provGeo, selectedProv]);
+
+ const filteredData = useMemo(() => {
+  return pembangkit.filter((item) => {
+    const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
+
+    const query = searchText.toLowerCase();
+    const matchSearch =
+      (item.nama || "").toLowerCase().includes(query) ||
+      (item.region || "").toLowerCase().includes(query);
+
+    const matchProv =
+      selectedProv === "Semua" ||
+      (selectedProvFeature &&
+        booleanPointInPolygon(
+          point([Number(item.longitude), Number(item.latitude)]),
+          selectedProvFeature
+        ));
+
+    return matchKategori && matchSearch && matchProv;
+  });
+}, [pembangkit, selectedKategori, searchText, selectedProv, selectedProvFeature]);
+
 
   const listKategori = useMemo(() => {
     const setJenis = new Set(pembangkit.map((item) => item.jenis).filter(Boolean));
@@ -97,9 +126,9 @@ export default function App() {
 
   const onSelectProv = (prov) => {
     setSelectedProv(prov);
-    setBbox(KALIMANTAN_PROV_BBOX[prov]);
+    setBbox(bboxToParams(KALIMANTAN_BBOX[prov]));
   };
-
+  
   const handleOpenDetail = (item) => {
     setSelectedDetail(item);
   };
@@ -133,7 +162,7 @@ export default function App() {
   return (
     <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden relative">
       <Sidebar
-        KALIMANTAN_PROV_BBOX={KALIMANTAN_PROV_BBOX}
+        KALIMANTAN_PROV_BBOX={KALIMANTAN_BBOX}
         selectedProv={selectedProv}
         onSelectProv={onSelectProv}
         selectedKategori={selectedKategori}
@@ -156,6 +185,7 @@ export default function App() {
           userLocation={userLocation}
           focusLocation={focusLocation}
           onOpenDetail={handleOpenDetail}
+          selectedProvFeature={selectedProvFeature}
         />
 
         <MapControls basemap={basemap} setBasemap={setBasemap} onLocateMe={handleLocateMe} />

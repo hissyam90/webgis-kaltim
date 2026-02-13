@@ -8,10 +8,11 @@ export default function MapView({
     filteredData = [], 
     focusLocation, 
     userLocation, 
-    tile,                
-    onOpenDetail,        
-    selectedProvFeature  
+    tile,
+    onOpenDetail,
+    selectedProvFeature 
 }) {
+  
   return (
     <MapContainer 
         center={[0.5386586, 116.419389]} 
@@ -19,17 +20,18 @@ export default function MapView({
         className="h-full w-full bg-slate-800" 
         zoomControl={false}
     >
-        {/* Layer Peta Dasar (Ambil dari props) */}
+        {/* Layer Peta Dasar */}
         <TileLayer attribution={tile?.attr} url={tile?.url} />
         
         {/* Efek Terbang ke Lokasi */}
         <FlyToLocation target={focusLocation} />
 
-        {/* Fitur Garis Batas Wilayah*/}
+        {/* --- GEOJSON BATAS WILAYAH --- */}
         {selectedProvFeature && (
             <GeoJSON 
                 key={selectedProvFeature.properties.Propinsi} 
                 data={selectedProvFeature}
+                interactive={false} 
                 style={{
                     color: "#0ea5e9", 
                     weight: 2,
@@ -60,7 +62,6 @@ export default function MapView({
                 }}
                 eventHandlers={{
                     click: () => {
-                        // Perbaiki pemanggilan event handler
                         if (onOpenDetail) onOpenDetail(item);
                     }
                 }}
@@ -71,7 +72,6 @@ export default function MapView({
                         <p className="text-xs mb-1">Jenis: <b>{item.jenis}</b></p>
                         <p className="text-xs mb-3">Region: {item.region}</p>
                         <button 
-                            // Perbaiki onClick di sini juga
                             onClick={() => onOpenDetail && onOpenDetail(item)}
                             className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
                         >

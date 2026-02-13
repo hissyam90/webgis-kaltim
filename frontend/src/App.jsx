@@ -33,6 +33,8 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const { pembangkit, loading } = usePembangkit(API_BASE, bbox);
+  
+  // Ambil data cuaca berdasarkan lokasi yang sedang dipilih di modal detail
   const { weather: weatherData, loading: loadingWeather, error: weatherError } = useWeather(
     selectedDetail?.latitude, 
     selectedDetail?.longitude
@@ -40,6 +42,7 @@ export default function App() {
 
   const { geo: provGeo } = useProvGeojson();
 
+  // Memfilter fitur GeoJSON berdasarkan provinsi yang dipilih untuk menampilkan garis batas biru
   const selectedProvFeature = useMemo(() => {
     if (!provGeo || selectedProv === "Semua") return null;
     const target = PROV_GEO_NAME[selectedProv];
@@ -49,23 +52,24 @@ export default function App() {
     );
   }, [provGeo, selectedProv]);
 
- const filteredData = useMemo(() => {
-  return pembangkit.filter((item) => {
-    const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
-    const query = searchText.toLowerCase();
-    const matchSearch =
-      (item.nama || "").toLowerCase().includes(query) ||
-      (item.region || "").toLowerCase().includes(query);
-    const matchProv =
-      selectedProv === "Semua" ||
-      (selectedProvFeature &&
-        booleanPointInPolygon(
-          point([Number(item.longitude), Number(item.latitude)]),
-          selectedProvFeature
-        ));
-    return matchKategori && matchSearch && matchProv;
-  });
-}, [pembangkit, selectedKategori, searchText, selectedProv, selectedProvFeature]);
+  // Logika filter data pembangkit berdasarkan kategori, teks pencarian, dan batas wilayah (GeoJSON)
+  const filteredData = useMemo(() => {
+    return pembangkit.filter((item) => {
+      const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
+      const query = searchText.toLowerCase();
+      const matchSearch =
+        (item.nama || "").toLowerCase().includes(query) ||
+        (item.region || "").toLowerCase().includes(query);
+      const matchProv =
+        selectedProv === "Semua" ||
+        (selectedProvFeature &&
+          booleanPointInPolygon(
+            point([Number(item.longitude), Number(item.latitude)]),
+            selectedProvFeature
+          ));
+      return matchKategori && matchSearch && matchProv;
+    });
+  }, [pembangkit, selectedKategori, searchText, selectedProv, selectedProvFeature]);
 
   const listKategori = useMemo(() => {
     const setJenis = new Set(pembangkit.map((item) => item.jenis).filter(Boolean));
@@ -135,8 +139,13 @@ export default function App() {
     );
   };
 
+  // Fungsi export mengirim selectedProv dan selectedKategori untuk nama file dinamis
   const handleExport = () => {
-    exportPembangkitCsv({ filteredData, selectedKategori });
+    exportPembangkitCsv({ 
+      filteredData, 
+      selectedKategori, 
+      selectedProv 
+    });
   };
 
   if (loading) {

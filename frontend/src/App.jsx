@@ -21,7 +21,7 @@ import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
 
-import { usePembangkit } from "./hooks/usePembangkit";
+import usePembangkit from './hooks/usePembangkit';
 import { useWeather } from "./hooks/useWeather";
 
 export default function App() {

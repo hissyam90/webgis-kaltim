@@ -17,7 +17,7 @@ DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 engine = create_engine(DATABASE_URL)
 
 def clean_and_import():
-    csv_file = "../data/pembangkit_listrik_kalimantan.csv"
+    csv_file = "data/pembangkit_listrik_kalimantan.csv"
     
     print(f" 1. Membaca file: {csv_file} ...")
     

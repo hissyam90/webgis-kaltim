@@ -1,76 +1,83 @@
-import { MapContainer, TileLayer, CircleMarker, Popup, Marker } from "react-leaflet";
-import FlyToLocation from "./FlyToLocation";
-import { getColor } from "../../utils/getColor";
-import { GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Popup, Marker } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import FlyToLocation from './FlyToLocation'
+import { getColor } from '../../utils/getColor'
+import '../../lib/leafletIconFix' // Pastikan file ini ada, atau hapus baris ini jika error
 
-export default function MapView({
-  tile,
-  filteredData,
-  userLocation,
-  focusLocation,
-  onOpenDetail,
-  selectedProvFeature,
+export default function MapView({ 
+    filteredData = [], 
+    focusLocation, 
+    userLocation, 
+    basemap = "dark", 
+    onMarkerClick 
 }) {
+  
+  // Helper untuk memilih Tile Layer
+  const getTileLayer = () => {
+    switch(basemap) {
+      case "satellite": return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", attr: "Tiles © Esri" }
+      case "osm": return { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", attr: "© OpenStreetMap" }
+      case "dark": default: return { url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", attr: "© CartoDB Dark Matter" }
+    }
+  }
+
+  const tile = getTileLayer()
+
   return (
-    <div className="flex-1 h-full relative z-0">
-      <MapContainer
-        center={[0.5386586, 116.419389]}
-        zoom={6}
-        className="h-full w-full bg-slate-800"
+    <MapContainer 
+        center={[0.5386586, 116.419389]} 
+        zoom={6} 
+        className="h-full w-full bg-slate-800" 
         zoomControl={false}
-      >
+    >
+        {/* Layer Peta Dasar */}
         <TileLayer attribution={tile.attr} url={tile.url} />
+        
+        {/* Efek Terbang ke Lokasi */}
         <FlyToLocation target={focusLocation} />
 
+        {/* Marker Lokasi Saya (GPS) */}
         {userLocation && (
-          <Marker position={[userLocation.latitude, userLocation.longitude]}>
-            <Popup>Lokasi Saya</Popup>
-          </Marker>
+            <Marker position={[userLocation.latitude, userLocation.longitude]}>
+                <Popup>📍 Lokasi Saya</Popup>
+            </Marker>
         )}
 
+        {/* Loop Data Pembangkit */}
         {filteredData.map((item, idx) => (
-          <CircleMarker
-            key={idx}
-            center={[Number(item.latitude), Number(item.longitude)]}
-            radius={6}
-            pathOptions={{
-              color: getColor(item.jenis),
-              fillColor: getColor(item.jenis),
-              fillOpacity: 0.8,
-              weight: 1,
-            }}
-          >
-            <Popup>
-              <div className="min-w-[150px] font-sans text-slate-800">
-                <h3 className="font-bold text-sm border-b pb-1 mb-2">{item.nama}</h3>
-                <p className="text-xs mb-1">
-                  Jenis: <b>{item.jenis}</b>
-                </p>
-                <p className="text-xs mb-3">Region: {item.region}</p>
-
-                <button
-                  onClick={() => onOpenDetail(item)}
-                  className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
-                >
-                  Lihat Detail
-                </button>
-              </div>
-            </Popup>
-          </CircleMarker>
+            <CircleMarker 
+                key={idx} 
+                center={[item.latitude, item.longitude]}
+                pathOptions={{ 
+                    color: getColor(item.jenis), 
+                    fillColor: getColor(item.jenis), 
+                    fillOpacity: 0.8, 
+                    weight: 1, 
+                    radius: 8 
+                }}
+                // --- BAGIAN PENTING: Event Klik ---
+                eventHandlers={{
+                    click: () => {
+                        console.log("Marker diklik:", item.nama); // Debugging
+                        if (onMarkerClick) onMarkerClick(item);
+                    }
+                }}
+            >
+                <Popup>
+                    <div className="min-w-[150px] font-sans text-slate-800">
+                        <h3 className="font-bold text-sm border-b pb-1 mb-2">{item.nama}</h3>
+                        <p className="text-xs mb-1">Jenis: <b>{item.jenis}</b></p>
+                        <p className="text-xs mb-3">Region: {item.region}</p>
+                        <button 
+                            onClick={() => onMarkerClick && onMarkerClick(item)}
+                            className="w-full bg-emerald-600 text-white text-xs py-1 rounded hover:bg-emerald-700 transition"
+                        >
+                            Lihat Detail
+                        </button>
+                    </div>
+                </Popup>
+            </CircleMarker>
         ))}
-
-
-        {selectedProvFeature && (
-        <GeoJSON
-            data={selectedProvFeature}
-            style={{
-            weight: 2,
-            fillOpacity: 0.05,
-            }}
-        />
-        )}
-
-      </MapContainer>
-    </div>
-  );
+    </MapContainer>
+  )
 }

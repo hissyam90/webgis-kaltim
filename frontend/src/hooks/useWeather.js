@@ -1,40 +1,40 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export function useWeather(selectedDetail) {
-  const [weatherData, setWeatherData] = useState(null);
-  const [loadingWeather, setLoadingWeather] = useState(false);
+export function useWeather(latitude, longitude) {
+    const [weather, setWeather] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!selectedDetail) return;
+    useEffect(() => {
+        // Cek apakah koordinat valid (tidak null/undefined/0)
+        if (!latitude || !longitude) {
+            setWeather(null);
+            return;
+        }
 
-    const lat = Number(selectedDetail.latitude);
-    const lon = Number(selectedDetail.longitude);
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+        const fetchWeather = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                // Fetch data dari Open-Meteo
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto`;
+                const res = await axios.get(url);
+                
+                console.log("Data Cuaca:", res.data.current_weather);
+                setWeather(res.data.current_weather);
+            } catch (err) {
+                console.error("Gagal ambil cuaca:", err);
+                setError(err);
+                setWeather(null);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    let cancelled = false;
-    setLoadingWeather(true);
-    setWeatherData(null);
+        fetchWeather();
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+    }, [latitude, longitude]); 
 
-    axios
-      .get(url)
-      .then((res) => {
-        if (cancelled) return;
-        setWeatherData(res.data?.current_weather ?? null);
-        setLoadingWeather(false);
-      })
-      .catch((err) => {
-        if (cancelled) return;
-        console.error("Gagal ambil cuaca:", err);
-        setLoadingWeather(false);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [selectedDetail]);
-
-  return { weatherData, loadingWeather };
+    return { weather, loading, error };
 }

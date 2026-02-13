@@ -1,41 +1,43 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export function usePembangkit(API_BASE, bbox) {
-  const [pembangkit, setPembangkit] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function usePembangkit() {
+    const [pembangkit, setPembangkit] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!API_BASE) {
-      setError(new Error("VITE_API_BASE_URL belum diset"));
-      setLoading(false);
-      return;
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get('http://127.0.0.1:8000/api/pembangkit');
+                
+                console.log("DATA DARI BACKEND:", response.data);
 
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
+                if (Array.isArray(response.data)) {
+                    console.log("Format Array terdeteksi.");
+                    setPembangkit(response.data);
+                } 
+                else if (response.data.data && Array.isArray(response.data.data)) {
+                    console.log("Format Object terdeteksi.");
+                    setPembangkit(response.data.data);
+                } 
+                else {
+                    console.warn("Format data tidak dikenali, set ke kosong.");
+                    setPembangkit([]);
+                }
 
-    axios
-      .get(`${API_BASE}/api/pembangkit`, { params: bbox }) 
-      .then((res) => {
-        if (cancelled) return;
-        setPembangkit(res.data?.data || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (cancelled) return;
-        console.error("Gagal ambil data:", err);
-        setPembangkit([]);
-        setError(err);
-        setLoading(false);
-      });
+            } catch (err) {
+                console.error("Gagal mengambil data:", err);
+                setError(err);
+                setPembangkit([]); 
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    return () => {
-      cancelled = true;
-    };
-  }, [API_BASE, bbox]);
+        fetchData();
+    }, []);
 
-  return { pembangkit, loading, error };
+    return { pembangkit, loading, error };
 }

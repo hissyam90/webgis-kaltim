@@ -17,6 +17,7 @@ import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
 import usePembangkit from './hooks/usePembangkit';
 import { useWeather } from "./hooks/useWeather";
+import { useDebouncedValue } from "./hooks/useDebouncedValue";
 
 export default function App() {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
@@ -31,6 +32,7 @@ export default function App() {
   const [selectedDetail, setSelectedDetail] = useState(null);
   const [showStats, setShowStats] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const debouncedSearch = useDebouncedValue(searchText, 250);
 
   const { pembangkit, loading } = usePembangkit(API_BASE, bbox);
   
@@ -54,22 +56,28 @@ export default function App() {
 
   // Logika filter data pembangkit berdasarkan kategori, teks pencarian, dan batas wilayah (GeoJSON)
   const filteredData = useMemo(() => {
+    const query = debouncedSearch.trim().toLowerCase();
+    const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
+
     return pembangkit.filter((item) => {
-      const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
-      const query = searchText.toLowerCase();
-      const matchSearch =
-        (item.nama || "").toLowerCase().includes(query) ||
-        (item.region || "").toLowerCase().includes(query);
-      const matchProv =
-        selectedProv === "Semua" ||
-        (selectedProvFeature &&
-          booleanPointInPolygon(
-            point([Number(item.longitude), Number(item.latitude)]),
-            selectedProvFeature
-          ));
-      return matchKategori && matchSearch && matchProv;
+      const matchKategori =
+        selectedKategori === "Semua" || item.jenis === selectedKategori;
+
+      const name = (item.nama || "").toLowerCase();
+      const region = (item.region || "").toLowerCase();
+      const matchSearch = !query || name.includes(query) || region.includes(query);
+
+      if (!needProvFilter) return matchKategori && matchSearch;
+
+      const lon = Number(item.longitude);
+      const lat = Number(item.latitude);
+      if (!Number.isFinite(lon) || !Number.isFinite(lat)) return false;
+
+      const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
+      return matchKategori && matchSearch && inside;
     });
-  }, [pembangkit, selectedKategori, searchText, selectedProv, selectedProvFeature]);
+  }, [pembangkit, selectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
+
 
   const listKategori = useMemo(() => {
     const setJenis = new Set(pembangkit.map((item) => item.jenis).filter(Boolean));

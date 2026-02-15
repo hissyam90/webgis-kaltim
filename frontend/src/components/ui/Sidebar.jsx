@@ -1,4 +1,5 @@
 import { getColor } from "../../utils/getColor";
+import { formatKategoriOption } from "../../utils/kategoriLabel";
 
 export default function Sidebar({
   KALIMANTAN_PROV_BBOX,
@@ -68,9 +69,9 @@ export default function Sidebar({
               onChange={(e) => setSelectedKategori(e.target.value)}
               className="w-full bg-slate-800 border border-slate-700 text-white text-sm rounded-lg p-2.5 outline-none focus:border-emerald-500 transition-all cursor-pointer appearance-none"
             >
-              {listKategori.map((kat, idx) => (
-                <option key={idx} value={kat}>
-                  {kat}
+              {listKategori.map((kat) => (
+                <option key={kat} value={kat}>
+                  {formatKategoriOption(kat)}
                 </option>
               ))}
             </select>

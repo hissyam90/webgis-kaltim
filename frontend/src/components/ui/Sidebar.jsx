@@ -23,14 +23,14 @@ export default function Sidebar({
     <div
       className={`${
         isSidebarOpen ? "w-1/3 md:w-1/4" : "w-0"
-      } relative z-[1000] flex h-full flex-col border-r border-slate-700 bg-slate-900 text-white shadow-2xl transition-all duration-300 ease-in-out`}
+      } relative z-[1000] flex h-full flex-col border-r border-slate-700 bg-slate-900 text-white shadow-[18px_0_40px_rgba(15,23,42,0.28)] transition-all duration-300 ease-in-out`}
     >
       <div className={`flex h-full flex-col ${!isSidebarOpen && "hidden"}`}>
-        <div className="border-b border-slate-800 bg-slate-900 p-5">
+        <div className="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-900/95 p-5 shadow-[inset_0_-1px_0_rgba(51,65,85,0.35)]">
           <h1 className="text-2xl font-bold tracking-tight text-emerald-400">WebGIS</h1>
-          <p className="mb-5 text-xs text-slate-400">Peta Sebaran Energi Kalimantan</p>
+          <p className="mb-6 text-xs text-slate-400">Peta Sebaran Energi Kalimantan</p>
 
-          <div className="mb-4">
+          <div className="mb-5 rounded-2xl border border-slate-800/80 bg-slate-800/35 p-4 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
               Filter Wilayah
             </p>
@@ -51,7 +51,7 @@ export default function Sidebar({
             </div>
           </div>
 
-          <div className="mb-4">
+          <div className="mb-5 rounded-2xl border border-slate-800/80 bg-slate-800/35 p-4 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
               Jenis Data
             </p>
@@ -79,8 +79,11 @@ export default function Sidebar({
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4 rounded-2xl border border-slate-800/80 bg-slate-800/35 p-4 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
             <div className="relative">
+              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-slate-500">
+                🔍
+              </span>
               <input
                 type="text"
                 placeholder={
@@ -90,7 +93,7 @@ export default function Sidebar({
                 }
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2.5 pl-3 text-sm text-white outline-none transition-all placeholder:text-slate-600 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2.5 pl-10 text-sm text-white outline-none transition-all placeholder:text-slate-600 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
@@ -120,14 +123,14 @@ export default function Sidebar({
               </button>
               <button
                 onClick={onExport}
-                className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500 bg-emerald-600 py-2.5 text-[10px] font-bold text-white transition-all active:scale-95 hover:bg-emerald-700"
+                className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700"
               >
                 Export CSV
               </button>
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-5 flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase text-slate-500">Status Data</span>
             <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-400">
               {filteredData.length} Ditemukan

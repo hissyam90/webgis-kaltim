@@ -25,7 +25,7 @@ export default function App() {
   const [dataMode, setDataMode] = useState("generator");
   const [selectedProv, setSelectedProv] = useState("Semua");
   const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
-  const [selectedKategori, setSelectedKategori] = useState("Semua");
+  const [selectedKategoriList, setSelectedKategoriList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [focusLocation, setFocusLocation] = useState(null);
   const [basemap, setBasemap] = useState("dark");
@@ -62,7 +62,8 @@ export default function App() {
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
     return activeData.filter((item) => {
-      const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
+      const matchKategori =
+        selectedKategoriList.length === 0 || selectedKategoriList.includes(item.jenis);
 
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
@@ -79,7 +80,7 @@ export default function App() {
       const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
       return matchKategori && matchSearch && inside;
     });
-  }, [activeData, selectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
+  }, [activeData, selectedKategoriList, debouncedSearch, selectedProv, selectedProvFeature]);
 
   const listKategori = useMemo(() => {
     const values = [...new Set(activeData.map((item) => item.jenis).filter(Boolean))];
@@ -90,10 +91,34 @@ export default function App() {
   }, [activeData, dataMode]);
 
   useEffect(() => {
-    if (!listKategori.includes(selectedKategori)) {
-      setSelectedKategori("Semua");
+    setSelectedKategoriList((prev) =>
+      prev.filter((kategori) => listKategori.includes(kategori))
+    );
+  }, [listKategori]);
+
+  const selectedKategoriValue = selectedKategoriList.length === 1 ? selectedKategoriList[0] : "Semua";
+
+  const handleSelectKategori = (kategori) => {
+    if (kategori === "Semua") {
+      setSelectedKategoriList([]);
+      return;
     }
-  }, [listKategori, selectedKategori]);
+
+    setSelectedKategoriList([kategori]);
+  };
+
+  const handleToggleKategori = (kategori) => {
+    if (!kategori || kategori === "Semua") {
+      setSelectedKategoriList([]);
+      return;
+    }
+
+    setSelectedKategoriList((prev) =>
+      prev.includes(kategori)
+        ? prev.filter((item) => item !== kategori)
+        : [...prev, kategori]
+    );
+  };
 
   const countsByKategori = useMemo(() => {
     return activeData.reduce((acc, item) => {
@@ -176,9 +201,12 @@ export default function App() {
   };
 
   const handleExport = () => {
+    const kategoriLabel =
+      selectedKategoriList.length === 0 ? "Semua" : selectedKategoriList.join("-");
+
     exportPembangkitCsv({
       filteredData,
-      selectedKategori,
+      selectedKategori: kategoriLabel,
       selectedProv,
     });
   };
@@ -200,8 +228,8 @@ export default function App() {
         KALIMANTAN_PROV_BBOX={KALIMANTAN_BBOX}
         selectedProv={selectedProv}
         onSelectProv={onSelectProv}
-        selectedKategori={selectedKategori}
-        setSelectedKategori={setSelectedKategori}
+        selectedKategori={selectedKategoriValue}
+        setSelectedKategori={handleSelectKategori}
         listKategori={listKategori}
         searchText={searchText}
         setSearchText={setSearchText}
@@ -227,8 +255,9 @@ export default function App() {
         <MapControls basemap={basemap} setBasemap={setBasemap} onLocateMe={handleLocateMe} />
         <LegendBox
           listKategori={listKategori}
-          selectedKategori={selectedKategori}
-          onSelectKategori={setSelectedKategori}
+          selectedKategori={selectedKategoriList}
+          onSelectKategori={handleToggleKategori}
+          onResetKategori={() => setSelectedKategoriList([])}
           countsByKategori={countsByKategori}
           dataMode={dataMode}
         />

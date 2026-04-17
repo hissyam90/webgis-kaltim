@@ -21,7 +21,7 @@ import { useDebouncedValue } from "./hooks/useDebouncedValue";
 import potensiData from "./data/potensi.json";
 
 export default function App() {
-  const [dataMode, setDataMode] = useState("generator"); // NEW
+  const [dataMode, setDataMode] = useState("generator");
   const [selectedProv, setSelectedProv] = useState("Semua");
   const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
   const [selectedKategori, setSelectedKategori] = useState("Semua");
@@ -48,11 +48,10 @@ export default function App() {
     const target = PROV_GEO_NAME[selectedProv];
     if (!target) return null;
     return provGeo.features.find(
-      (f) => String(f?.properties?.Propinsi || "").toUpperCase() === target
+      (feature) => String(feature?.properties?.Propinsi || "").toUpperCase() === target
     );
   }, [provGeo, selectedProv]);
 
-  // NEW: choose active dataset
   const activeData = useMemo(() => {
     return dataMode === "potensi" ? potensiData : pembangkit;
   }, [dataMode, pembangkit]);
@@ -62,17 +61,13 @@ export default function App() {
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
     return activeData.filter((item) => {
-      const matchKategori =
-        selectedKategori === "Semua" || item.jenis === selectedKategori;
+      const matchKategori = selectedKategori === "Semua" || item.jenis === selectedKategori;
 
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
       const lokasi = (item.lokasi || "").toLowerCase();
       const matchSearch =
-        !query ||
-        name.includes(query) ||
-        region.includes(query) ||
-        lokasi.includes(query);
+        !query || name.includes(query) || region.includes(query) || lokasi.includes(query);
 
       if (!needProvFilter) return matchKategori && matchSearch;
 
@@ -111,13 +106,14 @@ export default function App() {
       const key = item.jenis || "Tidak Diketahui";
       stats[key] = (stats[key] || 0) + 1;
     });
+
     return {
       labels: Object.keys(stats),
       datasets: [
         {
           label: "Jumlah Unit",
           data: Object.values(stats),
-          backgroundColor: Object.keys(stats).map((k) => getColor(k)),
+          backgroundColor: Object.keys(stats).map((key) => getColor(key)),
           borderColor: "#1e293b",
           borderWidth: 2,
         },
@@ -130,7 +126,10 @@ export default function App() {
       case "satellite":
         return {
           url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          labelUrl:
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
           attr: "Tiles © Esri",
+          labelAttr: "Labels © Esri",
         };
       case "osm":
         return {
@@ -140,8 +139,11 @@ export default function App() {
       case "dark":
       default:
         return {
-          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{y}/{x}{r}.png",
-          attr: "© CartoDB Dark Matter",
+          url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+          labelUrl:
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+          attr: "Basemap © Esri, HERE, Garmin, FAO, NOAA, USGS",
+          labelAttr: "Labels © Esri",
         };
     }
   }, [basemap]);
@@ -157,6 +159,7 @@ export default function App() {
 
   const handleLocateMe = () => {
     if (!navigator.geolocation) return alert("Browser tidak support GPS");
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
@@ -172,21 +175,21 @@ export default function App() {
     exportPembangkitCsv({
       filteredData,
       selectedKategori,
-      selectedProv
+      selectedProv,
     });
   };
 
   if (loading && dataMode === "generator") {
     return (
-      <div className="bg-slate-900 h-screen flex flex-col items-center justify-center text-white gap-4">
-        <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="flex h-screen flex-col items-center justify-center gap-4 bg-slate-900 text-white">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent" />
         <p className="animate-pulse text-sm font-medium">Memuat Data Generator...</p>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden relative">
+    <div className="relative flex h-screen w-screen overflow-hidden bg-gray-900 font-sans">
       <Sidebar
         dataMode={dataMode}
         setDataMode={setDataMode}
@@ -206,7 +209,7 @@ export default function App() {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex-1 h-full relative z-0 transition-all duration-300">
+      <div className="relative z-0 h-full flex-1 transition-all duration-300">
         <MapView
           tile={tile}
           filteredData={filteredData}

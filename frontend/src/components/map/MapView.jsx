@@ -36,6 +36,9 @@ export default function MapView({
       zoomControl={false}
     >
       <TileLayer attribution={tile?.attr} url={tile?.url} />
+      {tile?.labelUrl && (
+        <TileLayer attribution={tile?.labelAttr || tile?.attr} url={tile.labelUrl} pane="overlayPane" />
+      )}
       <FlyToLocation target={focusLocation} />
 
       {selectedProvFeature && (

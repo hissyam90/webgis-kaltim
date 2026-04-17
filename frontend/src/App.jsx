@@ -15,6 +15,7 @@ import { KALIMANTAN_BBOX, bboxToParams } from "./config/kalimantanBbox";
 import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
+import { formatKategoriOption } from "./utils/kategoriLabel";
 import usePembangkit from "./hooks/usePembangkit";
 import { useWeather } from "./hooks/useWeather";
 import { useDebouncedValue } from "./hooks/useDebouncedValue";
@@ -81,9 +82,12 @@ export default function App() {
   }, [activeData, selectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
 
   const listKategori = useMemo(() => {
-    const setJenis = new Set(activeData.map((item) => item.jenis).filter(Boolean));
-    return ["Semua", ...setJenis];
-  }, [activeData]);
+    const values = [...new Set(activeData.map((item) => item.jenis).filter(Boolean))];
+    values.sort((a, b) =>
+      formatKategoriOption(a, dataMode).localeCompare(formatKategoriOption(b, dataMode), "id")
+    );
+    return ["Semua", ...values];
+  }, [activeData, dataMode]);
 
   useEffect(() => {
     if (!listKategori.includes(selectedKategori)) {
@@ -209,7 +213,7 @@ export default function App() {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="relative z-0 h-full flex-1 transition-all duration-300">
+      <div className="relative z-0 h-full min-w-0 flex-1 transition-all duration-300">
         <MapView
           tile={tile}
           filteredData={filteredData}
@@ -226,6 +230,7 @@ export default function App() {
           selectedKategori={selectedKategori}
           onSelectKategori={setSelectedKategori}
           countsByKategori={countsByKategori}
+          dataMode={dataMode}
         />
       </div>
 
@@ -238,7 +243,12 @@ export default function App() {
         dataMode={dataMode}
       />
 
-      <StatsModal showStats={showStats} onClose={() => setShowStats(false)} chartData={chartData} />
+      <StatsModal
+        showStats={showStats}
+        onClose={() => setShowStats(false)}
+        chartData={chartData}
+        dataMode={dataMode}
+      />
     </div>
   );
 }

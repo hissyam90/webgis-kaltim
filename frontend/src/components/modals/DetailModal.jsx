@@ -1,47 +1,59 @@
-import { getColor } from '../../utils/getColor';
-import { getWeatherIcon } from '../../utils/weatherInfo'; 
-import { openGoogleMaps } from '../../utils/openGoogleMaps';
+import { getColor } from "../../utils/getColor";
+import { getWeatherIcon } from "../../utils/weatherInfo";
+import { openGoogleMaps } from "../../utils/openGoogleMaps";
+import { getKategoriInfo } from "../../utils/kategoriLabel";
 
-export default function DetailModal({ selectedDetail, onClose, weatherData, loadingWeather, weatherError, dataMode }) {
+export default function DetailModal({
+  selectedDetail,
+  onClose,
+  weatherData,
+  loadingWeather,
+  weatherError,
+  dataMode,
+}) {
   if (!selectedDetail) return null;
 
   const isPotensi = dataMode === "potensi";
+  const kategori = getKategoriInfo(selectedDetail.jenis, dataMode);
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-fadeIn">
-      <div 
-        className="bg-white text-slate-900 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh] animate-scaleIn"
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fadeIn">
+      <div
+        className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white text-slate-900 shadow-2xl animate-scaleIn"
         onClick={(e) => e.stopPropagation()}
       >
-        <div 
-          className="p-6 relative text-white"
-          style={{ backgroundColor: getColor(selectedDetail.jenis) }}
-        >
-          <button 
+        <div className="relative p-6 text-white" style={{ backgroundColor: getColor(selectedDetail.jenis) }}>
+          <button
             onClick={onClose}
-            className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 p-1.5 rounded-full transition-colors text-white"
+            className="absolute right-4 top-4 rounded-full bg-white/20 p-1.5 text-white transition-colors hover:bg-white/40"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          
-          <h2 className="text-2xl font-bold leading-tight pr-8">{selectedDetail.nama}</h2>
-          <span className="inline-block mt-2 px-3 py-1 bg-white/20 rounded-full text-xs font-medium backdrop-blur-md">
-            {selectedDetail.jenis}
-          </span>
+
+          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-white/80">
+            {isPotensi ? "Studi Potensi" : "Detail Pembangkit"}
+          </p>
+          <h2 className="pr-8 text-2xl font-bold leading-tight">{selectedDetail.nama}</h2>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur-md">
+              {kategori.shortLabel}
+            </span>
+            <span className="text-xs text-white/85">{kategori.label}</span>
+          </div>
         </div>
 
-        <div className="p-6 overflow-y-auto space-y-6">
+        <div className="space-y-6 overflow-y-auto p-6">
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-              <p className="text-xs text-slate-500 uppercase font-semibold">Region</p>
+            <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <p className="text-xs font-semibold uppercase text-slate-500">Region</p>
               <p className="font-medium text-slate-800">{selectedDetail.region}</p>
             </div>
 
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-              <p className="text-xs text-slate-500 uppercase font-semibold">
-                {isPotensi ? "Prediksi" : "Kapasitas"}
+            <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <p className="text-xs font-semibold uppercase text-slate-500">
+                {isPotensi ? "Estimasi Potensi" : "Kapasitas"}
               </p>
               <p className="font-medium text-slate-800">
                 {isPotensi
@@ -50,105 +62,125 @@ export default function DetailModal({ selectedDetail, onClose, weatherData, load
               </p>
             </div>
 
-            {isPotensi && (
+            {isPotensi ? (
               <>
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 col-span-2">
-                  <p className="text-xs text-slate-500 uppercase font-semibold">Lokasi Studi</p>
+                <div className="col-span-2 rounded-lg border border-slate-100 bg-slate-50 p-3">
+                  <p className="text-xs font-semibold uppercase text-slate-500">Jenis Potensi</p>
+                  <p className="font-medium text-slate-800">{kategori.label}</p>
+                  {kategori.secondaryLabel !== kategori.label ? (
+                    <p className="mt-1 text-sm text-slate-500">{kategori.secondaryLabel}</p>
+                  ) : null}
+                </div>
+
+                <div className="col-span-2 rounded-lg border border-slate-100 bg-slate-50 p-3">
+                  <p className="text-xs font-semibold uppercase text-slate-500">Lokasi Studi</p>
                   <p className="font-medium text-slate-800">{selectedDetail.lokasi || "-"}</p>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-                  <p className="text-xs text-slate-500 uppercase font-semibold">Tahun</p>
+                <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+                  <p className="text-xs font-semibold uppercase text-slate-500">Tahun</p>
                   <p className="font-medium text-slate-800">{selectedDetail.tahun || "-"}</p>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-                  <p className="text-xs text-slate-500 uppercase font-semibold">Sumber</p>
+                <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+                  <p className="text-xs font-semibold uppercase text-slate-500">Sumber</p>
                   <a
                     href={selectedDetail.source}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-blue-600 hover:underline break-all text-sm"
+                    className="break-all text-sm font-medium text-blue-600 hover:underline"
                   >
                     Buka Sumber
                   </a>
                 </div>
               </>
-            )}
+            ) : null}
 
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 col-span-2">
-              <p className="text-xs text-slate-500 uppercase font-semibold">Koordinat</p>
-              <div className="flex items-center gap-2 mt-1 flex-wrap">
-                <code className="bg-slate-200 px-2 py-0.5 rounded text-xs font-mono text-slate-700">
+            <div className="col-span-2 rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <p className="text-xs font-semibold uppercase text-slate-500">Koordinat</p>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <code className="rounded bg-slate-200 px-2 py-0.5 font-mono text-xs text-slate-700">
                   {selectedDetail.latitude}
                 </code>
-                <code className="bg-slate-200 px-2 py-0.5 rounded text-xs font-mono text-slate-700">
+                <code className="rounded bg-slate-200 px-2 py-0.5 font-mono text-xs text-slate-700">
                   {selectedDetail.longitude}
                 </code>
               </div>
             </div>
 
-            {isPotensi && selectedDetail.deskripsi_lokasi && (
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 col-span-2">
-                <p className="text-xs text-slate-500 uppercase font-semibold">Deskripsi</p>
-                <p className="font-medium text-slate-700 text-sm">{selectedDetail.deskripsi_lokasi}</p>
+            {isPotensi && selectedDetail.potensi_energi_raw ? (
+              <div className="col-span-2 rounded-lg border border-cyan-100 bg-cyan-50 p-3">
+                <p className="text-xs font-semibold uppercase text-cyan-700">Ringkasan Potensi</p>
+                <p className="text-sm font-medium text-slate-700">{selectedDetail.potensi_energi_raw}</p>
               </div>
-            )}
+            ) : null}
+
+            {isPotensi && selectedDetail.deskripsi_lokasi ? (
+              <div className="col-span-2 rounded-lg border border-slate-100 bg-slate-50 p-3">
+                <p className="text-xs font-semibold uppercase text-slate-500">Deskripsi</p>
+                <p className="text-sm font-medium text-slate-700">{selectedDetail.deskripsi_lokasi}</p>
+              </div>
+            ) : null}
           </div>
 
           <div className="border-t border-slate-100 pt-5">
-            <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
-              <span>🌤️ Cuaca di Lokasi</span>
-              {loadingWeather && <span className="text-xs text-slate-400 font-normal animate-pulse">(Memuat...)</span>}
+            <h3 className="mb-3 flex items-center gap-2 font-bold text-slate-800">
+              <span>Cuaca di Lokasi</span>
+              {loadingWeather ? (
+                <span className="animate-pulse text-xs font-normal text-slate-400">(Memuat...)</span>
+              ) : null}
             </h3>
 
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
+            <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-4">
               {loadingWeather ? (
-                <div className="flex items-center gap-3 animate-pulse">
-                  <div className="w-12 h-12 bg-blue-200 rounded-full"></div>
-                  <div className="space-y-2 flex-1">
-                    <div className="h-4 bg-blue-200 rounded w-1/3"></div>
-                    <div className="h-3 bg-blue-200 rounded w-1/2"></div>
+                <div className="flex animate-pulse items-center gap-3">
+                  <div className="h-12 w-12 rounded-full bg-blue-200" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 w-1/3 rounded bg-blue-200" />
+                    <div className="h-3 w-1/2 rounded bg-blue-200" />
                   </div>
                 </div>
               ) : weatherError ? (
-                <div className="text-red-500 text-sm">Gagal memuat data cuaca.</div>
+                <div className="text-sm text-red-500">Gagal memuat data cuaca.</div>
               ) : weatherData ? (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <span className="text-4xl filter drop-shadow-sm">
+                    <span className="text-4xl drop-shadow-sm">
                       {getWeatherIcon(weatherData.weathercode)}
                     </span>
                     <div>
                       <p className="text-3xl font-bold text-slate-800">
-                        {weatherData.temperature}<span className="text-lg align-top">°C</span>
+                        {weatherData.temperature}
+                        <span className="align-top text-lg"> C</span>
                       </p>
-                      <p className="text-xs text-slate-500 font-medium">
+                      <p className="text-xs font-medium text-slate-500">
                         Angin: {weatherData.windspeed} km/h
                       </p>
                     </div>
                   </div>
-                  <div className="text-right hidden sm:block">
-                    <p className="text-xs text-blue-600 font-semibold bg-blue-100 px-2 py-1 rounded">Live Data</p>
+                  <div className="hidden text-right sm:block">
+                    <p className="rounded bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-600">
+                      Live Data
+                    </p>
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-slate-400 italic">Data cuaca tidak tersedia.</p>
+                <p className="text-sm italic text-slate-400">Data cuaca tidak tersedia.</p>
               )}
             </div>
           </div>
         </div>
 
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex gap-3">
-          <button 
+        <div className="flex gap-3 border-t border-slate-200 bg-slate-50 p-4">
+          <button
             onClick={() => openGoogleMaps(selectedDetail.latitude, selectedDetail.longitude)}
-            className="flex-1 flex items-center justify-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 py-2.5 rounded-lg font-medium transition-all active:scale-95 text-sm"
+            className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-2.5 text-sm font-medium text-slate-700 transition-all active:scale-95 hover:bg-slate-50"
           >
             Google Maps
           </button>
-          <button 
+          <button
             onClick={onClose}
-            className="flex-1 bg-slate-800 hover:bg-slate-900 text-white py-2.5 rounded-lg font-medium transition-all active:scale-95 text-sm"
+            className="flex-1 rounded-lg bg-slate-800 py-2.5 text-sm font-medium text-white transition-all active:scale-95 hover:bg-slate-900"
           >
             Tutup
           </button>

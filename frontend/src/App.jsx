@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,13 +15,13 @@ import { KALIMANTAN_BBOX, bboxToParams } from "./config/kalimantanBbox";
 import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
-import usePembangkit from './hooks/usePembangkit';
+import usePembangkit from "./hooks/usePembangkit";
 import { useWeather } from "./hooks/useWeather";
 import { useDebouncedValue } from "./hooks/useDebouncedValue";
+import potensiData from "./data/potensi.json";
 
 export default function App() {
-  const API_BASE = import.meta.env.VITE_API_BASE_URL;
-
+  const [dataMode, setDataMode] = useState("generator"); // NEW
   const [selectedProv, setSelectedProv] = useState("Semua");
   const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
   const [selectedKategori, setSelectedKategori] = useState("Semua");
@@ -34,17 +34,15 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const debouncedSearch = useDebouncedValue(searchText, 250);
 
-  const { pembangkit, loading } = usePembangkit(API_BASE, bbox);
-  
-  // Ambil data cuaca berdasarkan lokasi yang sedang dipilih di modal detail
+  const { pembangkit, loading } = usePembangkit();
+
   const { weather: weatherData, loading: loadingWeather, error: weatherError } = useWeather(
-    selectedDetail?.latitude, 
+    selectedDetail?.latitude,
     selectedDetail?.longitude
   );
 
   const { geo: provGeo } = useProvGeojson();
 
-  // Memfilter fitur GeoJSON berdasarkan provinsi yang dipilih untuk menampilkan garis batas biru
   const selectedProvFeature = useMemo(() => {
     if (!provGeo || selectedProv === "Semua") return null;
     const target = PROV_GEO_NAME[selectedProv];
@@ -54,18 +52,27 @@ export default function App() {
     );
   }, [provGeo, selectedProv]);
 
-  // Logika filter data pembangkit berdasarkan kategori, teks pencarian, dan batas wilayah (GeoJSON)
+  // NEW: choose active dataset
+  const activeData = useMemo(() => {
+    return dataMode === "potensi" ? potensiData : pembangkit;
+  }, [dataMode, pembangkit]);
+
   const filteredData = useMemo(() => {
     const query = debouncedSearch.trim().toLowerCase();
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
-    return pembangkit.filter((item) => {
+    return activeData.filter((item) => {
       const matchKategori =
         selectedKategori === "Semua" || item.jenis === selectedKategori;
 
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
-      const matchSearch = !query || name.includes(query) || region.includes(query);
+      const lokasi = (item.lokasi || "").toLowerCase();
+      const matchSearch =
+        !query ||
+        name.includes(query) ||
+        region.includes(query) ||
+        lokasi.includes(query);
 
       if (!needProvFilter) return matchKategori && matchSearch;
 
@@ -76,17 +83,31 @@ export default function App() {
       const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
       return matchKategori && matchSearch && inside;
     });
-  }, [pembangkit, selectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
-
+  }, [activeData, selectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
 
   const listKategori = useMemo(() => {
-    const setJenis = new Set(pembangkit.map((item) => item.jenis).filter(Boolean));
+    const setJenis = new Set(activeData.map((item) => item.jenis).filter(Boolean));
     return ["Semua", ...setJenis];
-  }, [pembangkit]);
+  }, [activeData]);
+
+  useEffect(() => {
+    if (!listKategori.includes(selectedKategori)) {
+      setSelectedKategori("Semua");
+    }
+  }, [listKategori, selectedKategori]);
+
+  const countsByKategori = useMemo(() => {
+    return activeData.reduce((acc, item) => {
+      const key = item.jenis;
+      if (!key) return acc;
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+  }, [activeData]);
 
   const chartData = useMemo(() => {
     const stats = {};
-    pembangkit.forEach((item) => {
+    activeData.forEach((item) => {
       const key = item.jenis || "Tidak Diketahui";
       stats[key] = (stats[key] || 0) + 1;
     });
@@ -102,7 +123,7 @@ export default function App() {
         },
       ],
     };
-  }, [pembangkit]);
+  }, [activeData]);
 
   const tile = useMemo(() => {
     switch (basemap) {
@@ -119,7 +140,7 @@ export default function App() {
       case "dark":
       default:
         return {
-          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{y}/{x}{r}.png",
           attr: "© CartoDB Dark Matter",
         };
     }
@@ -129,7 +150,7 @@ export default function App() {
     setSelectedProv(prov);
     setBbox(bboxToParams(KALIMANTAN_BBOX[prov]));
   };
-  
+
   const handleOpenDetail = (item) => {
     setSelectedDetail(item);
   };
@@ -147,20 +168,19 @@ export default function App() {
     );
   };
 
-  // Fungsi export mengirim selectedProv dan selectedKategori untuk nama file dinamis
   const handleExport = () => {
-    exportPembangkitCsv({ 
-      filteredData, 
-      selectedKategori, 
-      selectedProv 
+    exportPembangkitCsv({
+      filteredData,
+      selectedKategori,
+      selectedProv
     });
   };
 
-  if (loading) {
+  if (loading && dataMode === "generator") {
     return (
       <div className="bg-slate-900 h-screen flex flex-col items-center justify-center text-white gap-4">
         <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-        <p className="animate-pulse text-sm font-medium">Memuat Peta Kalimantan...</p>
+        <p className="animate-pulse text-sm font-medium">Memuat Data Generator...</p>
       </div>
     );
   }
@@ -168,6 +188,8 @@ export default function App() {
   return (
     <div className="flex h-screen w-screen bg-gray-900 font-sans overflow-hidden relative">
       <Sidebar
+        dataMode={dataMode}
+        setDataMode={setDataMode}
         KALIMANTAN_PROV_BBOX={KALIMANTAN_BBOX}
         selectedProv={selectedProv}
         onSelectProv={onSelectProv}
@@ -192,10 +214,16 @@ export default function App() {
           focusLocation={focusLocation}
           onOpenDetail={handleOpenDetail}
           selectedProvFeature={selectedProvFeature}
+          dataMode={dataMode}
         />
 
         <MapControls basemap={basemap} setBasemap={setBasemap} onLocateMe={handleLocateMe} />
-        <LegendBox />
+        <LegendBox
+          listKategori={listKategori}
+          selectedKategori={selectedKategori}
+          onSelectKategori={setSelectedKategori}
+          countsByKategori={countsByKategori}
+        />
       </div>
 
       <DetailModal
@@ -203,7 +231,8 @@ export default function App() {
         onClose={() => setSelectedDetail(null)}
         weatherData={weatherData}
         loadingWeather={loadingWeather}
-        weatherError={weatherError} 
+        weatherError={weatherError}
+        dataMode={dataMode}
       />
 
       <StatsModal showStats={showStats} onClose={() => setShowStats(false)} chartData={chartData} />

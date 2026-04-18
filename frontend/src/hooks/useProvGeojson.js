@@ -5,9 +5,7 @@ export function useProvGeojson() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `${import.meta.env.BASE_URL}geo/provinsi_indonesia.geojson`;
-
-    fetch("/geo/provinsi_indonesia.geojson")
+    fetch(`${import.meta.env.BASE_URL}geo/provinsi_indonesia.geojson`)
       .then(async (r) => {
         const text = await r.text(); // read as text first
         if (!r.ok) throw new Error(`HTTP ${r.status}: ${text.slice(0, 120)}`);

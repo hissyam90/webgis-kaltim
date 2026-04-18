@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -11,7 +11,7 @@ import StatsModal from "./components/modals/StatsModal";
 import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 import { point } from "@turf/helpers";
 import { useProvGeojson } from "./hooks/useProvGeojson";
-import { KALIMANTAN_BBOX, bboxToParams } from "./config/kalimantanBbox";
+import { KALIMANTAN_BBOX } from "./config/kalimantanBbox";
 import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
@@ -24,7 +24,6 @@ import potensiData from "./data/potensi.json";
 export default function App() {
   const [dataMode, setDataMode] = useState("generator");
   const [selectedProv, setSelectedProv] = useState("Semua");
-  const [bbox, setBbox] = useState(bboxToParams(KALIMANTAN_BBOX.Semua));
   const [selectedKategoriList, setSelectedKategoriList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [focusLocation, setFocusLocation] = useState(null);
@@ -57,13 +56,25 @@ export default function App() {
     return dataMode === "potensi" ? potensiData : pembangkit;
   }, [dataMode, pembangkit]);
 
+  const listKategori = useMemo(() => {
+    const values = [...new Set(activeData.map((item) => item.jenis).filter(Boolean))];
+    values.sort((a, b) =>
+      formatKategoriOption(a, dataMode).localeCompare(formatKategoriOption(b, dataMode), "id")
+    );
+    return ["Semua", ...values];
+  }, [activeData, dataMode]);
+
+  const validSelectedKategori = useMemo(() => {
+    return selectedKategoriList.filter((kategori) => listKategori.includes(kategori));
+  }, [listKategori, selectedKategoriList]);
+
   const filteredData = useMemo(() => {
     const query = debouncedSearch.trim().toLowerCase();
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
     return activeData.filter((item) => {
       const matchKategori =
-        selectedKategoriList.length === 0 || selectedKategoriList.includes(item.jenis);
+        validSelectedKategori.length === 0 || validSelectedKategori.includes(item.jenis);
 
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
@@ -80,26 +91,18 @@ export default function App() {
       const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
       return matchKategori && matchSearch && inside;
     });
-  }, [activeData, selectedKategoriList, debouncedSearch, selectedProv, selectedProvFeature]);
+  }, [activeData, validSelectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
 
-  const listKategori = useMemo(() => {
-    const values = [...new Set(activeData.map((item) => item.jenis).filter(Boolean))];
-    values.sort((a, b) =>
-      formatKategoriOption(a, dataMode).localeCompare(formatKategoriOption(b, dataMode), "id")
-    );
-    return ["Semua", ...values];
-  }, [activeData, dataMode]);
-
-  useEffect(() => {
-    setSelectedKategoriList((prev) =>
-      prev.filter((kategori) => listKategori.includes(kategori))
-    );
-  }, [listKategori]);
-
-  const selectedKategoriValue = selectedKategoriList.length === 1 ? selectedKategoriList[0] : "Semua";
+  const selectedKategoriValue =
+    validSelectedKategori.length === 1 ? validSelectedKategori[0] : "Semua";
 
   const handleSelectKategori = (kategori) => {
     if (kategori === "Semua") {
+      setSelectedKategoriList([]);
+      return;
+    }
+
+    if (!listKategori.includes(kategori)) {
       setSelectedKategoriList([]);
       return;
     }
@@ -179,7 +182,6 @@ export default function App() {
 
   const onSelectProv = (prov) => {
     setSelectedProv(prov);
-    setBbox(bboxToParams(KALIMANTAN_BBOX[prov]));
   };
 
   const handleOpenDetail = (item) => {
@@ -255,7 +257,7 @@ export default function App() {
         <MapControls basemap={basemap} setBasemap={setBasemap} onLocateMe={handleLocateMe} />
         <LegendBox
           listKategori={listKategori}
-          selectedKategori={selectedKategoriList}
+          selectedKategori={validSelectedKategori}
           onSelectKategori={handleToggleKategori}
           onResetKategori={() => setSelectedKategoriList([])}
           countsByKategori={countsByKategori}

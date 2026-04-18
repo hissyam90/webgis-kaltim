@@ -15,6 +15,10 @@ export default function DetailModal({
 
   const isPotensi = dataMode === "potensi";
   const kategori = getKategoriInfo(selectedDetail.jenis, dataMode);
+  const hasSource = Boolean(selectedDetail.source);
+  const estimasiPotensi = Number.isFinite(Number(selectedDetail.prediksi_mw))
+    ? `${Number(selectedDetail.prediksi_mw)} MW`
+    : "-";
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fadeIn">
@@ -57,7 +61,7 @@ export default function DetailModal({
               </p>
               <p className="font-medium text-slate-800">
                 {isPotensi
-                  ? `${selectedDetail.prediksi_mw || "-"} MW`
+                  ? estimasiPotensi
                   : `${selectedDetail.kapasitas_mw || "-"} MW`}
               </p>
             </div>
@@ -84,14 +88,18 @@ export default function DetailModal({
 
                 <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
                   <p className="text-xs font-semibold uppercase text-slate-500">Sumber</p>
-                  <a
-                    href={selectedDetail.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="break-all text-sm font-medium text-blue-600 hover:underline"
-                  >
-                    Buka Sumber
-                  </a>
+                  {hasSource ? (
+                    <a
+                      href={selectedDetail.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-all text-sm font-medium text-blue-600 hover:underline"
+                    >
+                      Buka Sumber
+                    </a>
+                  ) : (
+                    <p className="text-sm font-medium text-slate-500">Belum tersedia</p>
+                  )}
                 </div>
               </>
             ) : null}
@@ -119,6 +127,15 @@ export default function DetailModal({
               <div className="col-span-2 rounded-lg border border-slate-100 bg-slate-50 p-3">
                 <p className="text-xs font-semibold uppercase text-slate-500">Deskripsi</p>
                 <p className="text-sm font-medium text-slate-700">{selectedDetail.deskripsi_lokasi}</p>
+              </div>
+            ) : null}
+
+            {isPotensi && selectedDetail.dataset_group === "geoesdm" ? (
+              <div className="col-span-2 rounded-lg border border-amber-100 bg-amber-50 p-3">
+                <p className="text-xs font-semibold uppercase text-amber-700">Catatan Data</p>
+                <p className="text-sm font-medium text-slate-700">
+                  Data GeoESDM, belum memiliki sumber/artikel pendukung yang jelas.
+                </p>
               </div>
             ) : null}
           </div>

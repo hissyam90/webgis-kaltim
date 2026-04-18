@@ -192,6 +192,8 @@ export default function Sidebar({
             {filteredData.length > 0 ? (
               filteredData.map((item, idx) => {
                 const kategori = getKategoriInfo(item.jenis, dataMode);
+                const potensiText =
+                  Number.isFinite(Number(item.prediksi_mw)) ? `${Number(item.prediksi_mw)} MW` : "-";
 
                 return (
                   <div
@@ -245,7 +247,7 @@ export default function Sidebar({
                           Estimasi Potensi
                         </p>
                         <p className="mt-1 text-xs font-semibold text-cyan-50">
-                          {item.prediksi_mw} MW
+                          {potensiText}
                         </p>
                       </div>
                     ) : null}

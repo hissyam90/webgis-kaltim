@@ -16,15 +16,33 @@ import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
 import { exportPembangkitCsv } from "./utils/exportCsv";
 import { formatKategoriOption } from "./utils/kategoriLabel";
+import { parseCsv } from "./utils/parseCsv";
 import usePembangkit from "./hooks/usePembangkit";
 import { useWeather } from "./hooks/useWeather";
 import { useDebouncedValue } from "./hooks/useDebouncedValue";
 import potensiData from "./data/potensi.json";
+import potensiHidroLayerCsv from "./data/potensi_hidro_layer.csv?raw";
+
+const POTENSI_LAYER_OPTIONS = [
+  {
+    id: "potensi-default",
+    label: "Potensi Utama",
+    description: "Dataset potensi utama yang sudah dipakai saat ini.",
+    group: "default",
+  },
+  {
+    id: "potensi-hidro-geoesdm",
+    label: "Potensi Hidro (GeoESDM)",
+    description: "Layer tambahan hidro dari GeoESDM untuk ditampilkan satu per satu.",
+    group: "geoesdm",
+  },
+];
 
 export default function App() {
   const [dataMode, setDataMode] = useState("generator");
   const [selectedProv, setSelectedProv] = useState("Semua");
   const [selectedKategoriList, setSelectedKategoriList] = useState([]);
+  const [selectedPotensiLayer, setSelectedPotensiLayer] = useState("potensi-default");
   const [searchText, setSearchText] = useState("");
   const [focusLocation, setFocusLocation] = useState(null);
   const [basemap, setBasemap] = useState("dark");
@@ -43,6 +61,47 @@ export default function App() {
 
   const { geo: provGeo } = useProvGeojson();
 
+  const potensiHidroLayerData = useMemo(() => {
+    return parseCsv(potensiHidroLayerCsv).map((row, index) => {
+      const prediksiMw = Number(row.pot_mw);
+
+      return {
+        id: row.dataset_id || row.objectid || `hidro-layer-${index + 1}`,
+        nama: row.nama || row.nama_asli || `Potensi Hidro ${index + 1}`,
+        jenis: row.jenis || "Hidro",
+        region: row.region || row.provinsi || "-",
+        lokasi: row.lokasi || row.kecamatan || row.region || "-",
+        latitude: Number(row.latitude),
+        longitude: Number(row.longitude),
+        prediksi_mw: Number.isFinite(prediksiMw) ? prediksiMw : null,
+        tahun: null,
+        source: "",
+        deskripsi_lokasi: row.coord_note
+          ? `${row.coord_note}.`
+          : "Data GeoESDM tanpa artikel/sumber pendukung yang jelas.",
+        potensi_energi_raw: Number.isFinite(prediksiMw)
+          ? `Potensi hidro terpetakan sebesar ${row.pot_mw} MW.`
+          : "",
+        dataset_label: "Potensi Hidro (GeoESDM)",
+        dataset_group: "geoesdm",
+        kecamatan: row.kecamatan || "",
+        klasifikas: row.klasifikas || "",
+        tipe: row.tipe || "",
+        luas_ha: row.luas_ha || "",
+        nama_asli: row.nama_asli || "",
+        kode2: row.kode2 || "",
+      };
+    });
+  }, []);
+
+  const activePotensiData = useMemo(() => {
+    if (selectedPotensiLayer === "potensi-hidro-geoesdm") {
+      return potensiHidroLayerData;
+    }
+
+    return potensiData;
+  }, [potensiHidroLayerData, selectedPotensiLayer]);
+
   const selectedProvFeature = useMemo(() => {
     if (!provGeo || selectedProv === "Semua") return null;
     const target = PROV_GEO_NAME[selectedProv];
@@ -53,8 +112,8 @@ export default function App() {
   }, [provGeo, selectedProv]);
 
   const activeData = useMemo(() => {
-    return dataMode === "potensi" ? potensiData : pembangkit;
-  }, [dataMode, pembangkit]);
+    return dataMode === "potensi" ? activePotensiData : pembangkit;
+  }, [activePotensiData, dataMode, pembangkit]);
 
   const listKategori = useMemo(() => {
     const values = [...new Set(activeData.map((item) => item.jenis).filter(Boolean))];
@@ -254,7 +313,15 @@ export default function App() {
           dataMode={dataMode}
         />
 
-        <MapControls basemap={basemap} setBasemap={setBasemap} onLocateMe={handleLocateMe} />
+        <MapControls
+          basemap={basemap}
+          setBasemap={setBasemap}
+          onLocateMe={handleLocateMe}
+          dataMode={dataMode}
+          selectedPotensiLayer={selectedPotensiLayer}
+          onSelectPotensiLayer={setSelectedPotensiLayer}
+          potensiLayers={POTENSI_LAYER_OPTIONS}
+        />
         <LegendBox
           listKategori={listKategori}
           selectedKategori={validSelectedKategori}

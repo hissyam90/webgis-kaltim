@@ -72,6 +72,8 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
     const lat = Number(item.latitude);
     const lng = Number(item.longitude);
     const kategori = getKategoriInfo(item.jenis, dataMode);
+    const potensiText =
+      Number.isFinite(Number(item.prediksi_mw)) ? `${Number(item.prediksi_mw)} MW` : "-";
 
     return (
       <CircleMarker
@@ -102,7 +104,7 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
 
               {dataMode === "potensi" ? (
                 <p>
-                  Estimasi: <span className="font-semibold text-cyan-700">{item.prediksi_mw} MW</span>
+                  Estimasi: <span className="font-semibold text-cyan-700">{potensiText}</span>
                 </p>
               ) : null}
             </div>

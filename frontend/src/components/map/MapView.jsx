@@ -146,8 +146,8 @@ function AreaLayer({
           color: isSelected ? "#f8fafc" : "#94a3b8",
           weight: isSelected ? 2.8 : 1.2,
           fillColor: getAreaFillColor(area, analysisMetric, analysisMetricRange),
-          fillOpacity: area?.totalFacilities ? (isSelected ? 0.84 : 0.72) : 0.18,
-          dashArray: area?.totalFacilities ? null : "5 7",
+          fillOpacity: area?.hasData ? (isSelected ? 0.84 : 0.72) : 0.35,
+          dashArray: area?.hasData ? null : "5 7",
         };
       }}
       onEachFeature={(feature, layer) => {
@@ -158,7 +158,7 @@ function AreaLayer({
           `<div><strong>${area.label}</strong><br/>${getMetricCaption(analysisMetric)}: ${formatMetricValue(
             area,
             analysisMetric
-          )}</div>`,
+          )}<br/>Status: ${area.hasData ? "Ada data" : "No data"}</div>`,
           {
             sticky: true,
             direction: "top",

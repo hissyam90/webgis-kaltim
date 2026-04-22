@@ -108,6 +108,7 @@ function interpolateColor(from, to, ratio) {
 
 export function getAreaFillColor(area, metric, range) {
   if (!area) return "#334155";
+  if (!area.hasData) return "#1f2937";
 
   if (metric === "dominantType") {
     return area.dominantType ? getColor(area.dominantType) : "#475569";
@@ -130,8 +131,10 @@ export function buildMetricLegend(areas, metric) {
     return { title: "Legenda Wilayah", items: [] };
   }
 
+  const noDataCount = areas.filter((area) => !area.hasData).length;
+
   if (metric === "dominantType") {
-    const counts = areas.reduce((acc, area) => {
+    const counts = areas.filter((area) => area.hasData).reduce((acc, area) => {
       const key = area.dominantType || "Tidak Diketahui";
       acc[key] = (acc[key] || 0) + 1;
       return acc;
@@ -139,30 +142,53 @@ export function buildMetricLegend(areas, metric) {
 
     return {
       title: "Jenis Dominan",
-      items: Object.entries(counts).map(([key, count]) => ({
-        label: getKategoriInfo(key).shortLabel,
-        color: key === "Tidak Diketahui" ? "#64748b" : getColor(key),
-        value: `${count} wilayah`,
-      })),
+      items: [
+        ...Object.entries(counts).map(([key, count]) => ({
+          label: getKategoriInfo(key).shortLabel,
+          color: key === "Tidak Diketahui" ? "#64748b" : getColor(key),
+          value: `${count} wilayah`,
+        })),
+        ...(noDataCount > 0
+          ? [
+              {
+                label: "No Data",
+                color: "#1f2937",
+                value: `${noDataCount} wilayah`,
+              },
+            ]
+          : []),
+      ],
     };
   }
 
-  const values = areas.map((area) => Number(area[metric]) || 0);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
+  const areasWithData = areas.filter((area) => area.hasData);
+  const values = areasWithData.map((area) => Number(area[metric]) || 0);
+  const min = values.length ? Math.min(...values) : 0;
+  const max = values.length ? Math.max(...values) : 0;
   const stepCount = 4;
 
   return {
     title: getMetricCaption(metric),
-    items: Array.from({ length: stepCount }, (_, index) => {
-      const ratio = stepCount === 1 ? 1 : index / (stepCount - 1);
-      const value = min + (max - min) * ratio;
+    items: [
+      ...Array.from({ length: stepCount }, (_, index) => {
+        const ratio = stepCount === 1 ? 1 : index / (stepCount - 1);
+        const value = min + (max - min) * ratio;
 
-      return {
-        label: metric === "renewableShare" ? `${value.toFixed(0)}%` : `${Math.round(value)}`,
-        color: getAreaFillColor({ [metric]: value }, metric, { min, max }),
-        value: index === 0 ? "rendah" : index === stepCount - 1 ? "tinggi" : "",
-      };
-    }),
+        return {
+          label: metric === "renewableShare" ? `${value.toFixed(0)}%` : `${Math.round(value)}`,
+          color: getAreaFillColor({ [metric]: value, hasData: true }, metric, { min, max }),
+          value: index === 0 ? "rendah" : index === stepCount - 1 ? "tinggi" : "",
+        };
+      }),
+      ...(noDataCount > 0
+        ? [
+            {
+              label: "No Data",
+              color: "#1f2937",
+              value: `${noDataCount} wilayah`,
+            },
+          ]
+        : []),
+    ],
   };
 }

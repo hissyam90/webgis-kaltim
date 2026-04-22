@@ -15,13 +15,14 @@ import { useKaltimBoundaries } from "./hooks/useKaltimBoundaries";
 import { KALIMANTAN_BBOX } from "./config/kalimantanBbox";
 import { PROV_GEO_NAME } from "./config/provGeoName";
 import { getColor } from "./utils/getColor";
-import { exportPembangkitCsv } from "./utils/exportCsv";
+import { exportPembangkitCsv, exportWilayahAnalysisCsv } from "./utils/exportCsv";
 import { formatKategoriOption, getKategoriInfo } from "./utils/kategoriLabel";
 import { parseCsv } from "./utils/parseCsv";
 import {
   ANALYSIS_METRIC_OPTIONS,
   buildMetricLegend,
   classifyEnergyGroup,
+  formatMetricValue,
   normalizeEnergyType,
 } from "./utils/analysisHelpers";
 import usePembangkit from "./hooks/usePembangkit";
@@ -240,6 +241,7 @@ export default function App() {
         renewableFacilities,
         nonRenewableFacilities,
         renewableShare: totalFacilities ? (renewableFacilities / totalFacilities) * 100 : 0,
+        hasData: totalFacilities > 0,
         dominantType: dominantTypeEntry?.[0] || "",
         dominantTypeCount: dominantTypeEntry?.[1] || 0,
         dominantTypeLabel: dominantTypeEntry?.[0] || "Tidak ada data",
@@ -319,6 +321,51 @@ export default function App() {
     () => buildMetricLegend(filteredAnalysisAreas, analysisMetric),
     [filteredAnalysisAreas, analysisMetric]
   );
+
+  const wilayahInsights = useMemo(() => {
+    if (!generatorAnalysisAreas.length) {
+      return null;
+    }
+
+    const withData = generatorAnalysisAreas.filter((area) => area.hasData);
+    const noDataCount = generatorAnalysisAreas.length - withData.length;
+
+    if (!withData.length) {
+      return {
+        totalAreas: generatorAnalysisAreas.length,
+        noDataCount,
+        topFacilityArea: null,
+        topRenewableShareArea: null,
+        dominantCoverage: "Belum ada fasilitas terdeteksi",
+      };
+    }
+
+    const topFacilityArea = [...withData].sort(
+      (a, b) => b.totalFacilities - a.totalFacilities || a.name.localeCompare(b.name, "id")
+    )[0];
+
+    const topRenewableShareArea = [...withData].sort(
+      (a, b) => b.renewableShare - a.renewableShare || b.renewableFacilities - a.renewableFacilities
+    )[0];
+
+    const dominantCounts = withData.reduce((acc, area) => {
+      const key = area.dominantTypeLabel || "Tidak ada data";
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+
+    const dominantCoverage = Object.entries(dominantCounts).sort((a, b) => b[1] - a[1])[0];
+
+    return {
+      totalAreas: generatorAnalysisAreas.length,
+      noDataCount,
+      topFacilityArea,
+      topRenewableShareArea,
+      dominantCoverage: dominantCoverage
+        ? `${dominantCoverage[0]} mendominasi ${dominantCoverage[1]} wilayah`
+        : "Belum ada pola dominan",
+    };
+  }, [generatorAnalysisAreas]);
 
   const selectedKategoriValue =
     validSelectedKategori.length === 1 ? validSelectedKategori[0] : "Semua";
@@ -467,7 +514,16 @@ export default function App() {
   };
 
   const handleExport = () => {
-    if (dataMode === "wilayah") return;
+    if (dataMode === "wilayah") {
+      const activeMetric =
+        ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
+
+      exportWilayahAnalysisCsv({
+        analysisAreas: filteredAnalysisAreas,
+        metricLabel: activeMetric,
+      });
+      return;
+    }
 
     const kategoriLabel =
       selectedKategoriList.length === 0 ? "Semua" : selectedKategoriList.join("-");
@@ -522,6 +578,8 @@ export default function App() {
         analysisAreas={filteredAnalysisAreas}
         selectedAnalysisArea={selectedAnalysisArea}
         onSelectAnalysisArea={handleSelectAnalysisArea}
+        wilayahInsights={wilayahInsights}
+        metricLabel={formatMetricValue(selectedAnalysisArea, analysisMetric)}
       />
 
       <div className="relative z-0 h-full min-w-0 flex-1 transition-all duration-300">

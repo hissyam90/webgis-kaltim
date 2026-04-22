@@ -26,6 +26,7 @@ export default function Sidebar({
   analysisAreas,
   selectedAnalysisArea,
   onSelectAnalysisArea,
+  wilayahInsights,
 }) {
   const [isRegionOpen, setIsRegionOpen] = useState(true);
   const modeLabel =
@@ -200,6 +201,21 @@ export default function Sidebar({
                       );
                     })}
                   </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <button
+                      onClick={onShowStats}
+                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 py-2.5 text-[10px] font-bold text-violet-300 transition-all active:scale-95 hover:bg-slate-700"
+                    >
+                      Statistik
+                    </button>
+                    <button
+                      onClick={onExport}
+                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700"
+                    >
+                      Export CSV
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -251,6 +267,50 @@ export default function Sidebar({
           <div className="sidebar-scroll min-h-0 flex-1 space-y-2 overflow-y-auto p-2.5">
             {dataMode === "wilayah" ? (
               <>
+                {wilayahInsights ? (
+                  <div className="rounded-2xl border border-slate-700/80 bg-slate-800/40 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+                        Insight Summary
+                      </p>
+                      <span className="rounded-full border border-violet-400/20 bg-violet-500/10 px-2 py-1 text-[10px] font-semibold text-violet-200">
+                        {wilayahInsights.totalAreas} wilayah
+                      </span>
+                    </div>
+
+                    <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                        <p className="text-slate-400">Fasilitas terbanyak</p>
+                        <p className="mt-1 font-semibold text-white">
+                          {wilayahInsights.topFacilityArea
+                            ? `${wilayahInsights.topFacilityArea.name} (${wilayahInsights.topFacilityArea.totalFacilities})`
+                            : "-"}
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                        <p className="text-slate-400">Share renewable tertinggi</p>
+                        <p className="mt-1 font-semibold text-emerald-300">
+                          {wilayahInsights.topRenewableShareArea
+                            ? `${wilayahInsights.topRenewableShareArea.name} (${wilayahInsights.topRenewableShareArea.renewableShare.toFixed(1)}%)`
+                            : "-"}
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                        <p className="text-slate-400">Wilayah tanpa data</p>
+                        <p className="mt-1 font-semibold text-amber-300">
+                          {wilayahInsights.noDataCount}
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                        <p className="text-slate-400">Pola dominan</p>
+                        <p className="mt-1 font-semibold text-white">
+                          {wilayahInsights.dominantCoverage}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
                 {selectedAnalysisArea ? (
                   <div className="rounded-2xl border border-violet-400/20 bg-violet-500/10 p-4">
                     <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
@@ -279,7 +339,7 @@ export default function Sidebar({
                       <div className="rounded-lg bg-slate-900/55 p-2.5">
                         <p className="text-slate-400">Dominan</p>
                         <p className="mt-1 font-semibold text-white">
-                          {selectedAnalysisArea.dominantTypeLabel || "-"}
+                          {selectedAnalysisArea.hasData ? selectedAnalysisArea.dominantTypeLabel || "-" : "No Data"}
                         </p>
                       </div>
                     </div>
@@ -317,7 +377,7 @@ export default function Sidebar({
                           <div>Total: {area.totalFacilities}</div>
                           <div>Renewable: {area.renewableFacilities}</div>
                           <div>Non-renewable: {area.nonRenewableFacilities}</div>
-                          <div>Dominan: {area.dominantTypeLabel || "-"}</div>
+                          <div>Dominan: {area.hasData ? area.dominantTypeLabel || "-" : "No Data"}</div>
                         </div>
                       </button>
                     );

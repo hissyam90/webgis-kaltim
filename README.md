@@ -1,43 +1,51 @@
-# 🗺️ WebGIS Persebaran Pembangkit EBT Kalimantan
+# WebGIS Persebaran Pembangkit Energi Kalimantan
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Frontend](https://img.shields.io/badge/Frontend-React%20(Vite)-61DAFB)
 ![Backend](https://img.shields.io/badge/Backend-FastAPI-009688)
 ![Database](https://img.shields.io/badge/Database-PostgreSQL-336791)
 
-Aplikasi WebGIS berbasis web untuk memvisualisasikan persebaran **pembangkit listrik (EBT & Non-EBT)** di wilayah Kalimantan.  
-Frontend menampilkan peta, statistik, cuaca real-time, dan export data; backend menyediakan API berbasis **FastAPI** yang membaca data dari **PostgreSQL**.
+Aplikasi WebGIS berbasis web untuk memvisualisasikan persebaran pembangkit listrik di Kalimantan, lengkap dengan mode analisis wilayah untuk kabupaten/kota di Kalimantan Timur. Frontend dibangun dengan React + Vite, sedangkan backend menyediakan API FastAPI yang membaca data dari PostgreSQL.
 
----
+## Fitur
 
-## ✨ Fitur
+### Peta Interaktif
+- Visualisasi titik fasilitas pembangkit dengan Leaflet / React-Leaflet.
+- Marker berwarna berdasarkan jenis pembangkit.
+- Basemap switcher: Dark, OpenStreetMap, dan Satellite (Esri).
+- Highlight wilayah provinsi saat filter Kalimantan aktif.
 
-### 🗺️ Peta Interaktif
-- Visualisasi titik lokasi pembangkit menggunakan **Leaflet / React-Leaflet**
-- Marker berwarna berdasarkan jenis pembangkit (mis: PLTS, PLTD, PLTU, PLTA)
-- **Basemap switcher**: Dark, OpenStreetMap, Satellite (Esri)
+### Mode Data
+- `Fasilitas`: menampilkan titik pembangkit aktif.
+- `Potensi`: menampilkan dataset potensi energi, termasuk layer tambahan hidro GeoESDM.
+- `Wilayah`: menampilkan analisis kabupaten/kota Kalimantan Timur dalam bentuk choropleth.
 
-### 🔍 Pencarian & Filter
-- Search real-time berdasarkan **nama** atau **wilayah**
-- Filter berdasarkan **jenis pembangkit**
-- Filter wilayah berbasis **Bounding Box** (preset provinsi Kalimantan)
+### Analisis Wilayah Kaltim
+- Boundary kabupaten/kota dimuat dari folder `frontend/public/geo/raw`.
+- Polygon wilayah diwarnai berdasarkan metrik terpilih.
+- Metrik analisis yang tersedia:
+  - total fasilitas
+  - renewable facilities
+  - non-renewable facilities
+  - renewable share
+  - dominant energy type
+- Sidebar menampilkan ringkasan wilayah terpilih dan daftar wilayah yang sudah diurutkan berdasarkan metrik aktif.
+- Legend berubah dinamis mengikuti mode titik atau mode wilayah.
 
-### 🌤️ Cuaca Real-time (Open-Meteo)
-- Menampilkan cuaca terkini saat membuka detail pembangkit:
-  suhu, kecepatan angin, dan kondisi langit
+### Pencarian dan Filter
+- Search real-time berdasarkan nama, lokasi, wilayah, atau kabupaten/kota.
+- Filter jenis pembangkit / jenis potensi.
+- Filter wilayah berbasis preset provinsi Kalimantan.
 
-### 📊 Statistik Energi
-- Pie chart (Chart.js) untuk ringkasan jumlah unit per jenis pembangkit
+### Statistik dan Detail
+- Modal statistik menggunakan Chart.js.
+- Popup detail fasilitas untuk melihat informasi ringkas pembangkit.
+- Cuaca real-time saat membuka detail fasilitas.
 
-### ⬇️ Export Data
-- Export hasil filter ke **CSV** (langsung dari frontend)
+### Export
+- Export hasil filter fasilitas ke CSV langsung dari frontend.
 
-### 🧭 Navigasi
-- Tombol navigasi ke **Google Maps** untuk rute menuju lokasi pembangkit
-
----
-
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Frontend
 - React (Vite)
@@ -45,6 +53,7 @@ Frontend menampilkan peta, statistik, cuaca real-time, dan export data; backend 
 - Leaflet + React-Leaflet
 - Chart.js
 - Axios
+- Turf.js
 
 ### Backend
 - Python 3.10+
@@ -55,55 +64,49 @@ Frontend menampilkan peta, statistik, cuaca real-time, dan export data; backend 
 - python-dotenv
 
 ### Database
-- PostgreSQL  
-- PostGIS (opsional, jika ingin fitur spasial lanjutan)
+- PostgreSQL
+- PostGIS (opsional untuk pengembangan spasial lanjutan)
 
----
-
-## 📌 API Endpoint
+## API Endpoint
 
 ### `GET /api/pembangkit`
-Mengambil data pembangkit, bisa dikombinasikan dengan filter:
+Mengambil data pembangkit dan bisa dikombinasikan dengan beberapa filter.
 
-**Query params**
+Query params:
 - `jenis` (opsional)
 - `region` (opsional)
-- `minLat`, `maxLat`, `minLon`, `maxLon` (bbox — harus lengkap 4 nilai)
+- `minLat`, `maxLat`, `minLon`, `maxLon` (bbox, harus lengkap 4 nilai)
 
-**Contoh**
+Contoh:
 ```txt
 http://127.0.0.1:8000/api/pembangkit?jenis=PLTU&region=Kalimantan
 ```
 
-**Contoh bbox**
+Contoh bbox:
 ```txt
 http://127.0.0.1:8000/api/pembangkit?minLat=-2&maxLat=2&minLon=115&maxLon=120
 ```
 
-Docs otomatis FastAPI:
+FastAPI docs:
 ```txt
 http://127.0.0.1:8000/docs
 ```
 
----
-
-## 🚀 Cara Menjalankan (Local Development)
+## Cara Menjalankan
 
 > Pastikan PostgreSQL sudah terinstal dan berjalan.
 
-### 1) Clone Repo
+### 1. Clone repository
 ```bash
 git clone https://github.com/hissyam90/webgis-kaltim.git
 cd webgis-kaltim
 ```
 
----
+## Backend Setup
 
-# 🔧 Backend Setup (FastAPI)
+### 2. Buat virtual environment dan install dependency
 
-### 2) Buat virtual environment & install dependencies
-
-**Windows (PowerShell)**
+Windows PowerShell:
 ```powershell
 cd backend
 py -m venv .venv
@@ -112,12 +115,12 @@ py -m pip install -U pip
 py -m pip install -r .\dependencies.txt
 ```
 
-> ⚠️ Catatan: `geopandas` kadang sulit di Windows via pip. Kalau error, opsi stabil:
+Jika `geopandas` sulit di-install lewat pip di Windows, alternatif stabil:
 ```powershell
 mamba install -c conda-forge pandas geopandas sqlalchemy python-dotenv fastapi uvicorn
 ```
 
-### 3) Buat file `.env`
+### 3. Buat file `.env`
 Buat `backend/.env`:
 ```env
 DB_USER=postgres
@@ -127,107 +130,100 @@ DB_PORT=5432
 DB_NAME=webgis_kaltim
 ```
 
-> Jangan commit `.env`. Tambahkan ke `.gitignore`.
-
-### 4) Siapkan database
-Buat database:
+### 4. Siapkan database
 ```sql
 CREATE DATABASE webgis_kaltim;
 ```
 
-### 5) Import data CSV ke PostgreSQL
-Script import akan membuat/mengganti tabel:
-- **table:** `pembangkit_listrik`
-- mode: `replace` (import ulang akan overwrite tabel)
-
-Pastikan file CSV ada di path yang sesuai dengan script:
-```py
-csv_file = "../pembangkit_esdm_with_latlon.csv"
-```
+### 5. Import data CSV ke PostgreSQL
+Script import akan membuat atau mengganti tabel `pembangkit_listrik`.
 
 Jalankan:
 ```powershell
 py .\import_data.py
 ```
 
-### 6) Jalankan backend server
-Kalau file FastAPI kamu bernama `main.py` dan objek FastAPI bernama `app`:
+### 6. Jalankan backend
 ```powershell
 uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Backend akan berjalan di:
+Backend berjalan di:
 ```txt
 http://127.0.0.1:8000
 ```
 
----
+## Frontend Setup
 
-# 🎨 Frontend Setup (React)
-
-### 7) Install & run frontend
-Buka terminal baru:
+### 7. Install dependency dan jalankan frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Frontend akan berjalan di (umumnya):
+Frontend biasanya berjalan di:
 ```txt
 http://localhost:5173
 ```
 
----
+## Konfigurasi Penting
 
-## ⚙️ Konfigurasi Penting
-
-### URL Backend di Frontend
-Di `App.jsx`, frontend memanggil:
-```js
-axios.get("http://127.0.0.1:8000/api/pembangkit", { params: bbox })
+### URL backend di frontend
+Frontend saat ini memanggil API lokal:
+```txt
+http://127.0.0.1:8000/api/pembangkit
 ```
 
-Kalau backend kamu jalan di host/port lain, ubah URL tersebut (atau idealnya pakai `.env` frontend seperti `VITE_API_BASE_URL`).
+Kalau backend berjalan di host atau port lain, sesuaikan URL tersebut atau pindahkan ke environment variable seperti `VITE_API_BASE_URL`.
 
----
+## Struktur Folder
 
-## 🧩 Struktur Folder (contoh)
 ```txt
 webgis-kaltim/
-├── backend/
-│   ├── main.py
-│   ├── import_data.py
-│   ├── dependencies.txt
-│   └── .env (jangan di-commit)
-└── frontend/
-    ├── src/
-    │   └── App.jsx
-    └── package.json
+|-- backend/
+|   |-- main.py
+|   |-- import_data.py
+|   |-- dependencies.txt
+|   `-- .env
+`-- frontend/
+    |-- public/
+    |   `-- geo/
+    |       |-- kalimantan_timur.geojson
+    |       `-- raw/
+    |-- src/
+    |   |-- components/
+    |   |-- hooks/
+    |   |-- utils/
+    |   `-- App.jsx
+    `-- package.json
 ```
 
----
+## Sumber Data
 
-## ✅ .gitignore (disarankan)
-Tambahkan minimal ini:
+- GeoESDM
+  Digunakan untuk data potensi energi, termasuk layer tambahan potensi hidro.
+- `https://github.com/mahendrayudha/indonesia-geojson`
+  Digunakan untuk boundary peta provinsi dan kabupaten/kota.
+
+## .gitignore yang Disarankan
+
 ```txt
-# python
+# Python
 backend/.venv/
 backend/__pycache__/
 backend/.env
 
-# node
+# Node
 frontend/node_modules/
 frontend/dist/
 ```
 
----
+## Lisensi
 
-## 🛡️ Lisensi
 MIT License
 
----
+## Author
 
-## 👨‍💻 Author
 Dikembangkan oleh **Kelompok Green Hosa**  
-Study Club Pub & AI Informatika — Universitas Mulawarman
+Study Club Pub & AI Informatika - Universitas Mulawarman

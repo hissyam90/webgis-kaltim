@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.css";
 import FlyToLocation from "./FlyToLocation";
 import { getColor } from "../../utils/getColor";
 import { getKategoriInfo } from "../../utils/kategoriLabel";
+import { formatMetricValue, getAreaFillColor, getMetricCaption } from "../../utils/analysisHelpers";
 import "../../lib/leafletIconFix";
 
 function MapResizeHandler() {
@@ -122,6 +123,59 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
   });
 }
 
+function AreaLayer({
+  analysisGeoJson,
+  analysisMetric,
+  analysisMetricRange,
+  selectedAnalysisArea,
+  onSelectAnalysisArea,
+}) {
+  const selectedId = selectedAnalysisArea?.id;
+
+  if (!analysisGeoJson) return null;
+
+  return (
+    <GeoJSON
+      key={`${analysisMetric}-${selectedId || "all"}`}
+      data={analysisGeoJson}
+      style={(feature) => {
+        const area = feature?.properties?.analysis;
+        const isSelected = selectedId && area?.id === selectedId;
+
+        return {
+          color: isSelected ? "#f8fafc" : "#94a3b8",
+          weight: isSelected ? 2.8 : 1.2,
+          fillColor: getAreaFillColor(area, analysisMetric, analysisMetricRange),
+          fillOpacity: area?.totalFacilities ? (isSelected ? 0.84 : 0.72) : 0.18,
+          dashArray: area?.totalFacilities ? null : "5 7",
+        };
+      }}
+      onEachFeature={(feature, layer) => {
+        const area = feature?.properties?.analysis;
+        if (!area) return;
+
+        layer.bindTooltip(
+          `<div><strong>${area.label}</strong><br/>${getMetricCaption(analysisMetric)}: ${formatMetricValue(
+            area,
+            analysisMetric
+          )}</div>`,
+          {
+            sticky: true,
+            direction: "top",
+            opacity: 0.95,
+          }
+        );
+
+        layer.on({
+          click: () => onSelectAnalysisArea?.(area),
+          mouseover: () => layer.setStyle({ weight: selectedId === area.id ? 2.8 : 2 }),
+          mouseout: () => layer.setStyle({ weight: selectedId === area.id ? 2.8 : 1.2 }),
+        });
+      }}
+    />
+  );
+}
+
 export default function MapView({
   filteredData = [],
   focusLocation,
@@ -130,6 +184,11 @@ export default function MapView({
   onOpenDetail,
   selectedProvFeature,
   dataMode,
+  analysisGeoJson,
+  analysisMetric,
+  analysisMetricRange,
+  selectedAnalysisArea,
+  onSelectAnalysisArea,
 }) {
   const validData = filteredData.filter((item) => {
     const lat = Number(item.latitude);
@@ -159,7 +218,7 @@ export default function MapView({
       ) : null}
       <FlyToLocation target={focusLocation} />
 
-      {selectedProvFeature ? (
+      {selectedProvFeature && dataMode !== "wilayah" ? (
         <GeoJSON
           key={selectedProvFeature.properties.Propinsi}
           data={selectedProvFeature}
@@ -179,7 +238,17 @@ export default function MapView({
         </Marker>
       ) : null}
 
-      <MarkerLayer validData={validData} dataMode={dataMode} onOpenDetail={onOpenDetail} />
+      {dataMode === "wilayah" ? (
+        <AreaLayer
+          analysisGeoJson={analysisGeoJson}
+          analysisMetric={analysisMetric}
+          analysisMetricRange={analysisMetricRange}
+          selectedAnalysisArea={selectedAnalysisArea}
+          onSelectAnalysisArea={onSelectAnalysisArea}
+        />
+      ) : (
+        <MarkerLayer validData={validData} dataMode={dataMode} onOpenDetail={onOpenDetail} />
+      )}
     </MapContainer>
   );
 }

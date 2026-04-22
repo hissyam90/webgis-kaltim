@@ -85,7 +85,9 @@ export const POTENSI_KATEGORI_INFO = {
 };
 
 export function getKategoriInfo(kategori, dataMode = "generator") {
-  if (!kategori) {
+  const normalizedKategori = String(kategori ?? "").trim();
+
+  if (!normalizedKategori) {
     return {
       value: "",
       label: "Tidak Diketahui",
@@ -96,19 +98,19 @@ export function getKategoriInfo(kategori, dataMode = "generator") {
 
   const source =
     dataMode === "potensi" ? POTENSI_KATEGORI_INFO : GENERATOR_KATEGORI_INFO;
-  const info = source[kategori];
+  const info = source[normalizedKategori];
 
   if (!info) {
     return {
-      value: kategori,
-      label: kategori,
-      shortLabel: kategori,
-      secondaryLabel: kategori,
+      value: normalizedKategori,
+      label: normalizedKategori,
+      shortLabel: normalizedKategori,
+      secondaryLabel: normalizedKategori,
     };
   }
 
   return {
-    value: kategori,
+    value: normalizedKategori,
     ...info,
   };
 }

@@ -4,7 +4,12 @@ import { getKategoriInfo } from "../../utils/kategoriLabel";
 export default function StatsModal({ showStats, onClose, chartData, dataMode = "generator" }) {
   if (!showStats) return null;
 
-  const title = dataMode === "potensi" ? "Statistik Potensi Energi" : "Statistik Pembangkit";
+  const title =
+    dataMode === "potensi"
+      ? "Statistik Potensi Energi"
+      : dataMode === "wilayah"
+        ? "Statistik Wilayah"
+        : "Statistik Pembangkit";
 
   return (
     <div className="absolute inset-0 z-[2000] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">

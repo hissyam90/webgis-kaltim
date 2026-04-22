@@ -9,9 +9,10 @@ export default function Legend({
   onResetKategori,
   countsByKategori = {},
   dataMode = "generator",
+  analysisLegend = { title: "", items: [] },
 }) {
   const kategoriAktif = listKategori.filter((kategori) => kategori && kategori !== "Semua");
-  const title = "Legenda";
+  const title = dataMode === "wilayah" ? analysisLegend.title || "Legenda Wilayah" : "Legenda";
   const isAllSelected = selectedKategori.length === 0;
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -33,7 +34,7 @@ export default function Legend({
             </div>
 
             <div className="flex shrink-0 items-center gap-1.5">
-              {!isCollapsed && (
+              {!isCollapsed && dataMode !== "wilayah" ? (
                 <button
                   type="button"
                   onClick={() => onResetKategori?.()}
@@ -45,7 +46,7 @@ export default function Legend({
                 >
                   Semua
                 </button>
-              )}
+              ) : null}
 
               <button
                 type="button"
@@ -78,55 +79,75 @@ export default function Legend({
           >
             <div className="min-h-0 overflow-hidden">
               <div className="legend-scroll flex max-h-[50vh] flex-col gap-1.5 overflow-y-auto pr-1">
-                {kategoriAktif.map((kategori) => {
-                  const color = getColor(kategori);
-                  const info = getKategoriInfo(kategori, dataMode);
-                  const isActive = selectedKategori.includes(kategori);
-
-                  return (
-                    <button
-                      key={kategori}
-                      type="button"
-                      onClick={() => onSelectKategori?.(kategori)}
-                      className={`group flex w-full items-center justify-between gap-2 rounded-[10px] border px-2.5 py-2 text-left transition-all ${
-                        isActive
-                          ? "text-white"
-                          : "border-slate-700/80 bg-slate-900/60 text-slate-300 hover:border-slate-500 hover:bg-slate-800/85"
-                      }`}
-                      style={
-                        isActive
-                          ? {
-                              backgroundColor: `${color}16`,
-                              borderColor: `${color}75`,
-                              boxShadow: `inset 2px 0 0 ${color}`,
-                            }
-                          : undefined
-                      }
-                      title={`Tampilkan ${info.label}`}
-                    >
-                      <div className="flex min-w-0 flex-1 items-center gap-2">
-                        <span
-                          className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/70"
-                          style={{
-                            backgroundColor: color,
-                            boxShadow: isActive ? `0 0 0 2px ${color}28` : "none",
-                          }}
-                        />
-                        <div className="min-w-0 flex-1">
+                {dataMode === "wilayah"
+                  ? analysisLegend.items.map((item) => (
+                      <div
+                        key={`${item.label}-${item.value}`}
+                        className="flex items-center justify-between gap-2 rounded-[10px] border border-slate-700/80 bg-slate-900/60 px-2.5 py-2"
+                      >
+                        <div className="flex min-w-0 flex-1 items-center gap-2">
+                          <span
+                            className="h-3.5 w-3.5 shrink-0 rounded-sm border border-white/30"
+                            style={{ backgroundColor: item.color }}
+                          />
                           <p className="truncate text-[11px] font-semibold leading-tight text-white">
-                            {info.shortLabel}
-                          </p>
-                          <p className="truncate text-[9px] leading-tight text-slate-400">
-                            {info.secondaryLabel}
+                            {item.label}
                           </p>
                         </div>
+                        <span className="shrink-0 text-[10px] font-semibold text-slate-300">
+                          {item.value}
+                        </span>
                       </div>
-                      <span className="shrink-0 text-[10px] font-semibold text-slate-200">
-                        {countsByKategori[kategori] ?? 0}
-                      </span>
-                    </button>
-                  );
-                })}
+                    ))
+                  : kategoriAktif.map((kategori) => {
+                      const color = getColor(kategori);
+                      const info = getKategoriInfo(kategori, dataMode);
+                      const isActive = selectedKategori.includes(kategori);
+
+                      return (
+                        <button
+                          key={kategori}
+                          type="button"
+                          onClick={() => onSelectKategori?.(kategori)}
+                          className={`group flex w-full items-center justify-between gap-2 rounded-[10px] border px-2.5 py-2 text-left transition-all ${
+                            isActive
+                              ? "text-white"
+                              : "border-slate-700/80 bg-slate-900/60 text-slate-300 hover:border-slate-500 hover:bg-slate-800/85"
+                          }`}
+                          style={
+                            isActive
+                              ? {
+                                  backgroundColor: `${color}16`,
+                                  borderColor: `${color}75`,
+                                  boxShadow: `inset 2px 0 0 ${color}`,
+                                }
+                              : undefined
+                          }
+                          title={`Tampilkan ${info.label}`}
+                        >
+                          <div className="flex min-w-0 flex-1 items-center gap-2">
+                            <span
+                              className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/70"
+                              style={{
+                                backgroundColor: color,
+                                boxShadow: isActive ? `0 0 0 2px ${color}28` : "none",
+                              }}
+                            />
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-[11px] font-semibold leading-tight text-white">
+                                {info.shortLabel}
+                              </p>
+                              <p className="truncate text-[9px] leading-tight text-slate-400">
+                                {info.secondaryLabel}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="shrink-0 text-[10px] font-semibold text-slate-200">
+                            {countsByKategori[kategori] ?? 0}
+                          </span>
+                        </button>
+                      );
+                    })}
               </div>
             </div>
           </div>

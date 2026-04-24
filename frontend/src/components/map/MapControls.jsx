@@ -1,4 +1,5 @@
 import LayerControl from "./LayerControl";
+import AnalysisMetricControl from "./AnalysisMetricControl";
 
 function BasemapButton({ active, label, icon, onClick, title }) {
   return (
@@ -26,15 +27,29 @@ export default function MapControls({
   selectedPotensiLayer,
   onSelectPotensiLayer,
   potensiLayers,
+  analysisMetric,
+  onSelectAnalysisMetric,
+  analysisMetricOptions,
+  analysisAreaCount,
 }) {
   return (
     <div className="absolute right-4 top-4 z-[1000] flex items-start gap-2 md:right-6 md:top-6">
-      <LayerControl
-        dataMode={dataMode}
-        selectedPotensiLayer={selectedPotensiLayer}
-        onSelectPotensiLayer={onSelectPotensiLayer}
-        potensiLayers={potensiLayers}
-      />
+      <div className="flex flex-col items-end gap-2">
+        <LayerControl
+          dataMode={dataMode}
+          selectedPotensiLayer={selectedPotensiLayer}
+          onSelectPotensiLayer={onSelectPotensiLayer}
+          potensiLayers={potensiLayers}
+        />
+
+        <AnalysisMetricControl
+          dataMode={dataMode}
+          analysisMetric={analysisMetric}
+          onSelectAnalysisMetric={onSelectAnalysisMetric}
+          analysisMetricOptions={analysisMetricOptions}
+          analysisAreaCount={analysisAreaCount}
+        />
+      </div>
 
       <div className="flex w-[60px] flex-col items-center gap-3">
         <div className="flex flex-col gap-2 rounded-2xl border border-slate-700/90 bg-slate-950/70 p-2 shadow-2xl backdrop-blur-md">

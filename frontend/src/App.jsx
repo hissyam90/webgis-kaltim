@@ -22,7 +22,6 @@ import {
   ANALYSIS_METRIC_OPTIONS,
   buildMetricLegend,
   classifyEnergyGroup,
-  formatMetricValue,
   normalizeEnergyType,
 } from "./utils/analysisHelpers";
 import usePembangkit from "./hooks/usePembangkit";
@@ -30,6 +29,11 @@ import { useWeather } from "./hooks/useWeather";
 import { useDebouncedValue } from "./hooks/useDebouncedValue";
 import potensiData from "./data/potensi.json";
 import potensiHidroLayerCsv from "./data/potensi_hidro_layer.csv?raw";
+
+const DEFAULT_MAP_VIEW = {
+  center: [-0.5, 116.5],
+  zoom: 7,
+};
 
 const POTENSI_LAYER_OPTIONS = [
   {
@@ -53,20 +57,6 @@ function getNormalizedKategori(item, mode) {
   return getKategoriInfo(rawKategori, mode).value || "Tidak Diketahui";
 }
 
-function getAreaFocusTarget(area) {
-  const facility = area?.facilities?.[0];
-  if (!facility) return null;
-
-  const latitude = Number(facility.latitude);
-  const longitude = Number(facility.longitude);
-
-  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
-    return null;
-  }
-
-  return { latitude, longitude };
-}
-
 export default function App() {
   const [dataMode, setDataMode] = useState("generator");
   const [analysisMetric, setAnalysisMetric] = useState("totalFacilities");
@@ -79,6 +69,7 @@ export default function App() {
   const [userLocation, setUserLocation] = useState(null);
   const [selectedDetail, setSelectedDetail] = useState(null);
   const [selectedAnalysisAreaId, setSelectedAnalysisAreaId] = useState(null);
+  const [analysisResetCounter, setAnalysisResetCounter] = useState(0);
   const [showStats, setShowStats] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const debouncedSearch = useDebouncedValue(searchText, 250);
@@ -218,9 +209,14 @@ export default function App() {
         return acc;
       }, {});
 
-      const dominantTypeEntry =
-        Object.entries(typeCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "id"))[0] ||
-        null;
+      const sortedTypeEntries = Object.entries(typeCounts).sort(
+        (a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "id")
+      );
+      const dominantTypeEntry = sortedTypeEntries[0] || null;
+      const dominantTypeTies = dominantTypeEntry
+        ? sortedTypeEntries.filter((entry) => entry[1] === dominantTypeEntry[1])
+        : [];
+      const hasClearDominantType = dominantTypeTies.length === 1;
 
       const renewableFacilities = facilities.filter(
         (item) => classifyEnergyGroup(item.jenis) === "renewable"
@@ -242,9 +238,13 @@ export default function App() {
         nonRenewableFacilities,
         renewableShare: totalFacilities ? (renewableFacilities / totalFacilities) * 100 : 0,
         hasData: totalFacilities > 0,
-        dominantType: dominantTypeEntry?.[0] || "",
+        dominantType: hasClearDominantType ? dominantTypeEntry?.[0] || "" : "",
         dominantTypeCount: dominantTypeEntry?.[1] || 0,
-        dominantTypeLabel: dominantTypeEntry?.[0] || "Tidak ada data",
+        dominantTypeLabel: totalFacilities
+          ? hasClearDominantType
+            ? dominantTypeEntry?.[0] || "Tidak ada data"
+            : "Belum ada dominasi"
+          : "Tidak ada data",
       };
     });
   }, [kaltimBoundaryGeojson, pembangkit]);
@@ -272,17 +272,13 @@ export default function App() {
   }, [generatorAnalysisAreas, debouncedSearch, analysisMetric]);
 
   const selectedAnalysisArea = useMemo(() => {
-    if (!filteredAnalysisAreas.length) return null;
+    if (!filteredAnalysisAreas.length || !selectedAnalysisAreaId) return null;
 
-    if (selectedAnalysisAreaId) {
-      return (
-        filteredAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
-        generatorAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
-        null
-      );
-    }
-
-    return filteredAnalysisAreas[0];
+    return (
+      filteredAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
+      generatorAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
+      null
+    );
   }, [filteredAnalysisAreas, generatorAnalysisAreas, selectedAnalysisAreaId]);
 
   const analysisGeoJson = useMemo(() => {
@@ -369,6 +365,8 @@ export default function App() {
 
   const selectedKategoriValue =
     validSelectedKategori.length === 1 ? validSelectedKategori[0] : "Semua";
+  const activeAnalysisMetricLabel =
+    ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
 
   const handleSelectKategori = (kategori) => {
     if (kategori === "Semua") {
@@ -484,15 +482,22 @@ export default function App() {
     setSearchText("");
     setFocusLocation(null);
     setSelectedDetail(null);
+    setSelectedAnalysisAreaId(null);
 
     if (mode !== "wilayah") {
-      setSelectedAnalysisAreaId(null);
+      setAnalysisResetCounter((prev) => prev + 1);
     }
   };
 
   const handleSelectAnalysisArea = (area) => {
     setSelectedAnalysisAreaId(area.id);
-    setFocusLocation(getAreaFocusTarget(area));
+    setFocusLocation(null);
+  };
+
+  const handleResetAnalysisView = () => {
+    setSelectedAnalysisAreaId(null);
+    setFocusLocation(null);
+    setAnalysisResetCounter((prev) => prev + 1);
   };
 
   const handleOpenDetail = (item) => {
@@ -573,13 +578,12 @@ export default function App() {
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
         analysisMetric={analysisMetric}
-        setAnalysisMetric={setAnalysisMetric}
-        analysisMetricOptions={ANALYSIS_METRIC_OPTIONS}
+        analysisMetricLabel={activeAnalysisMetricLabel}
         analysisAreas={filteredAnalysisAreas}
         selectedAnalysisArea={selectedAnalysisArea}
         onSelectAnalysisArea={handleSelectAnalysisArea}
+        onResetAnalysisView={handleResetAnalysisView}
         wilayahInsights={wilayahInsights}
-        metricLabel={formatMetricValue(selectedAnalysisArea, analysisMetric)}
       />
 
       <div className="relative z-0 h-full min-w-0 flex-1 transition-all duration-300">
@@ -596,6 +600,8 @@ export default function App() {
           analysisMetricRange={analysisMetricRange}
           selectedAnalysisArea={selectedAnalysisArea}
           onSelectAnalysisArea={handleSelectAnalysisArea}
+          defaultMapView={DEFAULT_MAP_VIEW}
+          analysisResetCounter={analysisResetCounter}
         />
 
         <MapControls
@@ -606,6 +612,10 @@ export default function App() {
           selectedPotensiLayer={selectedPotensiLayer}
           onSelectPotensiLayer={setSelectedPotensiLayer}
           potensiLayers={POTENSI_LAYER_OPTIONS}
+          analysisMetric={analysisMetric}
+          onSelectAnalysisMetric={setAnalysisMetric}
+          analysisMetricOptions={ANALYSIS_METRIC_OPTIONS}
+          analysisAreaCount={filteredAnalysisAreas.length}
         />
 
         <LegendBox

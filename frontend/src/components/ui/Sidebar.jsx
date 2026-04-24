@@ -21,11 +21,11 @@ export default function Sidebar({
   isSidebarOpen,
   setIsSidebarOpen,
   analysisMetric,
-  setAnalysisMetric,
-  analysisMetricOptions,
+  analysisMetricLabel,
   analysisAreas,
   selectedAnalysisArea,
   onSelectAnalysisArea,
+  onResetAnalysisView,
   wilayahInsights,
 }) {
   const [isRegionOpen, setIsRegionOpen] = useState(true);
@@ -175,31 +175,16 @@ export default function Sidebar({
 
               {dataMode === "wilayah" ? (
                 <div>
-                  <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                    Metrik Analisis
-                  </p>
-                  <div className="space-y-2">
-                    {analysisMetricOptions.map((option) => {
-                      const isActive = analysisMetric === option.value;
-
-                      return (
-                        <button
-                          key={option.value}
-                          type="button"
-                          onClick={() => setAnalysisMetric(option.value)}
-                          className={`w-full rounded-xl border px-3 py-2.5 text-left transition-all ${
-                            isActive
-                              ? "border-violet-400/60 bg-violet-500/12 text-white shadow-[0_0_18px_rgba(139,92,246,0.12)]"
-                              : "border-slate-700 bg-slate-800/70 text-slate-300 hover:border-slate-500 hover:bg-slate-700"
-                          }`}
-                        >
-                          <p className="text-[12px] font-semibold">{option.label}</p>
-                          <p className="mt-1 text-[10px] leading-relaxed text-slate-400">
-                            {option.description}
-                          </p>
-                        </button>
-                      );
-                    })}
+                  <div className="rounded-xl border border-violet-400/20 bg-violet-500/10 px-3 py-2.5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
+                      Metrik Aktif
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-white">
+                      {analysisMetricLabel || "-"}
+                    </p>
+                    <p className="mt-1 text-[10px] leading-relaxed text-slate-300">
+                      Pengaturan metrik analisis sekarang tersedia di panel floating kanan atas.
+                    </p>
                   </div>
 
                   <div className="mt-3 grid grid-cols-2 gap-2">
@@ -313,11 +298,23 @@ export default function Sidebar({
 
                 {selectedAnalysisArea ? (
                   <div className="rounded-2xl border border-violet-400/20 bg-violet-500/10 p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
-                      Wilayah Terpilih
-                    </p>
-                    <h3 className="mt-2 text-lg font-bold text-white">{selectedAnalysisArea.name}</h3>
-                    <p className="text-[11px] text-slate-300">{selectedAnalysisArea.type}</p>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
+                          Wilayah Terpilih
+                        </p>
+                        <h3 className="mt-2 text-lg font-bold text-white">{selectedAnalysisArea.name}</h3>
+                        <p className="text-[11px] text-slate-300">{selectedAnalysisArea.type}</p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={onResetAnalysisView}
+                        className="rounded-full border border-violet-300/25 bg-slate-900/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-violet-100 transition-all hover:border-violet-300/50 hover:bg-violet-500/12"
+                      >
+                        Reset Zoom
+                      </button>
+                    </div>
 
                     <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                       <div className="rounded-lg bg-slate-900/55 p-2.5">
@@ -337,9 +334,17 @@ export default function Sidebar({
                         </p>
                       </div>
                       <div className="rounded-lg bg-slate-900/55 p-2.5">
+                        <p className="text-slate-400">Renewable Share</p>
+                        <p className="mt-1 font-semibold text-emerald-200">
+                          {selectedAnalysisArea.renewableShare.toFixed(1)}%
+                        </p>
+                      </div>
+                      <div className="col-span-2 rounded-lg bg-slate-900/55 p-2.5">
                         <p className="text-slate-400">Dominan</p>
                         <p className="mt-1 font-semibold text-white">
-                          {selectedAnalysisArea.hasData ? selectedAnalysisArea.dominantTypeLabel || "-" : "No Data"}
+                          {selectedAnalysisArea.hasData
+                            ? formatMetricValue(selectedAnalysisArea, "dominantType")
+                            : "No Data"}
                         </p>
                       </div>
                     </div>

@@ -83,7 +83,9 @@ export function formatMetricValue(area, metric) {
   }
 
   if (metric === "dominantType") {
-    return area.dominantTypeLabel || "Tidak ada data";
+    if (!area.hasData) return "Tidak ada data";
+    if (!area.dominantType) return `${area.dominantTypeLabel || "Belum ada dominasi"} (${area.dominantTypeCount || 0})`;
+    return `${area.dominantTypeLabel} (${area.dominantTypeCount || 0})`;
   }
 
   return `${area[metric] ?? 0}`;
@@ -135,7 +137,7 @@ export function buildMetricLegend(areas, metric) {
 
   if (metric === "dominantType") {
     const counts = areas.filter((area) => area.hasData).reduce((acc, area) => {
-      const key = area.dominantType || "Tidak Diketahui";
+      const key = area.dominantType || "Belum ada dominasi";
       acc[key] = (acc[key] || 0) + 1;
       return acc;
     }, {});
@@ -144,8 +146,8 @@ export function buildMetricLegend(areas, metric) {
       title: "Jenis Dominan",
       items: [
         ...Object.entries(counts).map(([key, count]) => ({
-          label: getKategoriInfo(key).shortLabel,
-          color: key === "Tidak Diketahui" ? "#64748b" : getColor(key),
+          label: key === "Belum ada dominasi" ? key : getKategoriInfo(key).shortLabel,
+          color: key === "Belum ada dominasi" ? "#475569" : getColor(key),
           value: `${count} wilayah`,
         })),
         ...(noDataCount > 0
@@ -166,18 +168,41 @@ export function buildMetricLegend(areas, metric) {
   const min = values.length ? Math.min(...values) : 0;
   const max = values.length ? Math.max(...values) : 0;
   const stepCount = 4;
+  const formatLegendNumber = (value) => {
+    if (metric === "renewableShare") {
+      return `${value.toFixed(0)}%`;
+    }
+
+    if (Math.abs(value) >= 100 || Number.isInteger(value)) {
+      return `${Math.round(value)}`;
+    }
+
+    return `${value.toFixed(1)}`;
+  };
 
   return {
     title: getMetricCaption(metric),
     items: [
       ...Array.from({ length: stepCount }, (_, index) => {
-        const ratio = stepCount === 1 ? 1 : index / (stepCount - 1);
-        const value = min + (max - min) * ratio;
+        const startRatio = stepCount === 1 ? 0 : index / stepCount;
+        const endRatio = stepCount === 1 ? 1 : (index + 1) / stepCount;
+        const startValue = min + (max - min) * startRatio;
+        const endValue = min + (max - min) * endRatio;
+        const isFirst = index === 0;
+        const isLast = index === stepCount - 1;
+        const label =
+          max === min
+            ? formatLegendNumber(min)
+            : `${formatLegendNumber(startValue)}-${formatLegendNumber(endValue)}`;
 
         return {
-          label: metric === "renewableShare" ? `${value.toFixed(0)}%` : `${Math.round(value)}`,
-          color: getAreaFillColor({ [metric]: value, hasData: true }, metric, { min, max }),
-          value: index === 0 ? "rendah" : index === stepCount - 1 ? "tinggi" : "",
+          label,
+          color: getAreaFillColor(
+            { [metric]: (startValue + endValue) / 2, hasData: true },
+            metric,
+            { min, max }
+          ),
+          value: isFirst ? "rendah" : isLast ? "tinggi" : "",
         };
       }),
       ...(noDataCount > 0

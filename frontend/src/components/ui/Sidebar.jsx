@@ -4,6 +4,16 @@ import { formatMetricValue } from "../../utils/analysisHelpers";
 import { formatKategoriOption, getKategoriInfo } from "../../utils/kategoriLabel";
 import YearRangeFilter from "./YearRangeFilter";
 
+const SkeletonCard = () => (
+  <div className="animate-pulse rounded-xl border border-slate-800/50 bg-slate-800/20 p-3.5">
+    <div className="mb-3 h-4 w-3/4 rounded bg-slate-700/50"></div>
+    <div className="flex items-center gap-2">
+      <div className="h-3 w-3 rounded-full bg-slate-700/50"></div>
+      <div className="h-3 w-1/2 rounded bg-slate-700/50"></div>
+    </div>
+  </div>
+);
+
 export default function Sidebar({
   dataMode,
   setDataMode,
@@ -28,9 +38,12 @@ export default function Sidebar({
   onSelectAnalysisArea,
   onResetAnalysisView,
   wilayahInsights,
-  data,           // Tambahan props dari App.jsx
-  yearRange,      // Tambahan props dari App.jsx
-  onYearRange     // Tambahan props dari App.jsx
+  data,
+  yearRange,
+  onYearRange,
+  isLoading,
+  potensiOpacity,
+  setPotensiOpacity
 }) {
   const [isRegionOpen, setIsRegionOpen] = useState(true);
   const modeLabel =
@@ -103,7 +116,7 @@ export default function Sidebar({
                           className={`rounded-lg border py-2 text-[10px] font-bold transition-all duration-200 active:scale-95 ${
                             selectedProv === prov
                               ? "border-emerald-500 bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-                              : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700"
+                              : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700 hover:shadow-[0_0_10px_rgba(255,255,255,0.05)]"
                           }`}
                         >
                           {prov}
@@ -128,7 +141,7 @@ export default function Sidebar({
                   onClick={() => setDataMode("generator")}
                   className={`rounded-lg py-2 text-[11px] font-bold transition-all ${
                     dataMode === "generator"
-                      ? "bg-emerald-600 text-white shadow"
+                      ? "bg-emerald-600 text-white shadow hover:shadow-[0_0_10px_rgba(16,185,129,0.4)]"
                       : "text-slate-400 hover:bg-slate-700"
                   }`}
                 >
@@ -138,7 +151,7 @@ export default function Sidebar({
                   onClick={() => setDataMode("potensi")}
                   className={`rounded-lg py-2 text-[11px] font-bold transition-all ${
                     dataMode === "potensi"
-                      ? "bg-cyan-600 text-white shadow"
+                      ? "bg-cyan-600 text-white shadow hover:shadow-[0_0_10px_rgba(8,145,178,0.4)]"
                       : "text-slate-400 hover:bg-slate-700"
                   }`}
                 >
@@ -148,7 +161,7 @@ export default function Sidebar({
                   onClick={() => setDataMode("wilayah")}
                   className={`rounded-lg py-2 text-[11px] font-bold transition-all ${
                     dataMode === "wilayah"
-                      ? "bg-violet-600 text-white shadow"
+                      ? "bg-violet-600 text-white shadow hover:shadow-[0_0_10px_rgba(139,92,246,0.4)]"
                       : "text-slate-400 hover:bg-slate-700"
                   }`}
                 >
@@ -173,7 +186,7 @@ export default function Sidebar({
                   }
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2.5 pl-16 text-sm text-white outline-none transition-all placeholder:text-slate-600 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2.5 pl-16 text-sm text-white outline-none transition-all placeholder:text-slate-600 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 hover:shadow-[0_0_10px_rgba(255,255,255,0.05)]"
                 />
               </div>
 
@@ -194,13 +207,13 @@ export default function Sidebar({
                   <div className="mt-3 grid grid-cols-2 gap-2">
                     <button
                       onClick={onShowStats}
-                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 py-2.5 text-[10px] font-bold text-violet-300 transition-all active:scale-95 hover:bg-slate-700"
+                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 py-2.5 text-[10px] font-bold text-violet-300 transition-all active:scale-95 hover:bg-slate-700 hover:shadow-[0_0_10px_rgba(139,92,246,0.3)]"
                     >
                       Statistik
                     </button>
                     <button
                       onClick={onExport}
-                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700"
+                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)]"
                     >
                       Export CSV
                     </button>
@@ -215,7 +228,7 @@ export default function Sidebar({
                     <select
                       value={selectedKategori}
                       onChange={(e) => setSelectedKategori(e.target.value)}
-                      className="w-full cursor-pointer appearance-none rounded-lg border border-slate-700 bg-slate-800 p-2.5 text-sm text-white outline-none transition-all focus:border-emerald-500"
+                      className="w-full cursor-pointer appearance-none rounded-lg border border-slate-700 bg-slate-800 p-2.5 text-sm text-white outline-none transition-all focus:border-emerald-500 hover:shadow-[0_0_10px_rgba(255,255,255,0.05)]"
                     >
                       {listKategori.map((kat) => (
                         <option key={kat} value={kat}>
@@ -225,7 +238,21 @@ export default function Sidebar({
                     </select>
                   </div>
 
-                  {/* TAMBAHAN: Year Range Filter */}
+                  {dataMode === "potensi" && (
+                    <div className="mt-2 rounded-lg border border-slate-700/60 bg-slate-800/40 p-2.5">
+                       <div className="flex justify-between items-center mb-1">
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Transparansi Poligon</p>
+                          <p className="text-[10px] font-semibold text-cyan-400">{potensiOpacity}%</p>
+                       </div>
+                       <input 
+                          type="range" min="10" max="100" 
+                          value={potensiOpacity} 
+                          onChange={(e) => setPotensiOpacity(Number(e.target.value))} 
+                          className="w-full h-1.5 cursor-pointer appearance-none rounded-full bg-slate-700 accent-cyan-500" 
+                       />
+                    </div>
+                  )}
+
                   {dataMode !== "wilayah" && dataMode !== "potensi" && (
                     <YearRangeFilter
                       data={data}
@@ -234,16 +261,16 @@ export default function Sidebar({
                     />
                   )}
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 mt-2">
                     <button
                       onClick={onShowStats}
-                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 py-2.5 text-[10px] font-bold text-emerald-400 transition-all active:scale-95 hover:bg-slate-700"
+                      className={`flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800 py-2.5 text-[10px] font-bold transition-all active:scale-95 hover:bg-slate-700 ${dataMode === "potensi" ? "text-cyan-400 hover:shadow-[0_0_10px_rgba(8,145,178,0.3)]" : "text-emerald-400 hover:shadow-[0_0_10px_rgba(16,185,129,0.3)]"}`}
                     >
                       Statistik
                     </button>
                     <button
                       onClick={onExport}
-                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700"
+                      className="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 py-2.5 text-[10px] font-bold text-slate-200 transition-all active:scale-95 hover:border-slate-500 hover:bg-slate-700 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)]"
                     >
                       Export CSV
                     </button>
@@ -257,13 +284,20 @@ export default function Sidebar({
                 {dataMode === "wilayah" ? "Cakupan Data" : "Status Data"}
               </span>
               <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-400">
-                {dataMode === "wilayah" ? `${analysisAreas.length} Wilayah` : `${filteredData.length} Ditemukan`}
+                {isLoading ? "Memuat..." : (dataMode === "wilayah" ? `${analysisAreas.length} Wilayah` : `${filteredData.length} Ditemukan`)}
               </span>
             </div>
           </div>
 
           <div className="sidebar-scroll min-h-0 flex-1 space-y-2 overflow-y-auto p-2.5">
-            {dataMode === "wilayah" ? (
+            {isLoading ? (
+              <div className="flex flex-col gap-3">
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+              </div>
+            ) : dataMode === "wilayah" ? (
               <>
                 {wilayahInsights ? (
                   <div className="rounded-2xl border border-slate-700/80 bg-slate-800/40 p-4">
@@ -277,7 +311,7 @@ export default function Sidebar({
                     </div>
 
                     <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                      <div className="rounded-lg bg-slate-900/55 p-2.5 hover:bg-slate-800/80 transition-colors">
                         <p className="text-slate-400">Fasilitas terbanyak</p>
                         <p className="mt-1 font-semibold text-white">
                           {wilayahInsights.topFacilityArea
@@ -285,7 +319,7 @@ export default function Sidebar({
                             : "-"}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                      <div className="rounded-lg bg-slate-900/55 p-2.5 hover:bg-slate-800/80 transition-colors">
                         <p className="text-slate-400">Share renewable tertinggi</p>
                         <p className="mt-1 font-semibold text-emerald-300">
                           {wilayahInsights.topRenewableShareArea
@@ -293,13 +327,13 @@ export default function Sidebar({
                             : "-"}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                      <div className="rounded-lg bg-slate-900/55 p-2.5 hover:bg-slate-800/80 transition-colors">
                         <p className="text-slate-400">Wilayah tanpa data</p>
                         <p className="mt-1 font-semibold text-amber-300">
                           {wilayahInsights.noDataCount}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-slate-900/55 p-2.5">
+                      <div className="rounded-lg bg-slate-900/55 p-2.5 hover:bg-slate-800/80 transition-colors">
                         <p className="text-slate-400">Pola dominan</p>
                         <p className="mt-1 font-semibold text-white">
                           {wilayahInsights.dominantCoverage}
@@ -310,7 +344,7 @@ export default function Sidebar({
                 ) : null}
 
                 {selectedAnalysisArea ? (
-                  <div className="rounded-2xl border border-violet-400/20 bg-violet-500/10 p-4">
+                  <div className="rounded-2xl border border-violet-400/20 bg-violet-500/10 p-4 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
@@ -323,7 +357,7 @@ export default function Sidebar({
                       <button
                         type="button"
                         onClick={onResetAnalysisView}
-                        className="rounded-full border border-violet-300/25 bg-slate-900/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-violet-100 transition-all hover:border-violet-300/50 hover:bg-violet-500/12"
+                        className="rounded-full border border-violet-300/25 bg-slate-900/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-violet-100 transition-all hover:border-violet-300/80 hover:bg-violet-500/20 hover:shadow-[0_0_10px_rgba(139,92,246,0.4)]"
                       >
                         Reset Zoom
                       </button>
@@ -375,8 +409,8 @@ export default function Sidebar({
                         onClick={() => onSelectAnalysisArea(area)}
                         className={`w-full rounded-xl border p-3.5 text-left transition-all duration-300 ${
                           isActive
-                            ? "border-violet-400/60 bg-violet-500/12 shadow-[0_0_20px_rgba(139,92,246,0.1)]"
-                            : "border-slate-800/50 bg-slate-800/30 hover:border-violet-500/40 hover:bg-slate-700/50"
+                            ? "border-violet-400/60 bg-violet-500/12 shadow-[0_0_20px_rgba(139,92,246,0.25)]"
+                            : "border-slate-800/50 bg-slate-800/30 hover:border-violet-500/50 hover:bg-slate-700/50 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)]"
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3">
@@ -415,13 +449,16 @@ export default function Sidebar({
                 const kategori = getKategoriInfo(item.jenis, dataMode);
                 const potensiText =
                   Number.isFinite(Number(item.prediksi_mw)) ? `${Number(item.prediksi_mw)} MW` : "-";
+                
+                const hoverShadowColor = dataMode === "potensi" ? "rgba(8,145,178,0.25)" : "rgba(16,185,129,0.25)";
+                const hoverBorderClass = dataMode === "potensi" ? "hover:border-cyan-500/50" : "hover:border-emerald-500/50";
 
                 return (
                   <div
                     key={idx}
                     onClick={() => onFocus(item)}
-                    className="group animate-slideIn cursor-pointer rounded-xl border border-slate-800/50 bg-slate-800/30 p-3.5 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-700/50"
-                    style={{ animationDelay: `${idx * 40}ms` }}
+                    className={`group animate-slideIn cursor-pointer rounded-xl border border-slate-800/50 bg-slate-800/30 p-3.5 transition-all duration-300 ${hoverBorderClass} hover:bg-slate-700/50`}
+                    style={{ animationDelay: `${idx * 40}ms`, boxShadow: `hover:0_0_15px_${hoverShadowColor}` }}
                   >
                     <div className="text-[13px] font-bold text-slate-300 transition-colors group-hover:text-white">
                       {item.nama}
@@ -431,7 +468,7 @@ export default function Sidebar({
                       <div className="flex min-w-0 items-start gap-2">
                         <span
                           className="mt-0.5 h-3 w-3 shrink-0 rounded-full border border-white/50"
-                          style={{ backgroundColor: getColor(item.jenis) }}
+                          style={{ backgroundColor: getColor(item.jenis), boxShadow: `0 0 8px ${getColor(item.jenis)}` }}
                         />
                         <div className="min-w-0">
                           <p className="truncate text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">
@@ -443,25 +480,15 @@ export default function Sidebar({
 
                       <div className="flex shrink-0 items-center gap-1 text-slate-500 group-hover:text-slate-400">
                         <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                         <span className="text-[10px] font-medium">{item.region}</span>
                       </div>
                     </div>
 
                     {dataMode === "potensi" ? (
-                      <div className="mt-2.5 rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-3 py-2">
+                      <div className="mt-2.5 rounded-lg border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 group-hover:border-cyan-500/40 transition-colors">
                         <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-cyan-200">
                           Estimasi Potensi
                         </p>
@@ -503,35 +530,15 @@ export default function Sidebar({
           scrollbar-width: thin;
           scrollbar-color: rgba(100, 116, 139, 0.55) transparent;
         }
-
-        .sidebar-scroll::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        .sidebar-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
+        .sidebar-scroll::-webkit-scrollbar { width: 8px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
         .sidebar-scroll::-webkit-scrollbar-thumb {
-          background: linear-gradient(
-            180deg,
-            rgba(71, 85, 105, 0.9),
-            rgba(51, 65, 85, 0.9)
-          );
-          border-radius: 9999px;
-          border: 2px solid transparent;
-          background-clip: padding-box;
+          background: linear-gradient(180deg, rgba(71, 85, 105, 0.9), rgba(51, 65, 85, 0.9));
+          border-radius: 9999px; border: 2px solid transparent; background-clip: padding-box;
         }
-
         .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(
-            180deg,
-            rgba(100, 116, 139, 0.95),
-            rgba(71, 85, 105, 0.95)
-          );
-          border-radius: 9999px;
-          border: 2px solid transparent;
-          background-clip: padding-box;
+          background: linear-gradient(180deg, rgba(100, 116, 139, 0.95), rgba(71, 85, 105, 0.95));
+          border-radius: 9999px; border: 2px solid transparent; background-clip: padding-box;
         }
       `}</style>
     </>

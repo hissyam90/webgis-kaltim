@@ -10,6 +10,7 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
+
 import "leaflet/dist/leaflet.css";
 import FlyToLocation from "./FlyToLocation";
 import { getColor } from "../../utils/getColor";
@@ -84,7 +85,7 @@ function getMarkerRadius(zoom, dataMode) {
   return isPotensi ? 10 : 9;
 }
 
-function MarkerLayer({ validData, dataMode, onOpenDetail }) {
+function MarkerLayer({ validData, dataMode, onOpenDetail, potensiOpacity }) {
   const map = useMap();
   const [zoom, setZoom] = useState(map.getZoom());
 
@@ -103,6 +104,9 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
     const potensiText =
       Number.isFinite(Number(item.prediksi_mw)) ? `${Number(item.prediksi_mw)} MW` : "-";
 
+    const isPotensi = dataMode === "potensi";
+    const currentOpacity = isPotensi ? potensiOpacity : (zoom <= 6 ? 0.72 : 0.82);
+
     return (
       <CircleMarker
         key={item.id || idx}
@@ -111,7 +115,8 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
         pathOptions={{
           color: getColor(item.jenis),
           fillColor: getColor(item.jenis),
-          fillOpacity: zoom <= 6 ? 0.72 : 0.82,
+          fillOpacity: currentOpacity,
+          opacity: isPotensi ? Math.min(1, currentOpacity + 0.2) : 1,
           weight: zoom <= 6 ? 1 : 1.2,
         }}
       >
@@ -130,7 +135,7 @@ function MarkerLayer({ validData, dataMode, onOpenDetail }) {
                 Region: <span className="font-semibold text-slate-800">{item.region}</span>
               </p>
 
-              {dataMode === "potensi" ? (
+              {isPotensi ? (
                 <p>
                   Estimasi: <span className="font-semibold text-cyan-700">{potensiText}</span>
                 </p>
@@ -261,6 +266,7 @@ export default function MapView({
   onSelectAnalysisArea,
   defaultMapView,
   analysisResetCounter,
+  potensiOpacity,
 }) {
   const validData = filteredData.filter((item) => {
     const lat = Number(item.latitude);
@@ -293,6 +299,7 @@ export default function MapView({
       {tile?.labelUrl ? (
         <TileLayer attribution={tile?.labelAttr || tile?.attr} url={tile.labelUrl} pane="overlayPane" />
       ) : null}
+      
       <FlyToLocation target={focusLocation} />
 
       {selectedProvFeature && dataMode !== "wilayah" ? (
@@ -324,7 +331,12 @@ export default function MapView({
           onSelectAnalysisArea={onSelectAnalysisArea}
         />
       ) : (
-        <MarkerLayer validData={validData} dataMode={dataMode} onOpenDetail={onOpenDetail} />
+        <MarkerLayer 
+          validData={validData} 
+          dataMode={dataMode} 
+          onOpenDetail={onOpenDetail} 
+          potensiOpacity={potensiOpacity} 
+        />
       )}
 
       <style>{`

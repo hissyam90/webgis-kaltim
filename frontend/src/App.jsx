@@ -53,7 +53,6 @@ const POTENSI_LAYER_OPTIONS = [
 function getNormalizedKategori(item, mode) {
   const rawKategori = String(item?.jenis ?? "").trim();
   if (!rawKategori) return "Tidak Diketahui";
-
   return getKategoriInfo(rawKategori, mode).value || "Tidak Diketahui";
 }
 
@@ -73,8 +72,8 @@ export default function App() {
   const [showStats, setShowStats] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   
-  // State baru untuk filter tahun (null = filter nonaktif)
   const [yearRange, setYearRange] = useState(null);
+  const [potensiOpacity, setPotensiOpacity] = useState(80); 
   
   const debouncedSearch = useDebouncedValue(searchText, 250);
 
@@ -91,7 +90,6 @@ export default function App() {
   const potensiHidroLayerData = useMemo(() => {
     return parseCsv(potensiHidroLayerCsv).map((row, index) => {
       const prediksiMw = Number(row.pot_mw);
-
       return {
         id: row.dataset_id || row.objectid || `hidro-layer-${index + 1}`,
         nama: row.nama || row.nama_asli || `Potensi Hidro ${index + 1}`,
@@ -103,12 +101,8 @@ export default function App() {
         prediksi_mw: Number.isFinite(prediksiMw) ? prediksiMw : null,
         tahun: null,
         source: "",
-        deskripsi_lokasi: row.coord_note
-          ? `${row.coord_note}.`
-          : "Data GeoESDM tanpa artikel/sumber pendukung yang jelas.",
-        potensi_energi_raw: Number.isFinite(prediksiMw)
-          ? `Potensi hidro terpetakan sebesar ${row.pot_mw} MW.`
-          : "",
+        deskripsi_lokasi: row.coord_note ? `${row.coord_note}.` : "Data GeoESDM tanpa artikel/sumber pendukung yang jelas.",
+        potensi_energi_raw: Number.isFinite(prediksiMw) ? `Potensi hidro terpetakan sebesar ${row.pot_mw} MW.` : "",
         dataset_label: "Potensi Hidro (GeoESDM)",
         dataset_group: "geoesdm",
         kecamatan: row.kecamatan || "",
@@ -122,10 +116,7 @@ export default function App() {
   }, []);
 
   const activePotensiData = useMemo(() => {
-    if (selectedPotensiLayer === "potensi-hidro-geoesdm") {
-      return potensiHidroLayerData;
-    }
-
+    if (selectedPotensiLayer === "potensi-hidro-geoesdm") return potensiHidroLayerData;
     return potensiData;
   }, [potensiHidroLayerData, selectedPotensiLayer]);
 
@@ -133,9 +124,7 @@ export default function App() {
     if (!provGeo || selectedProv === "Semua") return null;
     const target = PROV_GEO_NAME[selectedProv];
     if (!target) return null;
-    return provGeo.features.find(
-      (feature) => String(feature?.properties?.Propinsi || "").toUpperCase() === target
-    );
+    return provGeo.features.find((feature) => String(feature?.properties?.Propinsi || "").toUpperCase() === target);
   }, [provGeo, selectedProv]);
 
   const activeData = useMemo(() => {
@@ -145,11 +134,8 @@ export default function App() {
 
   const listKategori = useMemo(() => {
     if (dataMode === "wilayah") return ["Semua"];
-
     const values = [...new Set(activeData.map((item) => getNormalizedKategori(item, dataMode)))];
-    values.sort((a, b) =>
-      formatKategoriOption(a, dataMode).localeCompare(formatKategoriOption(b, dataMode), "id")
-    );
+    values.sort((a, b) => formatKategoriOption(a, dataMode).localeCompare(formatKategoriOption(b, dataMode), "id"));
     return ["Semua", ...values];
   }, [activeData, dataMode]);
 
@@ -157,31 +143,23 @@ export default function App() {
     return selectedKategoriList.filter((kategori) => listKategori.includes(kategori));
   }, [listKategori, selectedKategoriList]);
 
-  // Modified filteredData with year filter
   const filteredData = useMemo(() => {
     if (dataMode === "wilayah") return [];
-
     const query = debouncedSearch.trim().toLowerCase();
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
     return activeData.filter((item) => {
-      // Filter kategori
       const normalizedKategori = getNormalizedKategori(item, dataMode);
-      const matchKategori =
-        validSelectedKategori.length === 0 || validSelectedKategori.includes(normalizedKategori);
-
-      // Filter search
+      const matchKategori = validSelectedKategori.length === 0 || validSelectedKategori.includes(normalizedKategori);
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
       const lokasi = (item.lokasi || "").toLowerCase();
-      const matchSearch =
-        !query || name.includes(query) || region.includes(query) || lokasi.includes(query);
+      const matchSearch = !query || name.includes(query) || region.includes(query) || lokasi.includes(query);
 
-      // Filter year range (TAMBAHAN)
       const matchYear = (() => {
-        if (!yearRange) return true; // filter nonaktif
+        if (!yearRange) return true;
         const y = Number(item.tahun_operasi);
-        if (!Number.isFinite(y)) return true; // data tanpa tahun tetap ditampilkan
+        if (!Number.isFinite(y)) return true; 
         return y >= yearRange[0] && y <= yearRange[1];
       })();
 
@@ -194,59 +172,31 @@ export default function App() {
       const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
       return matchKategori && matchSearch && matchYear && inside;
     });
-  }, [
-    activeData,
-    dataMode,
-    validSelectedKategori,
-    debouncedSearch,
-    selectedProv,
-    selectedProvFeature,
-    yearRange, // Dependency tambahan
-  ]);
+  }, [activeData, dataMode, validSelectedKategori, debouncedSearch, selectedProv, selectedProvFeature, yearRange]);
 
   const generatorAnalysisAreas = useMemo(() => {
     if (!kaltimBoundaryGeojson?.features?.length) return [];
-
     const validFacilities = pembangkit.filter((item) => {
       const lon = Number(item.longitude);
       const lat = Number(item.latitude);
-
-      return (
-        Number.isFinite(lon) &&
-        Number.isFinite(lat) &&
-        lat >= -90 &&
-        lat <= 90 &&
-        lon >= -180 &&
-        lon <= 180
-      );
+      return Number.isFinite(lon) && Number.isFinite(lat) && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
     });
 
     return kaltimBoundaryGeojson.features.map((feature) => {
-      const facilities = validFacilities.filter((item) =>
-        booleanPointInPolygon(point([Number(item.longitude), Number(item.latitude)]), feature)
-      );
-
+      const facilities = validFacilities.filter((item) => booleanPointInPolygon(point([Number(item.longitude), Number(item.latitude)]), feature));
       const typeCounts = facilities.reduce((acc, item) => {
         const key = normalizeEnergyType(item.jenis) || "Tidak Diketahui";
         acc[key] = (acc[key] || 0) + 1;
         return acc;
       }, {});
 
-      const sortedTypeEntries = Object.entries(typeCounts).sort(
-        (a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "id")
-      );
+      const sortedTypeEntries = Object.entries(typeCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "id"));
       const dominantTypeEntry = sortedTypeEntries[0] || null;
-      const dominantTypeTies = dominantTypeEntry
-        ? sortedTypeEntries.filter((entry) => entry[1] === dominantTypeEntry[1])
-        : [];
+      const dominantTypeTies = dominantTypeEntry ? sortedTypeEntries.filter((entry) => entry[1] === dominantTypeEntry[1]) : [];
       const hasClearDominantType = dominantTypeTies.length === 1;
 
-      const renewableFacilities = facilities.filter(
-        (item) => classifyEnergyGroup(item.jenis) === "renewable"
-      ).length;
-      const nonRenewableFacilities = facilities.filter(
-        (item) => classifyEnergyGroup(item.jenis) === "non_renewable"
-      ).length;
+      const renewableFacilities = facilities.filter((item) => classifyEnergyGroup(item.jenis) === "renewable").length;
+      const nonRenewableFacilities = facilities.filter((item) => classifyEnergyGroup(item.jenis) === "non_renewable").length;
       const totalFacilities = facilities.length;
 
       return {
@@ -263,116 +213,65 @@ export default function App() {
         hasData: totalFacilities > 0,
         dominantType: hasClearDominantType ? dominantTypeEntry?.[0] || "" : "",
         dominantTypeCount: dominantTypeEntry?.[1] || 0,
-        dominantTypeLabel: totalFacilities
-          ? hasClearDominantType
-            ? dominantTypeEntry?.[0] || "Tidak ada data"
-            : "Belum ada dominasi"
-          : "Tidak ada data",
+        dominantTypeLabel: totalFacilities ? hasClearDominantType ? dominantTypeEntry?.[0] || "Tidak ada data" : "Belum ada dominasi" : "Tidak ada data",
       };
     });
   }, [kaltimBoundaryGeojson, pembangkit]);
 
   const filteredAnalysisAreas = useMemo(() => {
     const query = debouncedSearch.trim().toLowerCase();
-
     return [...generatorAnalysisAreas]
       .filter((area) => {
         if (!query) return true;
-
-        return (
-          area.name.toLowerCase().includes(query) ||
-          area.type.toLowerCase().includes(query) ||
-          area.dominantTypeLabel.toLowerCase().includes(query)
-        );
+        return area.name.toLowerCase().includes(query) || area.type.toLowerCase().includes(query) || area.dominantTypeLabel.toLowerCase().includes(query);
       })
       .sort((a, b) => {
-        if (analysisMetric === "dominantType") {
-          return b.dominantTypeCount - a.dominantTypeCount || a.name.localeCompare(b.name, "id");
-        }
-
+        if (analysisMetric === "dominantType") return b.dominantTypeCount - a.dominantTypeCount || a.name.localeCompare(b.name, "id");
         return (b[analysisMetric] || 0) - (a[analysisMetric] || 0) || a.name.localeCompare(b.name, "id");
       });
   }, [generatorAnalysisAreas, debouncedSearch, analysisMetric]);
 
   const selectedAnalysisArea = useMemo(() => {
     if (!filteredAnalysisAreas.length || !selectedAnalysisAreaId) return null;
-
-    return (
-      filteredAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
-      generatorAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) ||
-      null
-    );
+    return filteredAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) || generatorAnalysisAreas.find((area) => area.id === selectedAnalysisAreaId) || null;
   }, [filteredAnalysisAreas, generatorAnalysisAreas, selectedAnalysisAreaId]);
 
   const analysisGeoJson = useMemo(() => {
     if (!kaltimBoundaryGeojson?.features?.length) return null;
-
     const areaMap = new Map(generatorAnalysisAreas.map((area) => [area.id, area]));
-
     return {
       type: "FeatureCollection",
       features: kaltimBoundaryGeojson.features.map((feature) => ({
         ...feature,
-        properties: {
-          ...feature.properties,
-          analysis: areaMap.get(feature.properties.areaId) || null,
-        },
+        properties: { ...feature.properties, analysis: areaMap.get(feature.properties.areaId) || null },
       })),
     };
   }, [generatorAnalysisAreas, kaltimBoundaryGeojson]);
 
   const analysisMetricRange = useMemo(() => {
-    const values = filteredAnalysisAreas.map((area) =>
-      analysisMetric === "dominantType" ? area.dominantTypeCount : Number(area[analysisMetric]) || 0
-    );
-
-    if (!values.length) {
-      return { min: 0, max: 0 };
-    }
-
-    return {
-      min: Math.min(...values),
-      max: Math.max(...values),
-    };
+    const values = filteredAnalysisAreas.map((area) => analysisMetric === "dominantType" ? area.dominantTypeCount : Number(area[analysisMetric]) || 0);
+    if (!values.length) return { min: 0, max: 0 };
+    return { min: Math.min(...values), max: Math.max(...values) };
   }, [filteredAnalysisAreas, analysisMetric]);
 
-  const analysisLegend = useMemo(
-    () => buildMetricLegend(filteredAnalysisAreas, analysisMetric),
-    [filteredAnalysisAreas, analysisMetric]
-  );
+  const analysisLegend = useMemo(() => buildMetricLegend(filteredAnalysisAreas, analysisMetric), [filteredAnalysisAreas, analysisMetric]);
 
   const wilayahInsights = useMemo(() => {
-    if (!generatorAnalysisAreas.length) {
-      return null;
-    }
-
+    if (!generatorAnalysisAreas.length) return null;
     const withData = generatorAnalysisAreas.filter((area) => area.hasData);
     const noDataCount = generatorAnalysisAreas.length - withData.length;
 
     if (!withData.length) {
-      return {
-        totalAreas: generatorAnalysisAreas.length,
-        noDataCount,
-        topFacilityArea: null,
-        topRenewableShareArea: null,
-        dominantCoverage: "Belum ada fasilitas terdeteksi",
-      };
+      return { totalAreas: generatorAnalysisAreas.length, noDataCount, topFacilityArea: null, topRenewableShareArea: null, dominantCoverage: "Belum ada fasilitas terdeteksi" };
     }
 
-    const topFacilityArea = [...withData].sort(
-      (a, b) => b.totalFacilities - a.totalFacilities || a.name.localeCompare(b.name, "id")
-    )[0];
-
-    const topRenewableShareArea = [...withData].sort(
-      (a, b) => b.renewableShare - a.renewableShare || b.renewableFacilities - a.renewableFacilities
-    )[0];
-
+    const topFacilityArea = [...withData].sort((a, b) => b.totalFacilities - a.totalFacilities || a.name.localeCompare(b.name, "id"))[0];
+    const topRenewableShareArea = [...withData].sort((a, b) => b.renewableShare - a.renewableShare || b.renewableFacilities - a.renewableFacilities)[0];
     const dominantCounts = withData.reduce((acc, area) => {
       const key = area.dominantTypeLabel || "Tidak ada data";
       acc[key] = (acc[key] || 0) + 1;
       return acc;
     }, {});
-
     const dominantCoverage = Object.entries(dominantCounts).sort((a, b) => b[1] - a[1])[0];
 
     return {
@@ -380,28 +279,18 @@ export default function App() {
       noDataCount,
       topFacilityArea,
       topRenewableShareArea,
-      dominantCoverage: dominantCoverage
-        ? `${dominantCoverage[0]} mendominasi ${dominantCoverage[1]} wilayah`
-        : "Belum ada pola dominan",
+      dominantCoverage: dominantCoverage ? `${dominantCoverage[0]} mendominasi ${dominantCoverage[1]} wilayah` : "Belum ada pola dominan",
     };
   }, [generatorAnalysisAreas]);
 
-  const selectedKategoriValue =
-    validSelectedKategori.length === 1 ? validSelectedKategori[0] : "Semua";
-  const activeAnalysisMetricLabel =
-    ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
+  const selectedKategoriValue = validSelectedKategori.length === 1 ? validSelectedKategori[0] : "Semua";
+  const activeAnalysisMetricLabel = ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
 
   const handleSelectKategori = (kategori) => {
-    if (kategori === "Semua") {
+    if (kategori === "Semua" || !listKategori.includes(kategori)) {
       setSelectedKategoriList([]);
       return;
     }
-
-    if (!listKategori.includes(kategori)) {
-      setSelectedKategoriList([]);
-      return;
-    }
-
     setSelectedKategoriList([kategori]);
   };
 
@@ -410,17 +299,11 @@ export default function App() {
       setSelectedKategoriList([]);
       return;
     }
-
-    setSelectedKategoriList((prev) =>
-      prev.includes(kategori)
-        ? prev.filter((item) => item !== kategori)
-        : [...prev, kategori]
-    );
+    setSelectedKategoriList((prev) => prev.includes(kategori) ? prev.filter((item) => item !== kategori) : [...prev, kategori]);
   };
 
   const countsByKategori = useMemo(() => {
     if (dataMode === "wilayah") return {};
-
     return activeData.reduce((acc, item) => {
       const key = getNormalizedKategori(item, dataMode);
       if (!key) return acc;
@@ -436,67 +319,31 @@ export default function App() {
         acc[key] = (acc[key] || 0) + 1;
         return acc;
       }, {});
-
       return {
         labels: Object.keys(stats),
-        datasets: [
-          {
-            label: "Jumlah Wilayah",
-            data: Object.values(stats),
-            backgroundColor: Object.keys(stats).map((key) =>
-              key === "Tidak Diketahui" ? "#64748b" : getColor(key)
-            ),
-            borderColor: "#1e293b",
-            borderWidth: 2,
-          },
-        ],
+        datasets: [{ label: "Jumlah Wilayah", data: Object.values(stats), backgroundColor: Object.keys(stats).map((key) => key === "Tidak Diketahui" ? "#64748b" : getColor(key)), borderColor: "#1e293b", borderWidth: 2 }],
       };
     }
-
     const stats = {};
     activeData.forEach((item) => {
       const key = getNormalizedKategori(item, dataMode);
       stats[key] = (stats[key] || 0) + 1;
     });
-
     return {
       labels: Object.keys(stats),
-      datasets: [
-        {
-          label: "Jumlah Unit",
-          data: Object.values(stats),
-          backgroundColor: Object.keys(stats).map((key) => getColor(key)),
-          borderColor: "#1e293b",
-          borderWidth: 2,
-        },
-      ],
+      datasets: [{ label: "Jumlah Unit", data: Object.values(stats), backgroundColor: Object.keys(stats).map((key) => getColor(key)), borderColor: "#1e293b", borderWidth: 2 }],
     };
   }, [activeData, dataMode, generatorAnalysisAreas]);
 
   const tile = useMemo(() => {
     switch (basemap) {
       case "satellite":
-        return {
-          url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-          labelUrl:
-            "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
-          attr: "Tiles © Esri",
-          labelAttr: "Labels © Esri",
-        };
+        return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", labelUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", attr: "Tiles © Esri", labelAttr: "Labels © Esri" };
       case "osm":
-        return {
-          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          attr: "© OpenStreetMap",
-        };
+        return { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", attr: "© OpenStreetMap" };
       case "dark":
       default:
-        return {
-          url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-          labelUrl:
-            "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
-          attr: "Basemap © Esri, HERE, Garmin, FAO, NOAA, USGS",
-          labelAttr: "Labels © Esri",
-        };
+        return { url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", labelUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", attr: "Basemap © Esri, HERE, Garmin, FAO, NOAA, USGS", labelAttr: "Labels © Esri" };
     }
   }, [basemap]);
 
@@ -506,10 +353,7 @@ export default function App() {
     setFocusLocation(null);
     setSelectedDetail(null);
     setSelectedAnalysisAreaId(null);
-
-    if (mode !== "wilayah") {
-      setAnalysisResetCounter((prev) => prev + 1);
-    }
+    if (mode !== "wilayah") setAnalysisResetCounter((prev) => prev + 1);
   };
 
   const handleSelectAnalysisArea = (area) => {
@@ -523,17 +367,13 @@ export default function App() {
     setAnalysisResetCounter((prev) => prev + 1);
   };
 
-  const handleOpenDetail = (item) => {
-    setSelectedDetail(item);
-  };
+  const handleOpenDetail = (item) => setSelectedDetail(item);
 
   const handleLocateMe = () => {
     if (!navigator.geolocation) return alert("Browser tidak support GPS");
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude } = position.coords;
-        const myLoc = { latitude, longitude };
+        const myLoc = { latitude: position.coords.latitude, longitude: position.coords.longitude };
         setUserLocation(myLoc);
         setFocusLocation(myLoc);
       },
@@ -543,24 +383,12 @@ export default function App() {
 
   const handleExport = () => {
     if (dataMode === "wilayah") {
-      const activeMetric =
-        ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
-
-      exportWilayahAnalysisCsv({
-        analysisAreas: filteredAnalysisAreas,
-        metricLabel: activeMetric,
-      });
+      const activeMetric = ANALYSIS_METRIC_OPTIONS.find((option) => option.value === analysisMetric)?.label || analysisMetric;
+      exportWilayahAnalysisCsv({ analysisAreas: filteredAnalysisAreas, metricLabel: activeMetric });
       return;
     }
-
-    const kategoriLabel =
-      selectedKategoriList.length === 0 ? "Semua" : selectedKategoriList.join("-");
-
-    exportPembangkitCsv({
-      filteredData,
-      selectedKategori: kategoriLabel,
-      selectedProv,
-    });
+    const kategoriLabel = selectedKategoriList.length === 0 ? "Semua" : selectedKategoriList.join("-");
+    exportPembangkitCsv({ filteredData, selectedKategori: kategoriLabel, selectedProv });
   };
 
   if (loading && dataMode !== "potensi") {
@@ -580,7 +408,7 @@ export default function App() {
       </div>
     );
   }
-
+  
   return (
     <div className="relative flex h-screen w-screen overflow-hidden bg-gray-900 font-sans">
       <Sidebar
@@ -607,10 +435,12 @@ export default function App() {
         onSelectAnalysisArea={handleSelectAnalysisArea}
         onResetAnalysisView={handleResetAnalysisView}
         wilayahInsights={wilayahInsights}
-        // Kirim props filter ke Sidebar
         data={pembangkit}
         yearRange={yearRange}
         onYearRange={setYearRange}
+        isLoading={loading || (loadingBoundaries && dataMode === "wilayah")}
+        potensiOpacity={potensiOpacity}
+        setPotensiOpacity={setPotensiOpacity}
       />
 
       <div className="relative z-0 h-full min-w-0 flex-1 transition-all duration-300">
@@ -629,6 +459,7 @@ export default function App() {
           onSelectAnalysisArea={handleSelectAnalysisArea}
           defaultMapView={DEFAULT_MAP_VIEW}
           analysisResetCounter={analysisResetCounter}
+          potensiOpacity={potensiOpacity / 100}
         />
 
         <MapControls

@@ -1,0 +1,147 @@
+facility_id,nama,jenis_raw,jenis_std,energy_group,tahun_operasi,regpln,provinsi,longitude,latitude
+662,PLTD Batakan Unit,PLTD,PLTD,non_renewable,1988,Kalimantan,Kalimantan Timur,116.95100000000002,-1.2379999999999427
+915,PLTD Batu Ampar,PLTD,PLTD,non_renewable,1998,Kalimantan,Kalimantan Timur,116.8309200000001,0.6792800000000625
+982,PLTD Batu Putih,PLTD,PLTD,non_renewable,1995,Kalimantan,Kalimantan Timur,118.44581000000004,1.3521700000000578
+632,PLTD Batu Sopang,PLTD,PLTD,non_renewable,2006,Kalimantan,Kalimantan Timur,115.91200000000003,-1.8199999999999363
+957,PLTD Biduk-Biduk,PLTD,PLTD,non_renewable,1983,Kalimantan,Kalimantan Timur,118.74619000000008,1.2165000000000532
+642,PLTD Bontang,PLTD,PLTD,non_renewable,2003,Kalimantan,Kalimantan Timur,117.45900000000006,0.1450000000000386
+252,PLTD Bontang (MAK),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,117.45407471600004,0.1374279480000382
+253,PLTD Bontang (MAK),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,117.45405996300008,0.1374299590000305
+664,PLTD CDE Karang Joang (MFO),PLTD,PLTD,non_renewable,2010,Kalimantan,Kalimantan Timur,116.87800000000004,-1.148999999999944
+663,PLTD Cogindo (MFO),PLTD,PLTD,non_renewable,2009,Kalimantan,Kalimantan Timur,116.95112373200004,-1.2379999999999427
+928,PLTD Datah Bilang,PLTD,PLTD,non_renewable,1992,Kalimantan,Kalimantan Timur,115.46381000000008,0.226030000000037
+931,PLTD Dilang Putih,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,115.76639000000011,-0.716829999999959
+919,PLTD Gemar Baru,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,116.37603,0.800860000000057
+920,PLTD Gemar Baru Pemkab,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,116.3761632500001,0.800860000000057
+661,PLTD Gunung Malang,PLTD,PLTD,non_renewable,1978,Kalimantan,Kalimantan Timur,116.84122842800002,-1.2626573579999558
+978,PLTD Gunung Sari,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,117.11644,2.1853100000000723
+940,PLTD Jantur,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,116.28961000000004,-0.4197799999999461
+669,PLTD Jenebora/Gresik,PLTD,PLTD,non_renewable,2000,Kalimantan,Kalimantan Timur,116.735,-1.1859999999999786
+641,PLTD Karang Asam,PLTD,PLTD,non_renewable,1978,Kalimantan,Kalimantan Timur,117.11413325,-0.5024384469999745
+911,PLTD Karangan,PLTD,PLTD,non_renewable,1992,Kalimantan,Kalimantan Timur,117.67272000000004,1.3496900000000664
+339,PLTD Keledang Unit 7,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,117.12127348100012,-0.5244268889999262
+933,PLTD Kelumpang,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,115.82270000000004,-0.1730399999999576
+667,PLTD Kerang,PLTD,PLTD,non_renewable,1982,Kalimantan,Kalimantan Timur,116.08200000000012,-2.238999999999976
+643,PLTD Kledang,PLTD,PLTD,non_renewable,1987,Kalimantan,Kalimantan Timur,117.12200000000009,-0.5229999999999677
+944,PLTD Long Apari,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,114.53367000000004,0.8117600000000493
+929,PLTD Long Bagun,PLTD,PLTD,non_renewable,1997,Kalimantan,Kalimantan Timur,115.23711000000004,0.226030000000037
+930,PLTD Long Bagun Pemkab,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,115.25711,0.2060300000000552
+658,PLTD Long Ikis,PLTD,PLTD,non_renewable,2002,Kalimantan,Kalimantan Timur,116.187,-1.599999999999966
+925,PLTD Long Iram,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.63306000000011,0.0134700000000407
+926,PLTD Long Iram Pemkab,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.63318373200002,0.0134700000000407
+945,PLTD Long Pahangai,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,114.70905000000003,0.8825400000000627
+918,PLTD Long Segar,PLTD,PLTD,non_renewable,1998,Kalimantan,Kalimantan Timur,116.82086000000004,0.7976700000000392
+696,PLTD Melak,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.83147000000008,-0.2123299999999517
+924,PLTD Melak Kaltimex,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.83160325000006,-0.2124918029999776
+922,PLTD Melak Pemkab,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.831612768,-0.2123585529999445
+923,PLTD Melak Sewatama,PLTD,PLTD,non_renewable,2001,Kalimantan,Kalimantan Timur,115.83147000000008,-0.2124537319999717
+983,PLTD Merasa,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,117.25150000000008,1.8063900000000217
+942,PLTD Muara Aloh,PLTD,PLTD,non_renewable,1981,Kalimantan,Kalimantan Timur,116.3518600000001,-0.4318099999999276
+686,PLTD Muara Bengkal,PLTD,PLTD,non_renewable,1997,Kalimantan,Kalimantan Timur,116.67400000000008,0.4370000000000686
+938,PLTD Muara Kedang,PLTD,PLTD,non_renewable,1991,Kalimantan,Kalimantan Timur,116.29792000000008,-0.5664999999999623
+666,PLTD Muara Komam,PLTD,PLTD,non_renewable,1982,Kalimantan,Kalimantan Timur,115.812,-1.6749999999999543
+934,PLTD Muara Muntai,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,116.47432000000003,-0.6433199999999601
+927,PLTD Muara Pahu,PLTD,PLTD,non_renewable,1992,Kalimantan,Kalimantan Timur,116.06414000000008,-0.3254199999999514
+921,PLTD Muara Pantuan,PLTD,PLTD,non_renewable,1998,Kalimantan,Kalimantan Timur,117.56876000000013,-0.5802699999999277
+937,PLTD Muara Siran,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,116.63642000000004,-0.1283299999999485
+687,PLTD Muara Wahau,PLTD,PLTD,non_renewable,1995,Kalimantan,Kalimantan Timur,116.84300000000007,1.0450000000000728
+914,PLTD Muara Wahau Altrak,PLTD,PLTD,non_renewable,1995,Kalimantan,Kalimantan Timur,116.8431700000001,1.045310000000029
+913,PLTD Pengadan,PLTD,PLTD,non_renewable,2016,Kalimantan,Kalimantan Timur,117.67290083900002,1.3496804820000534
+935,PLTD Penyinggahan,PLTD,PLTD,non_renewable,1992,Kalimantan,Kalimantan Timur,116.2234400000001,-0.3873299999999631
+656,PLTD Petung,PLTD,PLTD,non_renewable,1984,Kalimantan,Kalimantan Timur,116.67000000000009,-1.3419999999999277
+947,PLTD Samabliung Kaltimex,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,117.51125276800008,2.1580000000000723
+697,PLTD Sambaliung,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,117.51111000000004,2.1580000000000723
+692,PLTD Sangkulirang,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,117.98000000000002,0.9860000000000468
+693,PLTD Sangkulirang Pemkab,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,117.98015228600002,0.9859904820000338
+943,PLTD Sedulang,PLTD,PLTD,non_renewable,1981,Kalimantan,Kalimantan Timur,116.81094000000007,-0.125189999999975
+939,PLTD Semayang,PLTD,PLTD,non_renewable,1995,Kalimantan,Kalimantan Timur,116.45181000000002,-0.1827799999999797
+695,PLTD Sentawar,PLTD,PLTD,non_renewable,2008,Kalimantan,Kalimantan Timur,115.80100000000004,-0.2419999999999618
+358,PLTD Sentawar Mitsubishi 01,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+357,PLTD Sentawar Mitsubishi 02,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+356,PLTD Sentawar Mitsubishi 03,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+353,PLTD Sentawar Mitsubishi 04,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+352,PLTD Sentawar Mitsubishi 05,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+351,PLTD Sentawar Mitsubishi 06,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+350,PLTD Sentawar Mitsubishi 07,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+349,PLTD Sentawar Mitsubishi 08,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+348,PLTD Sentawar Mitsubishi 09,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+347,PLTD Sentawar Mitsubishi 10,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+346,PLTD Sentawar Mitsubishi 11,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+345,PLTD Sentawar Mitsubishi 12,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+344,PLTD Sentawar Mitsubishi 13,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+343,PLTD Sentawar Mitsubishi 14,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+342,PLTD Sentawar Mitsubishi 15,PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,115.80137000000002,-0.2423899999999434
+916,PLTD Senyiur,PLTD,PLTD,non_renewable,2002,Kalimantan,Kalimantan Timur,116.62281000000009,0.3120800000000372
+917,PLTD Senyiur Pemkab,PLTD,PLTD,non_renewable,2002,Kalimantan,Kalimantan Timur,116.62294325000003,0.312060964000068
+688,PLTD Sepaso,PLTD,PLTD,non_renewable,2000,Kalimantan,Kalimantan Timur,117.56100000000004,0.7560000000000286
+691,PLTD Sepaso Altrak,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,117.56112373200006,0.7558381970000596
+690,PLTD Sepaso KPC,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,117.5610095180001,0.7558477140000264
+689,PLTD Sepaso Pemkab,PLTD,PLTD,non_renewable,2015,Kalimantan,Kalimantan Timur,117.56113325,0.7559809640000594
+694,PLTD Sewa Sentawar Pemkab Kubar,PLTD,PLTD,non_renewable,2016,Kalimantan,Kalimantan Timur,115.80111421400012,-0.2420095179999748
+941,PLTD Tabang,PLTD,PLTD,non_renewable,1995,Kalimantan,Kalimantan Timur,115.92675000000008,0.6734200000000214
+932,PLTD Tabisaq,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,115.92136000000004,-0.4966399999999566
+975,PLTD Talisayan,PLTD,PLTD,non_renewable,2013,Kalimantan,Kalimantan Timur,118.17703000000006,1.6050600000000372
+131,PLTD Talisayan (Cummins),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,118.1770255130001,1.605145059000051
+135,PLTD Talisayan (MAN),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,118.1770255130001,1.605145059000051
+137,PLTD Talisayan (MTU),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,118.1770255130001,1.605145059000051
+111,PLTD Talisayan (Mitsubishi),PLTD,PLTD,non_renewable,2022,Kalimantan,Kalimantan Timur,118.1770255130001,1.605145059000051
+976,PLTD Talisayan PT IPB,PLTD,PLTD,non_renewable,2013,Kalimantan,Kalimantan Timur,118.17719180300004,1.6050504820000242
+974,PLTD Talisayan Pemkab,PLTD,PLTD,non_renewable,1999,Kalimantan,Kalimantan Timur,118.17703951800002,1.604936268000074
+655,PLTD Tanah Grogot,PLTD,PLTD,non_renewable,1996,Kalimantan,Kalimantan Timur,116.18000000000006,-1.8879999999999768
+634,PLTD Tanjung,PLTD,PLTD,non_renewable,1977,Kalimantan,Kalimantan Timur,115.93100000000004,-2.182999999999936
+668,PLTD Tanjung Aru,PLTD,PLTD,non_renewable,2002,Kalimantan,Kalimantan Timur,116.58400000000006,-2.1749999999999545
+973,PLTD Tanjung Batu,PLTD,PLTD,non_renewable,2000,Kalimantan,Kalimantan Timur,118.09250000000009,2.278280000000052
+936,PLTD Tanjung Isuy,PLTD,PLTD,non_renewable,1994,Kalimantan,Kalimantan Timur,116.14019000000008,-0.5137499999999591
+959,PLTD Tubaan,PLTD,PLTD,non_renewable,1987,Kalimantan,Kalimantan Timur,117.85928,1.81842000000006
+645,PLTG Peaking #01,PLTG,PLTG,non_renewable,2014,Kalimantan,Kalimantan Timur,117.05160263000003,-0.3839939879999292
+2345,PLTG Peaking #02,PLTG,PLTG,non_renewable,2014,Kalimantan,Kalimantan Timur,117.05159668100008,-0.3843271129999266
+646,PLTG Sambera #01,PLTG,PLTG,non_renewable,2009,Kalimantan,Kalimantan Timur,117.29149793400006,-0.3166519719999314
+2343,PLTG Sambera #02,PLTG,PLTG,non_renewable,2009,Kalimantan,Kalimantan Timur,117.29165497800012,-0.3166519719999314
+659,PLTG Senipah #01,PLTG,PLTG,non_renewable,2014,Kalimantan,Kalimantan Timur,117.13536405800004,-0.9876281779999658
+2344,PLTG Senipah #02,PLTG,PLTG,non_renewable,2015,Kalimantan,Kalimantan Timur,117.13560676300006,-0.9874782719999756
+3196,PLTGU Senipah (ST),PLTGU,PLTGU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.13608265500012,-0.9872236689999454
+644,PLTGU Tanjung Batu #01,PLTGU,PLTGU,non_renewable,1997,Kalimantan,Kalimantan Timur,117.0513075770001,-0.3816002509999521
+2341,PLTGU Tanjung Batu #02,PLTGU,PLTGU,non_renewable,1997,Kalimantan,Kalimantan Timur,117.05130043800013,-0.3813218539999639
+2342,PLTGU Tanjung Batu #03,PLTGU,PLTGU,non_renewable,1998,Kalimantan,Kalimantan Timur,117.0513075770001,-0.3809863499999437
+650,PLTMG Belimbing,PLTMG,PLTMG,non_renewable,2014,Kalimantan,Kalimantan Timur,117.4511385400001,0.1657792190000577
+251,PLTMG Bontang,PLTMG,PLTMG,non_renewable,2022,Kalimantan,Kalimantan Timur,117.4540885450001,0.1374249290000193
+653,PLTMG Bontang Wartsila #01,PLTMG,PLTMG,non_renewable,2009,Kalimantan,Kalimantan Timur,117.45411687,0.1374266520000446
+2346,PLTMG Bontang Wartsila #02,PLTMG,PLTMG,non_renewable,2009,Kalimantan,Kalimantan Timur,117.45405214900006,0.1374323620000268
+647,PLTMG Kaltimex,PLTMG,PLTMG,non_renewable,2008,Kalimantan,Kalimantan Timur,117.0529398870001,-0.3832135249999737
+2349,PLTMG MPP Kaltim #01,PLTMG,PLTMG,non_renewable,2018,Kalimantan,Kalimantan Timur,117.453857985,0.1379101580000679
+2350,PLTMG MPP Kaltim #02,PLTMG,PLTMG,non_renewable,2018,Kalimantan,Kalimantan Timur,117.45385608100004,0.1378340150000667
+2347,PLTMG MPP Kaltim #03,PLTMG,PLTMG,non_renewable,2018,Kalimantan,Kalimantan Timur,117.45421585600002,0.1378682790000311
+2348,PLTMG MPP Kaltim #04,PLTMG,PLTMG,non_renewable,2017,Kalimantan,Kalimantan Timur,117.45421395200005,0.1377921370000194
+657,PLTMG SW Petung (PT. Benuo Taka Energy) #01,PLTMG,PLTMG,non_renewable,2010,Kalimantan,Kalimantan Timur,116.74014175200011,-1.2910129099999494
+2352,PLTMG SW Petung (PT. Benuo Taka Energy) #02,PLTMG,PLTMG,non_renewable,2010,Kalimantan,Kalimantan Timur,116.74019410000004,-1.2910581189999562
+2353,PLTMG SW Petung (PT. Benuo Taka Energy) #03,PLTMG,PLTMG,non_renewable,2010,Kalimantan,Kalimantan Timur,116.74024406800004,-1.2911057089999645
+2354,PLTMG SW Petung (PT. Benuo Taka Energy) #04,PLTMG,PLTMG,non_renewable,2010,Kalimantan,Kalimantan Timur,116.74029641600008,-1.2911509179999712
+648,PLTU Embalut (PT. Cahaya Fajar Kaltim) #01,PLTU,PLTU,non_renewable,2008,Kalimantan,Kalimantan Timur,117.061923857,-0.3731148409999605
+2286,PLTU Embalut (PT. Cahaya Fajar Kaltim) #02,PLTU,PLTU,non_renewable,2008,Kalimantan,Kalimantan Timur,117.06222842800004,-0.3731243579999272
+2289,PLTU Embalut Ekspansi (PT. Cahaya Fajar Kaltim),PLTU,PLTU,non_renewable,2008,Kalimantan,Kalimantan Timur,117.062770945,-0.3731433939999533
+2181,PLTU Kaltim (FTP2) Unit 1,PLTU,PLTU,non_renewable,2019,Kalimantan,Kalimantan Timur,117.49226046,0.0543644160000553
+2291,PLTU Kaltim (FTP2) Unit 2,PLTU,PLTU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.49226284000008,0.0545262190000244
+602,PLTU Kaltim - Teluk Balikpapan Unit 1,PLTU,PLTU,non_renewable,2022,Kalimantan,Kalimantan Timur,116.78908188800006,-1.1700136129999803
+601,PLTU Kaltim - Teluk Balikpapan Unit 2,PLTU,PLTU,non_renewable,2022,Kalimantan,Kalimantan Timur,116.78901751500008,-1.170136968999941
+2287,PLTU Kaltim 4 (Ekspansi-2 Embalut) #01,PLTU,PLTU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.06576668700006,-0.3638349429999721
+2288,PLTU Kaltim 4 (Ekspansi-2 Embalut) #02,PLTU,PLTU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.0659451460001,-0.3638230449999469
+660,PLTU Kariangau (PT. Kariangau Power) #01,PLTU,PLTU,non_renewable,2014,Kalimantan,Kalimantan Timur,116.80144045600002,-1.1988393229999588
+2284,PLTU Kariangau (PT. Kariangau Power) #02,PLTU,PLTU,non_renewable,2014,Kalimantan,Kalimantan Timur,116.801447595,-1.199053474999971
+948,PLTU Lati (PT. Indo Pusaka Berau),PLTU,PLTU,non_renewable,2004,Kalimantan,Kalimantan Timur,117.61876395400007,2.214621654000041
+654,PLTU MT Kaltim (Muara Jawa) #01,PLTU,PLTU,non_renewable,2018,Kalimantan,Kalimantan Timur,117.18867726300005,-0.7801875419999647
+2292,PLTU MT Kaltim (Muara Jawa) #02,PLTU,PLTU,non_renewable,2018,Kalimantan,Kalimantan Timur,117.18882598000005,-0.7803422069999328
+651,PLTU Mangkujenang,PLTU,PLTU,non_renewable,2015,Kalimantan,Kalimantan Timur,117.15605500000004,-0.5385799999999676
+2293,PLTU PT. Kalimantan Powerindo,PLTU,PLTU,non_renewable,2016,Kalimantan,Kalimantan Timur,116.83694803900003,-0.3200392369999463
+652,PLTU Rimba Raya,PLTU,PLTU,non_renewable,2015,Kalimantan,Kalimantan Timur,117.03456809600004,-0.5468512839999562
+910,PLTU Sangatta (PT. Kaltim Prima Coal) Ex Sektor Mahakam,PLTU,PLTU,non_renewable,2017,Kalimantan,Kalimantan Timur,117.63547000000004,0.5394600000000196
+649,PLTU Senoni #01,PLTU,PLTU,non_renewable,2011,Kalimantan,Kalimantan Timur,117.092666333,-0.5433921029999738
+2285,PLTU Senoni #02,PLTU,PLTU,non_renewable,2011,Kalimantan,Kalimantan Timur,117.0927091640001,-0.5435420089999639
+2294,PLTU Tanjung Redep / Berau #01,PLTU,PLTU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.3927228770001,2.156031201000076
+2295,PLTU Tanjung Redep / Berau #02,PLTU,PLTU,non_renewable,2020,Kalimantan,Kalimantan Timur,117.39256107300002,2.156097826000064
+665,PLTU Teluk Balikpapan #01,PLTU,PLTU,non_renewable,2017,Kalimantan,Kalimantan Timur,116.78917543800004,-1.16978673899996
+2273,PLTU Teluk Balikpapan #02,PLTU,PLTU,non_renewable,2017,Kalimantan,Kalimantan Timur,116.78938959000004,-1.1702435949999312
+576,Steam Turbin PLTGU Tanjung Batu,Steam,STEAM,non_renewable,2022,Kalimantan,Kalimantan Timur,117.05118335400005,-0.3810469139999668
+946,PLTBg Rea Kaltim,PLTBg,PLTBG,renewable,2011,Kalimantan,Kalimantan Timur,115.80147000000012,-0.2423299999999244
+979,PLTBm Gunung Sari HHM,PLTBm,PLTBM,renewable,0,Kalimantan,Kalimantan Timur,117.1165732500001,2.185290964000046
+912,PLTBm Karangan DL,PLTBm,PLTBM,renewable,1992,Kalimantan,Kalimantan Timur,117.67281517800006,1.3496900000000664
+977,PLTBm Talisayan DL,PLTBm,PLTBM,renewable,2013,Kalimantan,Kalimantan Timur,118.17716325000004,1.604936268000074

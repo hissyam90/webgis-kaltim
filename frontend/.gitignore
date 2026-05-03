@@ -31,3 +31,24 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# -----------------
+# Python / Backend
+# -----------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Database (kalau nantinya pakai SQLite lokal)
+*.sqlite3
+*.db
+
+# Pytest / Coverage (kalau ada testing)
+.pytest_cache/
+.coverage

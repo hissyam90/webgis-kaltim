@@ -97,13 +97,15 @@ def get_all_pembangkit(
 
         with engine.connect() as connection:
             result = connection.execute(query, params)
-            data_pembangkit = [row._asdict() for row in result]
+            # PERBAIKAN: Gunakan dict(row._mapping)
+            data_pembangkit = [dict(row._mapping) for row in result]
 
         return {"total_data": len(data_pembangkit), "data": data_pembangkit}
 
     except HTTPException:
         raise
     except Exception as e:
+        print(f"Error pada /api/pembangkit: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -125,9 +127,10 @@ def get_pembangkit_by_jenis(jenis: str):
 
         with engine.connect() as connection:
             result = connection.execute(query, {"jenis": f"%{jenis}%"})
-            data = [row._asdict() for row in result]
+            data = [dict(row._mapping) for row in result]
 
         return {"kategori": jenis, "total": len(data), "data": data}
 
     except Exception as e:
+        print(f"Error pada /api/pembangkit/by-jenis: {e}")
         raise HTTPException(status_code=500, detail=str(e))

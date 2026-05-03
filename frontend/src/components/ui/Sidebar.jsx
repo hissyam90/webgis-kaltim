@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getColor } from "../../utils/getColor";
 import { formatMetricValue } from "../../utils/analysisHelpers";
 import { formatKategoriOption, getKategoriInfo } from "../../utils/kategoriLabel";
+import YearRangeFilter from "./YearRangeFilter";
 
 export default function Sidebar({
   dataMode,
@@ -27,6 +28,9 @@ export default function Sidebar({
   onSelectAnalysisArea,
   onResetAnalysisView,
   wilayahInsights,
+  data,           // Tambahan props dari App.jsx
+  yearRange,      // Tambahan props dari App.jsx
+  onYearRange     // Tambahan props dari App.jsx
 }) {
   const [isRegionOpen, setIsRegionOpen] = useState(true);
   const modeLabel =
@@ -220,6 +224,15 @@ export default function Sidebar({
                       ))}
                     </select>
                   </div>
+
+                  {/* TAMBAHAN: Year Range Filter */}
+                  {dataMode !== "wilayah" && dataMode !== "potensi" && (
+                    <YearRangeFilter
+                      data={data}
+                      yearRange={yearRange}
+                      onYearRange={onYearRange}
+                    />
+                  )}
 
                   <div className="grid grid-cols-2 gap-2">
                     <button

@@ -72,6 +72,10 @@ export default function App() {
   const [analysisResetCounter, setAnalysisResetCounter] = useState(0);
   const [showStats, setShowStats] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  
+  // State baru untuk filter tahun (null = filter nonaktif)
+  const [yearRange, setYearRange] = useState(null);
+  
   const debouncedSearch = useDebouncedValue(searchText, 250);
 
   const { pembangkit, loading } = usePembangkit();
@@ -153,6 +157,7 @@ export default function App() {
     return selectedKategoriList.filter((kategori) => listKategori.includes(kategori));
   }, [listKategori, selectedKategoriList]);
 
+  // Modified filteredData with year filter
   const filteredData = useMemo(() => {
     if (dataMode === "wilayah") return [];
 
@@ -160,26 +165,44 @@ export default function App() {
     const needProvFilter = selectedProv !== "Semua" && selectedProvFeature;
 
     return activeData.filter((item) => {
+      // Filter kategori
       const normalizedKategori = getNormalizedKategori(item, dataMode);
       const matchKategori =
         validSelectedKategori.length === 0 || validSelectedKategori.includes(normalizedKategori);
 
+      // Filter search
       const name = (item.nama || "").toLowerCase();
       const region = (item.region || "").toLowerCase();
       const lokasi = (item.lokasi || "").toLowerCase();
       const matchSearch =
         !query || name.includes(query) || region.includes(query) || lokasi.includes(query);
 
-      if (!needProvFilter) return matchKategori && matchSearch;
+      // Filter year range (TAMBAHAN)
+      const matchYear = (() => {
+        if (!yearRange) return true; // filter nonaktif
+        const y = Number(item.tahun_operasi);
+        if (!Number.isFinite(y)) return true; // data tanpa tahun tetap ditampilkan
+        return y >= yearRange[0] && y <= yearRange[1];
+      })();
+
+      if (!needProvFilter) return matchKategori && matchSearch && matchYear;
 
       const lon = Number(item.longitude);
       const lat = Number(item.latitude);
       if (!Number.isFinite(lon) || !Number.isFinite(lat)) return false;
 
       const inside = booleanPointInPolygon(point([lon, lat]), selectedProvFeature);
-      return matchKategori && matchSearch && inside;
+      return matchKategori && matchSearch && matchYear && inside;
     });
-  }, [activeData, dataMode, validSelectedKategori, debouncedSearch, selectedProv, selectedProvFeature]);
+  }, [
+    activeData,
+    dataMode,
+    validSelectedKategori,
+    debouncedSearch,
+    selectedProv,
+    selectedProvFeature,
+    yearRange, // Dependency tambahan
+  ]);
 
   const generatorAnalysisAreas = useMemo(() => {
     if (!kaltimBoundaryGeojson?.features?.length) return [];
@@ -584,6 +607,10 @@ export default function App() {
         onSelectAnalysisArea={handleSelectAnalysisArea}
         onResetAnalysisView={handleResetAnalysisView}
         wilayahInsights={wilayahInsights}
+        // Kirim props filter ke Sidebar
+        data={pembangkit}
+        yearRange={yearRange}
+        onYearRange={setYearRange}
       />
 
       <div className="relative z-0 h-full min-w-0 flex-1 transition-all duration-300">
